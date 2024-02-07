@@ -22,6 +22,7 @@ public void TitleScreen() {
         }
 
     } while(prompt != 1 || prompt != 2);
+    sc.close();
 }
 
 public void CC() {
@@ -45,6 +46,7 @@ public void CC() {
         }
 
     } while(prompt != 1 || prompt != 2);
+    sc.close();
 }
 
 
