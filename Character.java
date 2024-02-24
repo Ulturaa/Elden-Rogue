@@ -1,14 +1,14 @@
 public class Character {
-    private String name; //Player name is 25 char max
+    private String name; // Player name is 25 char max
     private String job;
     private int runes;
     private int[] stats = new int[6];
 
     public Character() {
-        this.character = "";
+        this.name = "";
         this.job = "Jobless";
         this.runes = 0;
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
             stats[i] = 0;
     }
 
@@ -36,10 +36,12 @@ public class Character {
         this.runes = runes;
     }
 
-    public void setStats(int[] stats, int i) {
+    public void setStats(int stats, int i) {
         this.stats[i] = stats;
     }
 
-    
+    public int getStats(int i) {
+        return this.stats[i];
+    }
 
 }
