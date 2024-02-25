@@ -1,23 +1,26 @@
+
 import java.util.Scanner;
 
 public class Game {
 
+    Lobby lobby = new Lobby(this);
+
     public void TitleScreen() {
-        int prompt;
-        Scanner sc = new Scanner(System.in);
+        int tprompt;
+        // Scanner sc = new Scanner(System.in);
+        Scanner tc = new Scanner(System.in);
 
         do {
-            System.out.println("Title Screen\n");
+            System.out.println("ELDEN ROGUE\n");
             System.out.println("1 | Start");
             System.out.println("2 | Exit");
             System.out.println("- ");
-            prompt = sc.nextInt();
+            tprompt = tc.nextInt();
 
-            switch (prompt) {
+            switch (tprompt) {
                 case 1:
-                    // starts game
-                    // character creation
-                    CC();
+                    CC();// character creation
+
                     break;
                 case 2:
                     System.exit(0);
@@ -26,8 +29,8 @@ public class Game {
                     System.out.println("Invalid input");
             }
 
-        } while (prompt != 1 || prompt != 2);
-        sc.close();
+        } while (tprompt != 1 || tprompt != 2);
+        tc.close();
     }
 
     public void CC() {
@@ -38,6 +41,7 @@ public class Game {
         Character character = new Character();
         String charName;
         String charJob;
+        Boolean loop = true;
 
         do {
             System.out.println("Character Creation\n\n");
@@ -64,21 +68,31 @@ public class Game {
                     break;
                 case 3:
 
-                    if (create.confirm()) {
+                    if (create.confirm() && character.getJob() != "Jobless") {
 
                         System.out.println("\nConfirmed\n");
-                    } else
+                        lobby.lobbyScreen(character);
+
+                        if (lobby.returnBack()) {
+                            this.TitleScreen();
+                            loop = false;
+                        }
+                        loop = false;
+                    } else {
                         System.out.println("\nNOT Confirmed\n");
-                    // open the lobby
+                        System.out.println("\nPlease input a name and choose a JOB CLASS\n");
+                    }
+
                     break;
                 case 4:
-                    TitleScreen();
+                    this.TitleScreen();
+                    loop = false;
                     break;
                 default:
                     System.out.println("Invalid input");
             }
 
-        } while (prompt != 1 || prompt != 2);
+        } while (loop);
         sc.close();
     }
 
