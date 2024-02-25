@@ -7,9 +7,10 @@ public class TestDriver {
         Floor floor = new Floor(5, 5);
         floor.setTile(1, 2, 7); // player
         floor.setTile(0, 2, 2);
-        floor.setTile(4, 2, 2);
+        floor.setTile(4, 2, 3);
         floor.setTile(4, 0, 1);
         floor.setTile(4, 4, 1);
+        floor.setTile(1, 1, 6);
         
         Scanner sc = new Scanner(System.in);
         char in = ' '; 

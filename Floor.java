@@ -33,29 +33,25 @@ public class Floor {
         for(int i = 0; i < yBounds; i++) {
             System.out.print("█");
             for(int j = 0; j < xBounds; j++) {
-                if(fMap[i][j].getTileType() == 6)
-                    System.out.print(" P ");
-                else {
-                    switch(fMap[i][j].getTileType()) {
-                        case 0: System.out.print("   ");
-                                break;
-                        case 1: System.out.print("███");
-                                break;
-                        case 2: System.out.print(" X ");
-                                break;
-                        case 3: System.out.print(" ^ ");
-                                break;
-                        case 4: System.out.print(" | ");
-                                break;
-                        case 5: System.out.print(" S ");
-                                break;
-                        case 6: System.out.print(" B ");
-                                break;
-                        case 7: System.out.print(" P ");
-                                break;
-                        case 8: System.out.print(" C ");
-                                break;
-                    }
+                switch(fMap[i][j].getTileType()) {
+                    case 0: System.out.print("   ");
+                            break;
+                    case 1: System.out.print("███");
+                            break;
+                    case 2: System.out.print(" X ");
+                            break;
+                    case 3: System.out.print(" ^ ");
+                            break;
+                    case 4: System.out.print(" | ");
+                            break;
+                    case 5: System.out.print(" S ");
+                            break;
+                    case 6: System.out.print(" B ");
+                            break;
+                    case 7: System.out.print(" P ");
+                            break;
+                    case 8: System.out.print(" C ");
+                            break;    
                 }
             }
             System.out.println("█");
