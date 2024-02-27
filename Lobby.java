@@ -41,6 +41,7 @@ public class Lobby {
                         upgraded = character.getStats(0) + 1;
                         character.setStats(upgraded, 0);
                         character.setRunes(character.getRunes() - runeCost);
+                        character.levelUp();
                         System.out.println("SUCCESSFULLY UPGRADED");
                     } else if (character.getStats(0) > 50)
                         System.out.println("MAX LEVEL REACHED");
@@ -52,6 +53,7 @@ public class Lobby {
                         upgraded = character.getStats(1) + 1;
                         character.setStats(upgraded, 1);
                         character.setRunes(character.getRunes() - runeCost);
+                        character.levelUp();
                         System.out.println("SUCCESSFULLY UPGRADED");
                     } else if (character.getStats(1) > 50)
                         System.out.println("MAX LEVEL REACHED");
@@ -63,6 +65,7 @@ public class Lobby {
                         upgraded = character.getStats(2) + 1;
                         character.setStats(upgraded, 2);
                         character.setRunes(character.getRunes() - runeCost);
+                        character.levelUp();
                         System.out.println("SUCCESSFULLY UPGRADED");
                     } else if (character.getStats(2) > 50)
                         System.out.println("MAX LEVEL REACHED");
@@ -74,6 +77,7 @@ public class Lobby {
                         upgraded = character.getStats(3) + 1;
                         character.setStats(upgraded, 3);
                         character.setRunes(character.getRunes() - runeCost);
+                        character.levelUp();
                         System.out.println("SUCCESSFULLY UPGRADED");
                     } else if (character.getStats(3) > 50)
                         System.out.println("MAX LEVEL REACHED");
@@ -85,6 +89,7 @@ public class Lobby {
                         upgraded = character.getStats(4) + 1;
                         character.setStats(upgraded, 4);
                         character.setRunes(character.getRunes() - runeCost);
+                        character.levelUp();
                         System.out.println("SUCCESSFULLY UPGRADED");
                     } else if (character.getStats(4) > 50)
                         System.out.println("MAX LEVEL REACHED");
@@ -96,6 +101,7 @@ public class Lobby {
                         upgraded = character.getStats(5) + 1;
                         character.setStats(upgraded, 5);
                         character.setRunes(character.getRunes() - runeCost);
+                        character.levelUp();
                         System.out.println("SUCCESSFULLY UPGRADED");
                     } else if (character.getStats(5) > 50)
                         System.out.println("MAX LEVEL REACHED");
@@ -109,10 +115,6 @@ public class Lobby {
                     break;
             }
         } while (lvlupchoice < 7);
-    }
-
-    public void exit() {
-
     }
 
     public void lobbyScreen(Character character) {

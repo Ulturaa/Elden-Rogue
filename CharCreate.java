@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class CharCreate {
     private String name;
     private int index;
-    Character character;
+    public Character character;
 
     ArrayList<String> jobList = new ArrayList<>();
 
