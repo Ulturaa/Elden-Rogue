@@ -40,12 +40,14 @@ public class Area {
         floors[playerInY-1][playerInX-1].movePlayer(input);
     }
 
-    public void interact() {
+    public boolean interact() {
         Tile currTile = floors[playerInY-1][playerInX-1].getCurrTile();
         if(currTile instanceof FastTravelTile){
             FastTravelTile ft = (FastTravelTile)currTile;
             if(ft.getIsEnabled() == true) {
                 System.out.println("-- Fast Traveling --");
+                // increase value of # dungeon clered //
+                return true;
                 // Return to lobby //
             } else {
                 System.out.println("-- This is locked. Defeat the boss of the dungeon. --");
@@ -65,16 +67,21 @@ public class Area {
             } else
                 System.out.println("-- You have already been here --");
         } else if(currTile instanceof BossTile) {
-            System.out.println("-- The boss lies here --");
-            // Somehow enable the fast travel tile //
             // Begin a bossfight //
+            System.out.println("-- The boss lies here --");
+            System.out.println("-- For MCO1 the boss is defeated --");
+            // !!!!!! Implement a better way to enable the tile !!!!!! //
+            floors[playerInY-1][playerInX-1].SlayedBoss();
+            
         } else if(currTile instanceof CreditsTile) {
             CreditsTile ct = (CreditsTile)currTile;
             System.out.println("-- Play the credits --");
             ct.playCredits();
-                    // Play credits //
+            // Play credits //
         } else
             System.out.println("-- Nothing happened --");
+
+        return false;
     }
 
     private void moveToFloor() {

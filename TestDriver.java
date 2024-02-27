@@ -9,6 +9,7 @@ public class TestDriver {
 
         Scanner sc = new Scanner(System.in);
         char in = ' ';
+        boolean returnToLobby = false;
 
         // Game game = new Game();
         // game.TitleScreen();
@@ -18,12 +19,8 @@ public class TestDriver {
                 in = sc.next(".").charAt(0);
                 System.out.print("\033\143");
 
-                if (in == 'x') {
-                    sc.close();
-                    System.exit(0);
-                }
-                else if (in == 'e')
-                    a1.interact();
+                if (in == 'e')
+                    returnToLobby = a1.interact();
                 else
                     a1.movePlayer(in);
 
@@ -32,6 +29,6 @@ public class TestDriver {
                 System.out.print("\033\143");
                 System.out.println("Invalid input");
             }
-        } while (in != 'q' || in != 'Q');
+        } while (returnToLobby == false);
     }
 }

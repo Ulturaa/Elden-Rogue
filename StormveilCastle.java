@@ -10,7 +10,7 @@ public class StormveilCastle extends Area {
         f1.setTile(0,1,new DoorTile("up"));  // door //
         f1.setTile(1,0,new SpawnTile());
         f1.setTile(1,2,new SpawnTile());
-        f1.setTile(6,1,new FastTravelTile());  // fast travel //
+        f1.setTile(6,1,new FastTravelTile(true));  // fast travel //
         f1.setTile(6,1,new PlayerTile());  // player //
 
         // Create floor object //
@@ -32,7 +32,7 @@ public class StormveilCastle extends Area {
         Floor f3 = new Floor(5, 7);
         // Add tiles //
         f3.setTile(6,2,new DoorTile("down"));  // door //
-        f3.setTile(0,2,new FastTravelTile());  // fast travel //
+        f3.setTile(0,2,new FastTravelTile(false));  // fast travel //
         f3.setTile(3,2,new BossTile());  // boss //
         f3.setTile(6,2,new PlayerTile());  // player //
 

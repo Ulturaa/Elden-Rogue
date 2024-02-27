@@ -1,9 +1,12 @@
 public class FastTravelTile extends Tile{
     private boolean isEnabled;
 
-    public FastTravelTile() {
+    public FastTravelTile(boolean enabled) {
         super(" ^ ");
-        isEnabled = false;   
+        if(enabled == false)
+            isEnabled = false;
+        else
+            isEnabled = true; 
     }
 
     public boolean getIsEnabled() {

@@ -85,7 +85,7 @@ public class Floor {
         }
     }
 
-    public boolean verifyMove(int x, int y, char input) {
+    private boolean verifyMove(int x, int y, char input) {
         if(input == 'W' || input == 'w') {
             if(y-1 < yBounds && y-1 >= 0 && !(fMap[y-1][x] instanceof BoarderTile))
                 return true;
@@ -101,6 +101,14 @@ public class Floor {
         } 
 
         return false;
+    }
+
+    public void SlayedBoss() {
+        int i=0;
+            while((fMap[0][i] instanceof FastTravelTile) == false)
+                i++;
+        FastTravelTile ft = (FastTravelTile)fMap[0][i];
+        ft.Enable();
     }
 
     public Tile getCurrTile(){
