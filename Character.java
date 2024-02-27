@@ -46,8 +46,8 @@ public class Character {
         return this.stats[i];
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void levelUp() {
+        this.level += 1;
     }
 
     public int getLevel() {
