@@ -10,53 +10,38 @@ public class Floor {
         fMap = new Tile[yBounds][xBounds];
         for(int i=0; i < yBounds; i++) {
             for(int j=0; j < xBounds; j++) {
-                fMap[i][j] = new Tile(0);
-                fMap[i][j] = new Tile(0);
+                fMap[i][j] = new SpaceTile();
             }
         }
-        
     }
 
-    public void setTile(int y, int x, int type) {
+    public void setTile(int y, int x, Tile tile) {
         // This function will set tiles in the correct positions wthin the floor
-        if(type == 7) {
+        if(tile instanceof PlayerTile) {
             currTile = fMap[y][x];
-            fMap[y][x] = new Tile(type);
+            fMap[y][x] = tile;
         } else
-            fMap[y][x] = new Tile(type);
+            fMap[y][x] = tile;
     }
 
     public void printFloor() {
-        for(int i = 0; i < yBounds+(2*yBounds)+2; i++)
-            System.out.print("▄");
+        System.out.print("▄");
+        for(int i = 0; i < xBounds; i++)
+            System.out.print("▄▄▄");
+        System.out.print("▄");
+
         System.out.println();
         for(int i = 0; i < yBounds; i++) {
             System.out.print("█");
             for(int j = 0; j < xBounds; j++) {
-                switch(fMap[i][j].getTileType()) {
-                    case 0: System.out.print("   ");
-                            break;
-                    case 1: System.out.print("███");
-                            break;
-                    case 2: System.out.print(" X ");
-                            break;
-                    case 3: System.out.print(" ^ ");
-                            break;
-                    case 4: System.out.print(" | ");
-                            break;
-                    case 5: System.out.print(" S ");
-                            break;
-                    case 6: System.out.print(" B ");
-                            break;
-                    case 7: System.out.print(" P ");
-                            break;
-                    case 8: System.out.print(" C ");
-                            break;    
-                }
+                System.out.print(fMap[i][j].getIcon());
             }
             System.out.println("█");
         }
-        for(int i = 0; i < yBounds+(2*yBounds)+2; i++)
+        
+        System.out.print("▀");
+        for(int i = 0; i < xBounds; i++)
+            System.out.print("▀▀▀");
             System.out.print("▀");
         System.out.println();
     }
@@ -67,7 +52,7 @@ public class Floor {
         int y = 0;
         for(y = 0; found == false && y < yBounds; y++) {
             for(x = 0; found == false && x < xBounds; x++){
-                if(fMap[y][x].getTileType() == 7)
+                if(fMap[y][x] instanceof PlayerTile)
                 found = true;
             }
         }
@@ -102,56 +87,23 @@ public class Floor {
 
     public boolean verifyMove(int x, int y, char input) {
         if(input == 'W' || input == 'w') {
-            if(y-1 < yBounds && y-1 >= 0 && fMap[y-1][x].getTileType() != 1)
+            if(y-1 < yBounds && y-1 >= 0 && !(fMap[y-1][x] instanceof BoarderTile))
                 return true;
         } else if(input == 'S' || input == 's') {
-            if(y+1 < yBounds && y+1 >= 0 && fMap[y+1][x].getTileType() != 1)
+            if(y+1 < yBounds && y+1 >= 0 && !(fMap[y+1][x] instanceof BoarderTile))
             return true;
         } else if(input == 'A' || input == 'a') {
-            if(x-1 < yBounds && x-1 >= 0 && fMap[y][x-1].getTileType() != 1)
+            if(x-1 < yBounds && x-1 >= 0 && !(fMap[y][x-1] instanceof BoarderTile))
                 return true;
         } else if(input == 'D' || input == 'd') {
-            if(x+1 < yBounds && x+1 >= 0 && fMap[y][x+1].getTileType() != 1)
+            if(x+1 < yBounds && x+1 >= 0 && !(fMap[y][x+1] instanceof BoarderTile))
                 return true;
         } 
 
         return false;
     }
 
-    public void getPlayerPos() {
-        boolean found = false;
-        int x = 0;
-        int y = 0;
-        for(y = 0; found == false && y < yBounds; y++) {
-            for(x = 0; found == false && x < xBounds; x++){
-                if(fMap[y][x].getTileType() == 7){
-                System.out.println("Player in " + y + " " + x);
-                found = true;
-                }
-            }
-        }
-    }
-
-    public void interact() {
-        switch(currTile.getTileType()) {
-            case 2: System.out.println(" This is locked. Defeat the boss of the dungeon. ");
-                    break;
-            case 3: System.out.println(" Fast Traveling ");
-                    // Return to lobby //
-                    break;
-            case 4: System.out.println(" Door ");
-                    // move to next floor //
-                    break;
-            case 5: System.out.println(" Spawn ");
-                    // RNG for treasure or enemy //
-                    break;
-            case 6: System.out.println(" Spawn a boss ");
-                    // Begin a bossfight //
-                    break;
-            case 8: System.out.println(" Playing the credits ");
-                    // Play credits //
-                    break;
-            default: System.out.println(" Nothing happened ");
-        }
+    public Tile getCurrTile(){
+        return currTile;
     }
 }
