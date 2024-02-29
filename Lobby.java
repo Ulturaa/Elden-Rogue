@@ -7,6 +7,7 @@ public class Lobby {
     private int scanL;
     private Boolean back;
     Scanner lc = new Scanner(System.in);
+    Scanner asc = new Scanner(System.in);
 
     public Lobby(Game game) {
 
@@ -127,35 +128,30 @@ public class Lobby {
                 System.out.println("[1]FAST TRAVEL");
                 System.out.println("[2]LEVEL UP");
                 System.out.println("[5]QUIT GAME");
-                System.out.println("\nWhat would you like to do?\n");
+                System.out.println("\nWhat would you like to do: ");
                 scanL = lc.nextInt();
             } while (scanL > 5 || scanL == 4 || scanL == 3 || scanL < 1);
 
             switch (scanL) {
                 case 1:
-                    break;
-                case 2:
-                    lvlUp(character);
-                    break;
-                case 4:
-                    Scanner lsc = new Scanner(System.in);
                     boolean toLobby = false;
-                    Area area;
+                    
+                    Area area = null;
                     do {
-                        area = null;
                         System.out.println("FAST TRAVEL\n");
                         System.out.println("[1] STORMVEIL CASTLE");
                         System.out.println("[2] RAYA LUCARIA ACADEMY");
                         System.out.println("[3] THE ELDEN THRONE");
                         System.out.println("[0] RETURN TO LOBBY");
-                        System.out.println("\nWhere would you like to go: ");
+                        System.out.println("\nTravel to where: ");
                         try {
-                            int selArea = lsc.nextInt();
+                            int selArea = lc.nextInt();
 
-                            if (selArea == 0)
-                                toLobby = true;
-                            else {
+                            if(selArea >= 0 && selArea <= 3) {
                                 switch (selArea) {
+                                    case 0:
+                                        toLobby = true;
+                                        break;
                                     case 1:
                                         area = new StormveilCastle(character);
                                         break;
@@ -174,38 +170,45 @@ public class Lobby {
                                         toLobby = true;
                                         break;
                                 }
-                                Scanner asc = new Scanner(System.in);
                                 char move;
-                                boolean ft = false;
                                 do {
                                     try {
                                         area.printArea();
+                                        System.out.println("Action: ");
                                         move = asc.next(".").charAt(0);
                                         System.out.print("\033\143");
-
-                                        if (move == 'e')
-                                            ft = area.interact();
-                                        else
+                                        
+                                        if (move == 'e' || move == 'E')
+                                            toLobby = area.interact();
+                                        else if(move == 'W' || move == 'w' || move == 'A' || move == 'a' || move == 'S' || move == 's' || move == 'D' || move == 'd') {
                                             area.movePlayer(move);
-
-                                    } catch (Exception e) {
-                                        asc.next();
+                                        }
+                                        else {
+                                            System.out.print("\033\143");
+                                            System.out.println("Invalid input");
+                                        }
+                                    } catch (InputMismatchException e) {
+                                        asc.nextLine();
                                         System.out.print("\033\143");
                                         System.out.println("Invalid input");
                                     }
-                                } while (ft == false);
-                                asc.close();
-
+                                } while (toLobby == false);
+                            } else {
+                                System.out.print("\033\143");
+                                System.out.println("Invalid input");
                             }
                         } catch (InputMismatchException e) {
-                            lsc.next();
+                            lc.nextLine();
                             System.out.print("\033\143");
                             System.out.println("Invalid input");
                         }
                     } while (toLobby == false);
-                    lsc.close();
-
                     break;
+                case 2:
+                    lvlUp(character);
+                    break;
+                case 4:
+                    
                 case 5:
 
                     this.back = true;
