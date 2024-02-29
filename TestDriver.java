@@ -5,7 +5,6 @@ public class TestDriver {
 
         Character chara = new Character();
         Area a1 = new StormveilCastle(chara);
-        
 
         Scanner sc = new Scanner(System.in);
         char in = ' ';

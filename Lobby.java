@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Lobby {
 
-    private Character character;
+    // private Character character;
     private int scanL;
     private Boolean back;
     Scanner lc = new Scanner(System.in);
@@ -141,7 +141,7 @@ public class Lobby {
                     Scanner lsc = new Scanner(System.in);
                     boolean toLobby = false;
                     Area area;
-                    do{
+                    do {
                         area = null;
                         System.out.println("FAST TRAVEL\n");
                         System.out.println("[1] STORMVEIL CASTLE");
@@ -151,29 +151,28 @@ public class Lobby {
                         System.out.println("\nWhere would you like to go: ");
                         try {
                             int selArea = lsc.nextInt();
-                            
-                            if(selArea == 0)
+
+                            if (selArea == 0)
                                 toLobby = true;
                             else {
-                                switch(selArea) {
-                                    case 1: 
+                                switch (selArea) {
+                                    case 1:
                                         area = new StormveilCastle(character);
                                         break;
-                                    case 2: 
+                                    case 2:
                                         System.out.println("WIP");
                                         toLobby = true;
                                         break;
-                                    case 3: 
-                                         //Implement a function to get # of times a dungeon has been cleared
+                                    case 3:
+                                        // Implement a function to get # of times a dungeon has been cleared
                                         boolean locked = true;
-                                        if(locked == true) {
+                                        if (locked == true) {
                                             System.out.println("WIP [LOCKED]");
-                                        }
-                                        else{
+                                        } else {
                                             System.out.println("WIP");
                                         }
                                         toLobby = true;
-                                        break;   
+                                        break;
                                 }
                                 Scanner asc = new Scanner(System.in);
                                 char move;
@@ -183,12 +182,12 @@ public class Lobby {
                                         area.printArea();
                                         move = asc.next(".").charAt(0);
                                         System.out.print("\033\143");
-                        
+
                                         if (move == 'e')
                                             ft = area.interact();
                                         else
                                             area.movePlayer(move);
-                        
+
                                     } catch (Exception e) {
                                         asc.next();
                                         System.out.print("\033\143");
@@ -197,19 +196,18 @@ public class Lobby {
                                 } while (ft == false);
                                 asc.close();
 
-
-                            }    
-                        } catch(InputMismatchException e) {
+                            }
+                        } catch (InputMismatchException e) {
                             lsc.next();
                             System.out.print("\033\143");
                             System.out.println("Invalid input");
                         }
-                    }while(toLobby == false);
+                    } while (toLobby == false);
                     lsc.close();
-                    
+
                     break;
                 case 5:
-                    
+
                     this.back = true;
                     break;
                 default:

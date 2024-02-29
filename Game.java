@@ -3,11 +3,15 @@ import java.util.Scanner;
 
 public class Game {
 
-    Lobby lobby = new Lobby(this);
+    private Character character;
+    private CharCreate create;
+    private Lobby lobby;
+    // Lobby lobby = new Lobby(this);
 
     public void TitleScreen() {
         int tprompt;
         // Scanner sc = new Scanner(System.in);
+        lobby = new Lobby(this);
         Scanner tc = new Scanner(System.in);
 
         do {
@@ -37,8 +41,8 @@ public class Game {
         int prompt;
 
         Scanner sc = new Scanner(System.in);
-        CharCreate create = new CharCreate();
-        Character character = new Character();
+        create = new CharCreate();
+        character = new Character();
         String charName;
         String charJob;
         Boolean loop = true;
@@ -67,7 +71,7 @@ public class Game {
                     create.setStats(charJob, character);
                     break;
                 case 3:
-
+                    // after confirming the game goes into lobby
                     if (create.confirm() && character.getJob() != "Jobless") {
 
                         System.out.println("\nConfirmed\n");
