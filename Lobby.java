@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Lobby {
@@ -136,7 +137,79 @@ public class Lobby {
                 case 2:
                     lvlUp(character);
                     break;
+                case 4:
+                    Scanner lsc = new Scanner(System.in);
+                    boolean toLobby = false;
+                    Area area;
+                    do{
+                        area = null;
+                        System.out.println("FAST TRAVEL\n");
+                        System.out.println("[1] STORMVEIL CASTLE");
+                        System.out.println("[2] RAYA LUCARIA ACADEMY");
+                        System.out.println("[3] THE ELDEN THRONE");
+                        System.out.println("[0] RETURN TO LOBBY");
+                        System.out.println("\nWhere would you like to go: ");
+                        try {
+                            int selArea = lsc.nextInt();
+                            
+                            if(selArea == 0)
+                                toLobby = true;
+                            else {
+                                switch(selArea) {
+                                    case 1: 
+                                        area = new StormveilCastle(character);
+                                        break;
+                                    case 2: 
+                                        System.out.println("WIP");
+                                        toLobby = true;
+                                        break;
+                                    case 3: 
+                                         //Implement a function to get # of times a dungeon has been cleared
+                                        boolean locked = true;
+                                        if(locked == true) {
+                                            System.out.println("WIP [LOCKED]");
+                                        }
+                                        else{
+                                            System.out.println("WIP");
+                                        }
+                                        toLobby = true;
+                                        break;   
+                                }
+                                Scanner asc = new Scanner(System.in);
+                                char move;
+                                boolean ft = false;
+                                do {
+                                    try {
+                                        area.printArea();
+                                        move = asc.next(".").charAt(0);
+                                        System.out.print("\033\143");
+                        
+                                        if (move == 'e')
+                                            ft = area.interact();
+                                        else
+                                            area.movePlayer(move);
+                        
+                                    } catch (Exception e) {
+                                        asc.next();
+                                        System.out.print("\033\143");
+                                        System.out.println("Invalid input");
+                                    }
+                                } while (ft == false);
+                                asc.close();
+
+
+                            }    
+                        } catch(InputMismatchException e) {
+                            lsc.next();
+                            System.out.print("\033\143");
+                            System.out.println("Invalid input");
+                        }
+                    }while(toLobby == false);
+                    lsc.close();
+                    
+                    break;
                 case 5:
+                    
                     this.back = true;
                     break;
                 default:

@@ -59,10 +59,12 @@ public class Area {
             if(st.getIsEnabled() == true) {
                 if(st.TileEvent() == false) {
                     System.out.println("-- A enemy has appeared! --");
+                    System.out.println("--------- Gaooo! ---------");
                 } else {
                     int runes = new Random().nextInt(150-50) + 50;
                     System.out.println("-- A treasure chest has appeared! --");
                     System.out.println("-- You found " + runes + " runes! --");
+                    character.setRunes(character.getRunes() + runes);
                 }
             } else
                 System.out.println("-- You have already been here --");
