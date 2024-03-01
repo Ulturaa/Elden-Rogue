@@ -171,7 +171,7 @@ public class Lobby {
                                         break;
                                 }
                                 char move;
-                                do {
+                                while (toLobby == false) {
                                     try {
                                         area.printArea();
                                         System.out.println("Action: ");
@@ -192,7 +192,7 @@ public class Lobby {
                                         System.out.print("\033\143");
                                         System.out.println("Invalid input");
                                     }
-                                } while (toLobby == false);
+                                }
                             } else {
                                 System.out.print("\033\143");
                                 System.out.println("Invalid input");
