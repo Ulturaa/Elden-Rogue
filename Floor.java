@@ -102,6 +102,13 @@ public class Floor {
 
         return false;
     }
+    
+    /**
+     * This method enables fast travel tile and disables the
+     * boss tile within the boss room. This function is only called
+     * when the conditions within the Area class are satisfied
+     * (When the boss is defeated, call this function in area).
+     */
 
     public void SlayedBoss() {
         int i=0;
@@ -109,6 +116,8 @@ public class Floor {
                 i++;
         FastTravelTile ft = (FastTravelTile)fMap[0][i];
         ft.Enable();
+        BossTile bt = (BossTile)currTile;
+        bt.Disable();
     }
 
     public Tile getCurrTile(){

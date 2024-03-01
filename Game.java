@@ -1,17 +1,31 @@
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The {@code Game} class manages the flow and logic of the Elden Rogue game.
+ * It includes methods for the title screen, character creation, and   the game lobby.
+ * 
+ *
+ * @version 1.0
+ * 
+ */
 public class Game {
 
+    /**
+     *  @character The character object representing the player's in-game avatar.
+     *  @Create is the charcreate object for character creation
+     *  @lobby is the object for managing the game's lobby
+     * 
+     */
     private Character character;
     private CharCreate create;
     private Lobby lobby;
-    // Lobby lobby = new Lobby(this);
 
+    /**
+     * Displays the title screen of the game and handles user input for starting or exiting the game.
+     */
     public void TitleScreen() {
         int tprompt = 0;
-        // Scanner sc = new Scanner(System.in);
         lobby = new Lobby(this);
         Scanner tc = new Scanner(System.in);
 
@@ -26,8 +40,7 @@ public class Game {
                 switch (tprompt) {
                     case 1:
                         System.out.print("\033\143");
-                        CC();// character creation
-
+                        CC();
                         break;
                     case 2:
                         System.exit(0);
@@ -46,6 +59,9 @@ public class Game {
         tc.close();
     }
 
+    /**
+     * Handles the character creation process, allowing the player to input a name, select a job class, and confirm their character.
+     */
     public void CC() {
         int prompt;
 
@@ -85,7 +101,6 @@ public class Game {
                     case 3:
                         // after confirming the game goes into lobby
                         if (create.confirm() && character.getJob() != "Jobless") {
-
                             System.out.println("\nConfirmed\n");
                             System.out.print("\033\143");
                             lobby.lobbyScreen(character);
@@ -111,7 +126,7 @@ public class Game {
                         System.out.print("\033\143");
                         System.out.println("Invalid input");
                 }
-            } catch(InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 sc.nextLine();
                 System.out.print("\033\143");
                 System.out.println("Invalid input");
