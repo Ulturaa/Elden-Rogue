@@ -4,6 +4,14 @@ public class Floor {
     private final int yBounds;
     private final int xBounds;
 
+    /**
+     * This is the constructor for the Floor class. It creates a 2D array
+     * of tiles which will then be displayed on the screen. It initially
+     * constructs the aray full of empy spaces.
+     * 
+     * @param xBounds   This is the x/width of the floor
+     * @param yBounds   This is the y/Width of the year
+     */
     public Floor(int xBounds, int yBounds) {
         this.xBounds = xBounds;
         this.yBounds = yBounds;
@@ -14,7 +22,14 @@ public class Floor {
             }
         }
     }
-
+    /**
+     * This method assigns a tile based on the given parameter tile. From a given y, x, and tile,
+     * it adds the specific tiles onto the floor array.
+     * 
+     * @param y     is the y index to be specified by the user during the creation of a floor.
+     * @param x     is the x index to be specified by the user during the creation of a floor.
+     * @param tile  is an object of class tile or under class tile. It is added to the 2d array.
+     */
     public void setTile(int y, int x, Tile tile) {
         // This function will set tiles in the correct positions wthin the floor
         if(tile instanceof PlayerTile) {
@@ -23,6 +38,9 @@ public class Floor {
         } else
             fMap[y][x] = tile;
     }
+    /**
+     * This method prints the entire floor. It also generates the boarder for better clarity of the map.
+     */
 
     public void printFloor() {
         System.out.print("▄");
@@ -46,6 +64,14 @@ public class Floor {
         System.out.println();
     }
 
+    /**
+     * This method moves the player tile's index dependin on the input char value.
+     * It finds the location of a player tile within the array then verifies, through the use
+     * of the VerifyMove() methid, and determines wether the desired move is valid. If true 
+     * then it updates the position of the player tile.
+     * 
+     * @param input     This is a character input
+     */
     public void movePlayer(char input) {
         boolean found = false;
         int x = 0;
@@ -85,6 +111,15 @@ public class Floor {
         }
     }
 
+    /**
+     * This function determines wether an action is out of bounds or hits a boarder tile.
+     * 
+     * 
+     * @param x     x position of the player.
+     * @param y     x position of the player.
+     * @param input The char input of the desired direction.
+     * @return      True if I the desired move is valid, else false.
+     */
     private boolean verifyMove(int x, int y, char input) {
         if(input == 'W' || input == 'w') {
             if(y-1 < yBounds && y-1 >= 0 && !(fMap[y-1][x] instanceof BoarderTile))
@@ -109,7 +144,6 @@ public class Floor {
      * when the conditions within the Area class are satisfied
      * (When the boss is defeated, call this function in area).
      */
-
     public void SlayedBoss() {
         int i=0;
             while((fMap[0][i] instanceof FastTravelTile) == false)
@@ -120,6 +154,12 @@ public class Floor {
         bt.Disable();
     }
 
+    /**
+     * This method cets the currTile variable to be used within the
+     * area method.
+     * 
+     * @return currentTile
+     */
     public Tile getCurrTile(){
         return currTile;
     }

@@ -1,6 +1,9 @@
+/** 
+ * This class, StromveilCastle extends area. It creates a class called Stormveil Castle 
+ * and creates the arraymap based on the level design.
+ */
+
 public class StormveilCastle extends Area {
-    
-    
     public StormveilCastle(Character character) {
         super(1, "Stormveil Castle", character, 3, 1);
 
