@@ -7,6 +7,10 @@
  */
 public class Enemy extends Entity {
 
+    /**
+     * name     type String. Is the name of the Entity obj.
+     * HP       type Integer. It is the HP of the Entity.
+     */
     private String name;
     private int HP;
 

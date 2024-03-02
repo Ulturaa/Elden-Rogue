@@ -11,9 +11,9 @@ public abstract class Tile {
     }
 
     /**
-     * This method gets/returnss the Icon from the icon attribute.
+     * This method gets/returns the Icon from the icon attribute.
      * 
-     * @return
+     * @return Icon - A string
      */
     public String getIcon() {
         return icon;

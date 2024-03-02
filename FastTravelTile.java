@@ -2,7 +2,6 @@
  * The {FastTravelTile} class represents a tile in a  area that enables fast travel.
  * It extends the {Tile} class and includes functionality to check and control its enabled status.
  * 
- *
  * @version 1.0
  * 
  */

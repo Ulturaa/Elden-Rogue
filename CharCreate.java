@@ -3,16 +3,13 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 /**
- * The {@code CharCreate} class facilitates the creation of a character in a game.
+ * The CharCreate class facilitates the creation of a character in a game.
  * It allows the player to set the character's name, select a job class, and displays and sets character statistics.
  * 
- * <p>It includes methods for setting the character's name, selecting a job class, confirming character creation,
- * getting character information, displaying character details, and setting initial statistics based on the chosen job class.</p>
+ * It includes methods for setting the character's name, selecting a job class, confirming character creation,
+ * getting character information, displaying character details, and setting initial statistics based on the chosen job class.
  * 
- * <p>The class utilizes a list of predefined job classes and handles user input with exception handling.</p>
- * 
- * @author [Your Name]
- * @version 1.0
+ * The class utilizes a list of predefined job classes and handles user input with exception handling.
  */
 public class CharCreate {
     
@@ -67,6 +64,8 @@ public class CharCreate {
 
     /**
      * Allows the player to select a job class from the predefined list.
+     * 
+     * @throws InputMismatch excemption when an Integer input is given a Character or String.
      */
     public void selectJob() {
         int jChoice = 0;

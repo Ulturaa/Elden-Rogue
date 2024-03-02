@@ -38,7 +38,8 @@ public class StormveilCastle extends Area {
         f3.setTile(0,2,new FastTravelTile(false));  // fast travel //
         f3.setTile(3,2,new BossTile());  // boss //
         f3.setTile(6,2,new PlayerTile());  // player //
-
+        
+        // Add the floors to the array //
         addFloor(0, 0, f3);
         addFloor(1, 0, f2);
         addFloor(f1, 2, 0);

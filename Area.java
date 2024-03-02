@@ -114,6 +114,10 @@ public class Area {
                 // Begin a bossfight //
                 System.out.println("-- The boss lies here --");
                 System.out.println("-- For MCO1 the boss is defeated --");
+                int BossHP = 200; // Temporary
+                int BossRunes = BossHP * 5;
+                System.out.println("-- You gained " + BossRunes + " runes for defeating the boss! --");
+                character.setRunes(character.getRunes() + BossRunes);
                 // !!!!!! Implement a better way to enable the tile !!!!!! //
                 floors[playerInY-1][playerInX-1].SlayedBoss();
             } else {

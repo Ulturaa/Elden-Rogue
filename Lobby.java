@@ -32,6 +32,7 @@ public class Lobby {
      * Handles the process of leveling up the character's stats.
      * 
      * @param character The character whose stats are being leveled up.
+     * @throws InputMismatch excemption when an Integer input is given a Character or String.
      */
     public void lvlUp(Character character) {
         int lvlupchoice = 0;
@@ -150,6 +151,7 @@ public class Lobby {
      * Displays the lobby screen and handles player interactions.
      * 
      * @param character The character associated with the lobby.
+     * @throws InputMismatchExcemption If asking for an int then given a string or char 
      */
     public void lobbyScreen(Character character) {
         // make another loop

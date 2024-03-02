@@ -34,12 +34,12 @@ public class Game {
                 System.out.println("ELDEN ROGUE\n");
                 System.out.println("1 | Start");
                 System.out.println("2 | Exit");
-                System.out.println("- ");
+                System.out.print("- ");
                 tprompt = tc.nextInt();
 
                 switch (tprompt) {
                     case 1:
-                        System.out.print("\033\143");
+                        System.out.flush();
                         CC();
                         break;
                     case 2:
@@ -61,6 +61,8 @@ public class Game {
 
     /**
      * Handles the character creation process, allowing the player to input a name, select a job class, and confirm their character.
+     * 
+     * @throws InputMismatchExcemption when an Integer input is given a Character or String.
      */
     public void CC() {
         int prompt;
@@ -74,7 +76,7 @@ public class Game {
 
         do {
             try {
-                System.out.println("Character Creation\n\n");
+                System.out.println("Character Creation\n");
 
                 create.displayChar(character);
                 System.out.println("\n1 | Input Name");
