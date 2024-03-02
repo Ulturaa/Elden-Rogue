@@ -39,7 +39,7 @@ public class Game {
 
                 switch (tprompt) {
                     case 1:
-                        System.out.flush();
+                        System.out.print("\033\143");
                         CC();
                         break;
                     case 2:
