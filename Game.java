@@ -83,7 +83,7 @@ public class Game {
                 System.out.println("2 | Select Job Class");
                 System.out.println("3 | Confirm");
                 System.out.println("4 | Back");
-                System.out.println("- ");
+                System.out.print("- ");
                 prompt = sc.nextInt();
 
                 switch (prompt) {

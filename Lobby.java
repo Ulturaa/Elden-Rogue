@@ -158,100 +158,105 @@ public class Lobby {
         this.back = false;
         do {
             do {
-                System.out.println("LOBBY\n");
-                System.out.println("[1]FAST TRAVEL");
-                System.out.println("[2]LEVEL UP");
-                System.out.println("[5]QUIT GAME");
-                System.out.println("\nWhat would you like to do: ");
-                scanL = lc.nextInt();
-            } while (scanL > 5 || scanL == 4 || scanL == 3 || scanL < 1);
+                try {
+                    System.out.println("LOBBY\n");
+                    System.out.println("[1]FAST TRAVEL");
+                    System.out.println("[2]LEVEL UP");
+                    System.out.println("[5]QUIT GAME");
+                    System.out.print("\nWhat would you like to do: ");
+                    scanL = lc.nextInt();
+                    System.out.print("\033\143");
 
-            switch (scanL) {
-                case 1:
-                    boolean toLobby = false;
-                    
-                    Area area = null;
-                    do {
-                        System.out.println("FAST TRAVEL\n");
-                        System.out.println("[1] STORMVEIL CASTLE");
-                        System.out.println("[2] RAYA LUCARIA ACADEMY");
-                        System.out.println("[3] THE ELDEN THRONE");
-                        System.out.println("[0] RETURN TO LOBBY");
-                        System.out.println("\nTravel to where: ");
-                        try {
-                            int selArea = lc.nextInt();
-
-                            if(selArea >= 0 && selArea <= 3) {
-                                switch (selArea) {
-                                    case 0:
-                                        toLobby = true;
-                                        break;
-                                    case 1:
-                                        area = new StormveilCastle(character);
-                                        break;
-                                    case 2:
-                                        System.out.println("WIP");
-                                        toLobby = true;
-                                        break;
-                                    case 3:
-                                        // Implement a function to get # of times a dungeon has been cleared
-                                        boolean locked = true;
-                                        if (locked == true) {
-                                            System.out.println("WIP [LOCKED]");
-                                        } else {
-                                            System.out.println("WIP");
-                                        }
-                                        toLobby = true;
-                                        break;
-                                }
-                                char move;
-                                while (toLobby == false) {
+                    switch (scanL) {
+                            case 1:
+                                boolean toLobby = false;
+                                
+                                Area area = null;
+                                do {
+                                    System.out.println("FAST TRAVEL\n");
+                                    System.out.println("[1] STORMVEIL CASTLE");
+                                    System.out.println("[2] RAYA LUCARIA ACADEMY");
+                                    System.out.println("[3] THE ELDEN THRONE");
+                                    System.out.println("[0] RETURN TO LOBBY");
+                                    System.out.print("\nTravel to where: ");
                                     try {
-                                        area.printArea();
-                                        System.out.println("Action: ");
-                                        move = asc.next(".").charAt(0);
-                                        System.out.print("\033\143");
-                                        
-                                        if (move == 'e' || move == 'E')
-                                            toLobby = area.interact();
-                                        else if(move == 'W' || move == 'w' || move == 'A' || move == 'a' || move == 'S' || move == 's' || move == 'D' || move == 'd') {
-                                            area.movePlayer(move);
-                                        }
-                                        else {
+                                        int selArea = lc.nextInt();
+            
+                                        if(selArea >= 0 && selArea <= 3) {
+                                            switch (selArea) {
+                                                case 0:
+                                                    toLobby = true;
+                                                    break;
+                                                case 1:
+                                                    area = new StormveilCastle(character);
+                                                    break;
+                                                case 2:
+                                                    System.out.println("WIP");
+                                                    toLobby = true;
+                                                    break;
+                                                case 3:
+                                                    // Implement a function to get # of times a dungeon has been cleared
+                                                    boolean locked = true;
+                                                    if (locked == true) {
+                                                        System.out.println("WIP [LOCKED]");
+                                                    } else {
+                                                        System.out.println("WIP");
+                                                    }
+                                                    toLobby = true;
+                                                    break;
+                                            }
                                             System.out.print("\033\143");
-                                            System.out.println("Invalid input");
+                                            char move;
+                                            while (toLobby == false) {
+                                                try {
+                                                    area.printArea();
+                                                    System.out.println("Action: ");
+                                                    move = asc.next(".").charAt(0);
+                                                    System.out.print("\033\143");
+                                                    
+                                                    if (move == 'e' || move == 'E')
+                                                        toLobby = area.interact();
+                                                    else if(move == 'W' || move == 'w' || move == 'A' || move == 'a' || move == 'S' || move == 's' || move == 'D' || move == 'd') {
+                                                        area.movePlayer(move);
+                                                    }
+                                                    else {
+                                                        System.out.print("\033\143");
+                                                        System.out.println("Invalid input!\n");
+                                                    }
+                                                } catch (InputMismatchException e) {
+                                                    asc.nextLine();
+                                                    System.out.print("\033\143");
+                                                    System.out.println("Invalid input!\n");
+                                                }
+                                            }
+                                        } else {
+                                            System.out.print("\033\143");
+                                            System.out.println("Invalid input!\n");
                                         }
                                     } catch (InputMismatchException e) {
-                                        asc.nextLine();
+                                        lc.nextLine();
                                         System.out.print("\033\143");
-                                        System.out.println("Invalid input");
+                                        System.out.println("Invalid input!\n");
                                     }
-                                }
-                            } else {
-                                System.out.print("\033\143");
-                                System.out.println("Invalid input");
-                            }
-                        } catch (InputMismatchException e) {
-                            lc.nextLine();
-                            System.out.print("\033\143");
-                            System.out.println("Invalid input");
+                                } while (toLobby == false);
+                                break;
+                            case 2:
+                                lvlUp(character);
+                                break;  
+                            case 5:
+                                System.out.println("Bye.");
+                                this.back = true;
+                                break;
+                            default:
+                                System.out.println("Invalid input!\n");
+                                break;
                         }
+                    } catch (InputMismatchException e) {
+                        lc.nextLine();
                         System.out.print("\033\143");
-                    } while (toLobby == false);
-                    break;
-                case 2:
-                    lvlUp(character);
-                    break;
-                case 4:
-                    
-                case 5:
-
-                    this.back = true;
-                    break;
-                default:
-                    System.out.println("Bye.");
-                    break;
-            }
+                        System.out.println("Invalid input!\n");
+                    }
+                } while (scanL > 5 || scanL == 4 || scanL == 3 || scanL < 1);
         } while (scanL != 5);
 
     }

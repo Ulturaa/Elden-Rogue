@@ -72,6 +72,7 @@ public class CharCreate {
         
         do {
             try{
+                System.out.print("\033\143");
                 System.out.println("Please Select your Job Class");
                 System.out.println("[1] Vagabond");
                 System.out.println("[2] Samurai");
@@ -125,6 +126,7 @@ public class CharCreate {
      * @param character The character to be displayed.
      */
     public void displayChar(Character character) {
+        System.out.print("\033\143");
         System.out.println("CHARACTER\n");
 
         System.out.println("NAME:" + character.getName());
