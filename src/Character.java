@@ -1,10 +1,16 @@
 /**
  * The {Character} class represents a player character in a game.
- * It includes information such as the character's name, job, runes, level, and stats.
+ * It includes information such as the character's name, job, runes, level, and
+ * stats.
  * 
- * <p>The maximum length for the player's name is set to 25 characters.</p>
+ * <p>
+ * The maximum length for the player's name is set to 25 characters.
+ * </p>
  * 
- * <p>The stats array holds six integer values representing different attributes of the character.</p>
+ * <p>
+ * The stats array holds six integer values representing different attributes of
+ * the character.
+ * </p>
  * 
  * 
  * @version 1.0
@@ -16,7 +22,8 @@ public class Character {
      * @job is the job or profession of the character.
      * @runes is the amount of runes the character possesses.
      * @level is the level of the Character
-     * @stats is an array holding six integer values representing various stats of the character.
+     * @stats is an array holding six integer values representing various stats of
+     *        the character.
      * 
      */
     private String name;
@@ -24,6 +31,9 @@ public class Character {
     private int runes;
     private int level;
     private int[] stats = new int[6];
+
+    // NEW ADDITIONS
+    private Weapon weapon;
 
     /**
      * Constructs a new {Character} with default values.
@@ -97,7 +107,7 @@ public class Character {
      * Sets a specific stat value of the character.
      * 
      * @param stats The new stat value.
-     * @param i The index of the stat in the stats array.
+     * @param i     The index of the stat in the stats array.
      */
     public void setStats(int stats, int i) {
         this.stats[i] = stats;
@@ -127,5 +137,14 @@ public class Character {
      */
     public int getLevel() {
         return this.level;
+    }
+
+    // NEW FUNCTIONS
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Weapon getWeapon() {
+        return this.weapon;
     }
 }
