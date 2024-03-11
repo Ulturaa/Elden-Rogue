@@ -12,6 +12,18 @@ public class Weapon {
             weaponStats[i] = 0;
     }
 
+    public Weapon(String name, int runeCost, int statHP, int statEND, int statDEX, int statSTR, int statINT,
+            int statFTH) {
+        this.name = name;
+        this.runeCost = runeCost;
+        this.weaponStats[0] = statHP;
+        this.weaponStats[1] = statEND;
+        this.weaponStats[2] = statDEX;
+        this.weaponStats[3] = statSTR;
+        this.weaponStats[4] = statINT;
+        this.weaponStats[5] = statFTH;
+    }
+
     public void setWeaponStat(int i, int stats) {
         this.weaponStats[i] = stats;
     }
