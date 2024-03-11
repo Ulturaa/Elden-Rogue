@@ -140,6 +140,10 @@ public class Character {
     }
 
     // NEW FUNCTIONS
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
