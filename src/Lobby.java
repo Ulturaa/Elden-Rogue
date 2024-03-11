@@ -13,6 +13,7 @@ public class Lobby {
     // private Character character;
     private int scanL;
     private Boolean back;
+    private Inventory inventory;
 
     /**
      * The scanner for taking input from the user.
@@ -26,7 +27,8 @@ public class Lobby {
      * @param game The {@code Game} instance associated with the lobby.
      */
     public Lobby(Game game) {
-
+        inventory = new Inventory();
+        // inventory.addWeapon();
     }
 
     /**
@@ -251,7 +253,7 @@ public class Lobby {
                             lvlUp(character);
                             break;
                         case 3:
-                            Inventory inventory = new Inventory();
+
                             inventory.inventoryScreen(character);
                             break;
                         case 4:

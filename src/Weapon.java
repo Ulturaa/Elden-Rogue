@@ -1,7 +1,7 @@
 public class Weapon {
 
     private String name;
-    private int[] weaponStats;
+    private int[] weaponStats = new int[6];
     private int runeCost;
 
     public Weapon(String name, int runeCost) {
