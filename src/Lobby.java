@@ -14,6 +14,7 @@ public class Lobby {
     private int scanL;
     private Boolean back;
     private Inventory inventory;
+    private Shop shop;
 
     /**
      * The scanner for taking input from the user.
@@ -29,6 +30,7 @@ public class Lobby {
     public Lobby(Game game) {
         inventory = new Inventory();
         // inventory.addWeapon();
+        shop = new Shop();
     }
 
     /**
@@ -257,6 +259,7 @@ public class Lobby {
                             inventory.inventoryScreen(character);
                             break;
                         case 4:
+                            shop.shopScreen(inventory, character);
                             break;
                         case 5:
                             System.out.println("Bye.");

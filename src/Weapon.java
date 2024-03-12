@@ -36,6 +36,10 @@ public class Weapon {
         return this.name;
     }
 
+    public int getRuneCost() {
+        return this.runeCost;
+    }
+
     // FOR REFERENCE
     // INDEX 0 - HP
     // INDEX 1 - END
