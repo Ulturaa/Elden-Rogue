@@ -43,7 +43,7 @@ public class Character {
     public Character() {
         this.name = "";
         this.job = "Jobless";
-        this.runes = 0;
+        this.runes = 1000000;
         this.level = 1;
         for (int i = 0; i < 5; i++)
             stats[i] = 0;

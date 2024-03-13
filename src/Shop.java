@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Shop {
 
-    private Weapon weapon;
-    private Inventory inventory;
+    // private Weapon weapon;
+    // private Inventory inventory;
 
     private Weapon sword1;
     private Weapon sword2;
@@ -80,12 +80,34 @@ public class Shop {
 
                                 break;
                             case 2:
+                                if (character.getRunes() >= sword2.getRuneCost()) {
+                                    purchaseWeapon(inventory, sword2);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
                                 break;
                             case 3:
+                                if (character.getRunes() >= sword3.getRuneCost()) {
+                                    purchaseWeapon(inventory, sword3);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
                                 break;
                             case 4:
+                                if (character.getRunes() >= sword4.getRuneCost()) {
+                                    purchaseWeapon(inventory, sword4);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
                                 break;
                             case 5:
+
+                                opChoice = 8;
+
+                                System.out.println(opChoice);
                                 break;
                             default:
                                 break;
@@ -108,7 +130,7 @@ public class Shop {
                 default:
                     break;
             }
-        } while (opChoice > 7 && opChoice < 1);
+        } while (opChoice > 7 || opChoice < 1);
 
     }
 
