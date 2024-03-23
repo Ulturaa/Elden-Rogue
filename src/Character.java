@@ -16,6 +16,7 @@ public class Character {
      * @job is the job or profession of the character.
      * @runes is the amount of runes the character possesses.
      * @level is the level of the Character
+     * @areasCleared is an array that stores how many times the areas have been cleared. 
      * @stats is an array holding six integer values representing various stats of the character.
      * 
      */
@@ -23,7 +24,8 @@ public class Character {
     private String job;
     private int runes;
     private int level;
-    private int[] stats = new int[6];
+    private int[] areasCleared;
+    private int[] stats;
 
     /**
      * Constructs a new {Character} with default values.
@@ -35,6 +37,10 @@ public class Character {
         this.job = "Jobless";
         this.runes = 0;
         this.level = 1;
+        this.areasCleared = new int[3];
+        for (int i = 0; i < 3; i++)
+            areasCleared[i] = 0;
+        this.stats = new int[6];
         for (int i = 0; i < 5; i++)
             stats[i] = 0;
     }
@@ -127,5 +133,15 @@ public class Character {
      */
     public int getLevel() {
         return this.level;
+    }
+
+    /**
+     * This function is called whenever a Area boss is cleared.
+     * Adds 1 to the array list areasCleared.
+     * 
+     * @return The level of the character.
+     */
+    public void addAreaClear(int fNum) {
+        areasCleared[fNum]++;
     }
 }
