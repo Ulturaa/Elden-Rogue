@@ -39,13 +39,13 @@ public class Shop {
     Scanner wc = new Scanner(System.in);
 
     public Shop() {
-
+        createWeapons();
     }
 
     public void shopScreen(Inventory inventory, Character character) {
         int opChoice;
         int wChoice;
-        createWeapons();
+
         do {
             System.out.println("Welcome to the Shop!\n");
             System.out.println("What type of weapon would you like to buy?\n");
@@ -116,14 +116,274 @@ public class Shop {
 
                     break;
                 case 2:
+                    do {
+                        showWeapon(katana1, 1);
+                        showWeapon(katana2, 2);
+                        showWeapon(katana3, 3);
+                        showWeapon(katana4, 4);
+                        System.out.println("\n[5]BACK\n");
+                        System.out.println("\n Select the Weapon you want (or go back):");
+                        wChoice = wc.nextInt();
+                        switch (wChoice) {
+                            case 1:
+                                if (character.getRunes() >= katana1.getRuneCost()) {
+                                    purchaseWeapon(inventory, katana1);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+
+                                break;
+                            case 2:
+                                if (character.getRunes() >= katana2.getRuneCost()) {
+                                    purchaseWeapon(inventory, katana2);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 3:
+                                if (character.getRunes() >= katana3.getRuneCost()) {
+                                    purchaseWeapon(inventory, katana3);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 4:
+                                if (character.getRunes() >= katana4.getRuneCost()) {
+                                    purchaseWeapon(inventory, katana4);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 5:
+
+                                opChoice = 8;
+
+                                System.out.println(opChoice);
+                                break;
+                            default:
+                                break;
+                        }
+                    } while (wChoice > 5 || wChoice < 1);
                     break;
                 case 3:
+                    do {
+                        showWeapon(whip1, 1);
+                        showWeapon(whip2, 2);
+                        showWeapon(whip3, 3);
+                        showWeapon(whip4, 4);
+                        System.out.println("\n[5]BACK\n");
+                        System.out.println("\n Select the Weapon you want (or go back):");
+                        wChoice = wc.nextInt();
+                        switch (wChoice) {
+                            case 1:
+                                if (character.getRunes() >= whip1.getRuneCost()) {
+                                    purchaseWeapon(inventory, whip1);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+
+                                break;
+                            case 2:
+                                if (character.getRunes() >= whip2.getRuneCost()) {
+                                    purchaseWeapon(inventory, whip2);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 3:
+                                if (character.getRunes() >= whip3.getRuneCost()) {
+                                    purchaseWeapon(inventory, whip3);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 4:
+                                if (character.getRunes() >= whip4.getRuneCost()) {
+                                    purchaseWeapon(inventory, whip4);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 5:
+
+                                opChoice = 8;
+
+                                System.out.println(opChoice);
+                                break;
+                            default:
+                                break;
+                        }
+                    } while (wChoice > 5 || wChoice < 1);
                     break;
                 case 4:
+                    do {
+                        showWeapon(greatsword1, 1);
+                        showWeapon(greatsword2, 2);
+                        showWeapon(greatsword3, 3);
+                        showWeapon(greatsword4, 4);
+                        System.out.println("\n[5]BACK\n");
+                        System.out.println("\n Select the Weapon you want (or go back):");
+                        wChoice = wc.nextInt();
+                        switch (wChoice) {
+                            case 1:
+                                if (character.getRunes() >= greatsword1.getRuneCost()) {
+                                    purchaseWeapon(inventory, greatsword1);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+
+                                break;
+                            case 2:
+                                if (character.getRunes() >= greatsword2.getRuneCost()) {
+                                    purchaseWeapon(inventory, greatsword2);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 3:
+                                if (character.getRunes() >= greatsword3.getRuneCost()) {
+                                    purchaseWeapon(inventory, greatsword3);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 4:
+                                if (character.getRunes() >= greatsword4.getRuneCost()) {
+                                    purchaseWeapon(inventory, greatsword4);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 5:
+
+                                opChoice = 8;
+
+                                System.out.println(opChoice);
+                                break;
+                            default:
+                                break;
+                        }
+                    } while (wChoice > 5 || wChoice < 1);
                     break;
                 case 5:
+                    do {
+                        showWeapon(staff1, 1);
+                        showWeapon(staff2, 2);
+                        showWeapon(staff3, 3);
+                        showWeapon(staff4, 4);
+                        System.out.println("\n[5]BACK\n");
+                        System.out.println("\n Select the Weapon you want (or go back):");
+                        wChoice = wc.nextInt();
+                        switch (wChoice) {
+                            case 1:
+                                if (character.getRunes() >= staff1.getRuneCost()) {
+                                    purchaseWeapon(inventory, staff1);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+
+                                break;
+                            case 2:
+                                if (character.getRunes() >= staff2.getRuneCost()) {
+                                    purchaseWeapon(inventory, staff2);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 3:
+                                if (character.getRunes() >= staff3.getRuneCost()) {
+                                    purchaseWeapon(inventory, staff3);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 4:
+                                if (character.getRunes() >= staff4.getRuneCost()) {
+                                    purchaseWeapon(inventory, staff4);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 5:
+
+                                opChoice = 8;
+
+                                System.out.println(opChoice);
+                                break;
+                            default:
+                                break;
+                        }
+                    } while (wChoice > 5 || wChoice < 1);
                     break;
                 case 6:
+                    do {
+                        showWeapon(seal1, 1);
+                        showWeapon(seal2, 2);
+                        showWeapon(seal3, 3);
+                        showWeapon(seal4, 4);
+                        System.out.println("\n[5]BACK\n");
+                        System.out.println("\n Select the Weapon you want (or go back):");
+                        wChoice = wc.nextInt();
+                        switch (wChoice) {
+                            case 1:
+                                if (character.getRunes() >= seal1.getRuneCost()) {
+                                    purchaseWeapon(inventory, seal1);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+
+                                break;
+                            case 2:
+                                if (character.getRunes() >= seal2.getRuneCost()) {
+                                    purchaseWeapon(inventory, seal2);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 3:
+                                if (character.getRunes() >= seal3.getRuneCost()) {
+                                    purchaseWeapon(inventory, seal3);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 4:
+                                if (character.getRunes() >= seal4.getRuneCost()) {
+                                    purchaseWeapon(inventory, seal4);
+                                    System.out.println("\nWeapon Successfully Purchased! added to Inventory.");
+                                } else {
+                                    System.out.println("\nNOT ENOUGH RUNES");
+                                }
+                                break;
+                            case 5:
+
+                                opChoice = 8;
+
+                                System.out.println(opChoice);
+                                break;
+                            default:
+                                break;
+                        }
+                    } while (wChoice > 5 || wChoice < 1);
                     break;
                 case 7:
                     break;
@@ -192,23 +452,4 @@ public class Shop {
 
     }
 
-    public void showKatanas() {
-
-    }
-
-    public void showWhips() {
-
-    }
-
-    public void showGreatSwords() {
-
-    }
-
-    public void showStaves() {
-
-    }
-
-    public void showSeals() {
-
-    }
 }
