@@ -4,15 +4,19 @@ import java.util.InputMismatchException;
 
 /**
  * The CharCreate class facilitates the creation of a character in a game.
- * It allows the player to set the character's name, select a job class, and displays and sets character statistics.
+ * It allows the player to set the character's name, select a job class, and
+ * displays and sets character statistics.
  * 
- * It includes methods for setting the character's name, selecting a job class, confirming character creation,
- * getting character information, displaying character details, and setting initial statistics based on the chosen job class.
+ * It includes methods for setting the character's name, selecting a job class,
+ * confirming character creation,
+ * getting character information, displaying character details, and setting
+ * initial statistics based on the chosen job class.
  * 
- * The class utilizes a list of predefined job classes and handles user input with exception handling.
+ * The class utilizes a list of predefined job classes and handles user input
+ * with exception handling.
  */
 public class CharCreate {
-    
+
     /**
      * @name is the name of the character.
      * @index is the index representing the selected job class in the jobList.
@@ -65,13 +69,14 @@ public class CharCreate {
     /**
      * Allows the player to select a job class from the predefined list.
      * 
-     * @exception InputMismatchException excemption when an Integer input is given a Character or String.
+     * @exception InputMismatchException excemption when an Integer input is given a
+     *                                   Character or String.
      */
     public void selectJob() {
         int jChoice = 0;
-        
+
         do {
-            try{
+            try {
                 System.out.print("\033\143");
                 System.out.println("Please Select your Job Class");
                 System.out.println("[1] Vagabond");
@@ -82,12 +87,12 @@ public class CharCreate {
                 System.out.println("[6] Prophet");
                 jChoice = jc.nextInt();
 
-            }catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 jc.nextLine();
                 System.out.print("\033\143");
                 System.out.println("Invalid input");
             }
-            
+
         } while (jChoice > 6 || jChoice < 1);
         this.index = jChoice - 1;
         System.out.println("You are a " + this.jobList.get(this.index));
@@ -105,7 +110,8 @@ public class CharCreate {
     /**
      * Confirms whether the character has been created.
      * 
-     * @return {@code true} if the character has been created, {@code false} otherwise.
+     * @return {@code true} if the character has been created, {@code false}
+     *         otherwise.
      */
     public Boolean confirm() {
         return this.name != null;
@@ -121,7 +127,8 @@ public class CharCreate {
     }
 
     /**
-     * Displays the details of the character, including name, job class, and statistics.
+     * Displays the details of the character, including name, job class, and
+     * statistics.
      * 
      * @param character The character to be displayed.
      */
@@ -131,6 +138,7 @@ public class CharCreate {
 
         System.out.println("NAME:" + character.getName());
         System.out.println("JOB CLASS:" + character.getJob() + "\n");
+        System.out.println("LEVEL:         " + character.getLevel() + "\n");
 
         System.out.println("HP:            " + character.getStats(0));
         System.out.println("ENDURANCE:     " + character.getStats(1));
@@ -143,12 +151,13 @@ public class CharCreate {
     /**
      * Sets the initial statistics of the character based on the chosen job class.
      * 
-     * @param jobClass The chosen job class.
+     * @param jobClass  The chosen job class.
      * @param character The character whose stats will be set.
      */
     public void setStats(String jobClass, Character character) {
         switch (jobClass) {
             case "Vagabond":
+                character.setLevel(9);
                 character.setStats(15, 0);
                 character.setStats(11, 1);
                 character.setStats(13, 2);
@@ -157,6 +166,7 @@ public class CharCreate {
                 character.setStats(9, 5);
                 break;
             case "Samurai":
+                character.setLevel(9);
                 character.setStats(12, 0);
                 character.setStats(13, 1);
                 character.setStats(15, 2);
@@ -165,6 +175,7 @@ public class CharCreate {
                 character.setStats(8, 5);
                 break;
             case "Warrior":
+                character.setLevel(8);
                 character.setStats(11, 0);
                 character.setStats(11, 1);
                 character.setStats(16, 2);
@@ -173,6 +184,7 @@ public class CharCreate {
                 character.setStats(8, 5);
                 break;
             case "Hero":
+                character.setLevel(7);
                 character.setStats(14, 0);
                 character.setStats(12, 1);
                 character.setStats(9, 2);
@@ -181,6 +193,7 @@ public class CharCreate {
                 character.setStats(8, 5);
                 break;
             case "Astrologer":
+                character.setLevel(6);
                 character.setStats(9, 0);
                 character.setStats(9, 1);
                 character.setStats(12, 2);
@@ -189,6 +202,7 @@ public class CharCreate {
                 character.setStats(7, 5);
                 break;
             case "Prophet":
+                character.setLevel(7);
                 character.setStats(10, 0);
                 character.setStats(8, 1);
                 character.setStats(10, 2);

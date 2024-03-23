@@ -1,10 +1,16 @@
 /**
  * The {Character} class represents a player character in a game.
- * It includes information such as the character's name, job, runes, level, and stats.
+ * It includes information such as the character's name, job, runes, level, and
+ * stats.
  * 
- * <p>The maximum length for the player's name is set to 25 characters.</p>
+ * <p>
+ * The maximum length for the player's name is set to 25 characters.
+ * </p>
  * 
- * <p>The stats array holds six integer values representing different attributes of the character.</p>
+ * <p>
+ * The stats array holds six integer values representing different attributes of
+ * the character.
+ * </p>
  * 
  * 
  * @version 1.0
@@ -27,6 +33,9 @@ public class Character {
     private int[] areasCleared;
     private int[] stats;
 
+    // NEW ADDITIONS
+    private Weapon weapon;
+
     /**
      * Constructs a new {Character} with default values.
      * The character starts with an empty name, the job "Jobless", 0 runes, level 1,
@@ -35,7 +44,7 @@ public class Character {
     public Character() {
         this.name = "";
         this.job = "Jobless";
-        this.runes = 0;
+        this.runes = 1000000;
         this.level = 1;
         this.areasCleared = new int[3];
         for (int i = 0; i < 3; i++)
@@ -103,7 +112,7 @@ public class Character {
      * Sets a specific stat value of the character.
      * 
      * @param stats The new stat value.
-     * @param i The index of the stat in the stats array.
+     * @param i     The index of the stat in the stats array.
      */
     public void setStats(int stats, int i) {
         this.stats[i] = stats;
