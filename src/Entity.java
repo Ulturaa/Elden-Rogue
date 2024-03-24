@@ -1,35 +1,35 @@
 /**
- * The { Entity} class serves as a super class for representing entities in a game.
+ * The { Entity} class serves as a super class for representing entities in a
+ * game.
  * It includes common attributes such as a name, HP, and an array of statistics.
  * 
  */
 public class Entity {
 
     /**
-     * name     is the name of the entity.
-     * HP       is the health points of the entity.
+     * name is the name of the entity.
+     * HP is the health points of the entity.
      */
-    protected String name;
+    private String name;
 
     /**
      * The health points (HP) of the entity.
      */
-    protected int HP;
+    private int HP;
 
     /**
      * An array holding five integer values representing stats of the entity.
      */
-    protected int[] stats = new int[5];
+    private double[] stats = new double[3];
 
     /**
      * Constructs a new {Entity} with the specified name and hit points.
      * 
      * @param name The name of the entity.
-     * @param HP The hit points of the entity.
+     * @param HP   The hit points of the entity.
      */
-    public Entity(String name, int HP) {
+    public Entity(String name) {
         this.name = name;
-        this.HP = HP;
     }
 
     /**
@@ -54,9 +54,9 @@ public class Entity {
      * Sets a specific stat value of the entity.
      * 
      * @param stats The new stat value.
-     * @param i The index of the stat in the stats array.
+     * @param i     The index of the stat in the stats array.
      */
-    public void setStats(int stats, int i) {
+    public void setStats(double stats, int i) {
         this.stats[i] = stats;
     }
 
@@ -66,7 +66,7 @@ public class Entity {
      * @param i The index of the stat in the stats array.
      * @return The value of the specified stat.
      */
-    public int getStats(int i) {
+    public double getStats(int i) {
         return this.stats[i];
     }
 
