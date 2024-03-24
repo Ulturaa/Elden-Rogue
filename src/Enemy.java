@@ -5,15 +5,9 @@
  * The class inherits from the Entity class, which 
  * provides a general structure for game entities.
  */
-public class Enemy extends Entity {
+public class Enemy extends Entity{
 
-    /**
-     * name     type String. Is the name of the Entity obj.
-     * HP       type Integer. It is the HP of the Entity.
-     */
-    private String name;
-    private int HP;
-
+    private int type;
     /**
      * Constructs a new Enemy object with the specified name and health.
      * 
@@ -23,9 +17,26 @@ public class Enemy extends Entity {
      * @param name The name of the enemy.
      * @param HP   The health of the enemy.
      */
-    public Enemy(String name, int HP) {
+    public Enemy(String name, int HP, int type) { // add String spritePath
         super(name, HP);
-        // this.stats[0] = ;
+        this.type = type;
+        switch (type) {
+            case 1: setDef(0.20, 0.15, 0.10);
+                break;
+            case 2: setDef(0.50, 0.15, 0.25);
+                break;
+            case 3: setDef(0.20, 0.50, 0.25);
+                break;
+            default: setDef(0.25, 0.25, 0.20);
+        }
+    }
+
+    public int getType(){
+        return type;
+    }
+
+    public int dropRunes(int roll) {
+        return getHP() * 2;
     }
 
 }
