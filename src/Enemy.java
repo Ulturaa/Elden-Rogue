@@ -19,8 +19,6 @@ public class Enemy extends Entity {
     private int HP;
     private int ATK;
     private double[] stats;
-
-    private int type;
     /**
      * Constructs a new Enemy object with the specified name and health.
      * 
