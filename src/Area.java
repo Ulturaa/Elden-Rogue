@@ -108,29 +108,21 @@ public class Area {
 
                     eType = random.nextInt(3 - 1 + 1) + 1;
 
-                    switch (eType) {
-                        case 1:
-                            eName = "Godrick Soldier";
-                            break;
-                        case 2:
-                            eName = "Godrick Archer";
-                            break;
-                        case 3:
-                            eName = "Godrick Night";
-                            break;
-                    }
-                    Enemy enemy = new Enemy(eName, eType);
+                    Enemy enemy = new Enemy(eType, areaNum);
+                    Battle battle = new Battle(character, enemy);
 
                     System.out.println("-- A enemy has appeared! --");
                     System.out.println("--------- Gaooo! ---------");
 
                     enemy.statistics(eType);
-                    System.out.println("ENEMY:" + enemy.getName());
-                    System.out.println("HP:" + enemy.getHP());
-                    System.out.println("ATK:" + enemy.getATK());
-                    System.out.println("PD:" + enemy.getStats(0));
-                    System.out.println("SD:" + enemy.getStats(1));
-                    System.out.println("ID:" + enemy.getStats(2));
+                    // battle.battleScreen(enemy);
+                    battle.battleSequence();
+                    // System.out.println("ENEMY:" + enemy.getName());
+                    // System.out.println("HP:" + enemy.getHP());
+                    // System.out.println("ATK:" + enemy.getATK());
+                    // System.out.println("PD:" + enemy.getStats(0));
+                    // System.out.println("SD:" + enemy.getStats(1));
+                    // System.out.println("ID:" + enemy.getStats(2));
 
                 } else {
                     int runes = new Random().nextInt(150 - 50) + 50;

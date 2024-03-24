@@ -19,6 +19,7 @@ public class Enemy extends Entity {
     private int HP;
     private int ATK;
     private double[] stats;
+
     /**
      * Constructs a new Enemy object with the specified name and health.
      * 
@@ -28,34 +29,47 @@ public class Enemy extends Entity {
      * @param name The name of the enemy.
      * @param HP   The health of the enemy.
      */
-    public Enemy(String name, int type) {
-        super(name);
-        this.type = type;
+    public Enemy(int eType, int aNum) {
+        super();
+        this.type = eType;
         this.HP = 0;
         this.ATK = 0;
         this.stats = new double[3];
         for (int i = 0; i < 2; i++)
             stats[i] = 0;
-    }
 
-    public void setHP(int HP) {
-        this.HP = HP;
-    }
+        statistics(eType);
 
-    public void setStats(int stats, int i) {
-        this.stats[i] = stats;
-    }
-
-    public int getHP() {
-        return this.HP;
-    }
-
-    public int getATK() {
-        return this.ATK;
-    }
-
-    public double getStats(int i) {
-        return this.stats[i];
+        switch (aNum) {
+            case 1:
+                switch (type) {
+                    case 1:
+                        this.name = "Godrick Soldier";
+                        break;
+                    case 2:
+                        this.name = "Godrick Archer";
+                        break;
+                    case 3:
+                        this.name = "Godrick Knight";
+                        break;
+                }
+                break;
+            case 2:
+                switch (type) {
+                    case 1:
+                        this.name = "Living Jar";
+                        break;
+                    case 2:
+                        this.name = "Glintstone Sorcerer";
+                        break;
+                    case 3:
+                        this.name = "Battlemage";
+                        break;
+                }
+                break;
+            default:
+                this.name = "Missing no."; // In the case of an invalid input
+        }
     }
 
     public int getType() {
@@ -65,6 +79,7 @@ public class Enemy extends Entity {
     public void statistics(int type) {
         if (this.type == type) {
             Random random = new Random();
+
             switch (this.type) {
                 case 1:
                     this.HP = random.nextInt(30 - 20 + 1) + 1;
@@ -92,6 +107,11 @@ public class Enemy extends Entity {
         }
     }
 
+    /**
+     * Computes for the runes when entity is defeated.
+     * 
+     * @return the computed runes.
+     */
     public int dropRunes(int roll) {
         return getHP() * 2;
     }
