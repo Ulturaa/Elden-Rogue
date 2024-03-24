@@ -1,4 +1,5 @@
 import java.util.Random;
+
 /**
  * 
  */
@@ -9,15 +10,17 @@ public class Area {
     private Character character;
     private int playerInX;
     private int playerInY;
+    private Enemy enemy;
 
     /**
-     * This is the constructor for the class Area. This initalizes the attributes of area.
+     * This is the constructor for the class Area. This initalizes the attributes of
+     * area.
      * 
-     * @param areaNum       The area numer
-     * @param areaName      The name of the area
-     * @param character     The character object created by the player.
-     * @param floorY        The number of levels with respect to the Y axis.
-     * @param floorX        The number of levels with respect to the X axis.
+     * @param areaNum   The area numer
+     * @param areaName  The name of the area
+     * @param character The character object created by the player.
+     * @param floorY    The number of levels with respect to the Y axis.
+     * @param floorX    The number of levels with respect to the X axis.
      */
     public Area(int areaNum, String areaName, Character character, int floorY, int floorX) {
         this.areaNum = areaNum;
@@ -29,11 +32,11 @@ public class Area {
     }
 
     /**
-     * This method adds a floor object to the floor array address at [Y][X] 
+     * This method adds a floor object to the floor array address at [Y][X]
      * 
-     * @param y        Y index of the floor
-     * @param x        X index of the floor
-     * @param floor    Floor object to be added into the array
+     * @param y     Y index of the floor
+     * @param x     X index of the floor
+     * @param floor Floor object to be added into the array
      */
     protected void addFloor(int y, int x, Floor floor) {
         floors[y][x] = floor;
@@ -44,47 +47,48 @@ public class Area {
      * This method is an overload of the previous instance. This is to set given
      * floor as the main/starting floor of the player.
      * 
-     * @param floor    Floor object to be added
-     * @param y        Y index in the array
-     * @param x        X index in the array
+     * @param floor Floor object to be added
+     * @param y     Y index in the array
+     * @param x     X index in the array
      */
     protected void addFloor(Floor floor, int y, int x) {
-        this.playerInX = x+1;
-        this.playerInY = y+1;
+        this.playerInX = x + 1;
+        this.playerInY = y + 1;
         floors[y][x] = floor;
     }
 
     /**
-     * This method pinrts the play area. It displays the current floor as well as the
+     * This method pinrts the play area. It displays the current floor as well as
+     * the
      * player's current health and number of runes.
      */
-    public void printArea(){
+    public void printArea() {
         System.out.println(areaName + "\n");
         System.out.println("HP: " + character.getStats(0) + " Runes: " + character.getRunes() + "\n");
-        floors[playerInY-1][playerInX-1].printFloor();
+        floors[playerInY - 1][playerInX - 1].printFloor();
     }
-
 
     /**
      * This method calls a method from floor to move the player.
      * 
-     * @param input     Inputed character for moving the player (W,A,S,D).
+     * @param input Inputed character for moving the player (W,A,S,D).
      */
     public void movePlayer(char input) {
-        floors[playerInY-1][playerInX-1].movePlayer(input);
+        floors[playerInY - 1][playerInX - 1].movePlayer(input);
     }
 
     /**
-     * This method is the interact function within area. It gets the instance of currTile
+     * This method is the interact function within area. It gets the instance of
+     * currTile
      * correspondingly execute code depending on the Tile.
      * 
      * @return true if the inteacted tile was a enabled fast travel tile.
      */
     public boolean interact() {
-        Tile currTile = floors[playerInY-1][playerInX-1].getCurrTile();
-        if(currTile instanceof FastTravelTile){
-            FastTravelTile ft = (FastTravelTile)currTile;
-            if(ft.getIsEnabled() == true) {
+        Tile currTile = floors[playerInY - 1][playerInX - 1].getCurrTile();
+        if (currTile instanceof FastTravelTile) {
+            FastTravelTile ft = (FastTravelTile) currTile;
+            if (ft.getIsEnabled() == true) {
                 System.out.println("-- Fast Traveling --");
                 // increase value of # dungeon clered //
                 return true;
@@ -92,25 +96,53 @@ public class Area {
             } else {
                 System.out.println("-- This is locked. Defeat the boss of the dungeon. --");
             }
-        } else if(currTile instanceof DoorTile) {
+        } else if (currTile instanceof DoorTile) {
             moveToFloor();
-        } else if(currTile instanceof SpawnTile) {
-            SpawnTile st = (SpawnTile)currTile;
-            if(st.getIsEnabled() == true) {
-                if(st.TileEvent() == false) {
+        } else if (currTile instanceof SpawnTile) {
+            SpawnTile st = (SpawnTile) currTile;
+            if (st.getIsEnabled() == true) {
+                if (st.TileEvent() == false) {
+                    Random random = new Random();
+                    String eName = "";
+                    int eType;
+
+                    eType = random.nextInt(3 - 1 + 1) + 1;
+
+                    switch (eType) {
+                        case 1:
+                            eName = "Godrick Soldier";
+                            break;
+                        case 2:
+                            eName = "Godrick Archer";
+                            break;
+                        case 3:
+                            eName = "Godrick Night";
+                            break;
+                    }
+                    Enemy enemy = new Enemy(eName, eType);
+
                     System.out.println("-- A enemy has appeared! --");
-                    System.out.println("--------- Gaoooo! ---------");
+                    System.out.println("--------- Gaooo! ---------");
+
+                    enemy.statistics(eType);
+                    System.out.println("ENEMY:" + enemy.getName());
+                    System.out.println("HP:" + enemy.getHP());
+                    System.out.println("ATK:" + enemy.getATK());
+                    System.out.println("PD:" + enemy.getStats(0));
+                    System.out.println("SD:" + enemy.getStats(1));
+                    System.out.println("ID:" + enemy.getStats(2));
+
                 } else {
-                    int runes = areaNum * (new Random().nextInt(150-50) + 50);
+                    int runes = new Random().nextInt(150 - 50) + 50;
                     System.out.println("-- A treasure chest has appeared! --");
                     System.out.println("-- You found " + runes + " runes! --");
                     character.setRunes(character.getRunes() + runes);
                 }
             } else
                 System.out.println("-- You have already been here --");
-        } else if(currTile instanceof BossTile) {
-            BossTile bt = (BossTile)currTile;
-            if(bt.getIsEnabled() == true) {
+        } else if (currTile instanceof BossTile) {
+            BossTile bt = (BossTile) currTile;
+            if (bt.getIsEnabled() == true) {
                 // Begin a bossfight //
                 System.out.println("-- The boss lies here --");
                 System.out.println("-- For MCO1 the boss is defeated --");
@@ -119,12 +151,12 @@ public class Area {
                 System.out.println("-- You gained " + BossRunes + " runes for defeating the boss! --");
                 character.setRunes(character.getRunes() + BossRunes);
                 // !!!!!! Implement a better way to enable the tile !!!!!! //
-                floors[playerInY-1][playerInX-1].SlayedBoss();
+                floors[playerInY - 1][playerInX - 1].SlayedBoss();
             } else {
                 System.out.println("-- The boss has already been slain --");
             }
-        } else if(currTile instanceof CreditsTile) {
-            CreditsTile ct = (CreditsTile)currTile;
+        } else if (currTile instanceof CreditsTile) {
+            CreditsTile ct = (CreditsTile) currTile;
             System.out.println("-- Play the credits --");
             ct.playCredits();
             // Play credits //
@@ -135,20 +167,22 @@ public class Area {
     }
 
     /**
-     * This method allows the player to move from one floor to another. This is done by
-     * getting the direction of the getGoing() method of DoorTIle and updating the current
+     * This method allows the player to move from one floor to another. This is done
+     * by
+     * getting the direction of the getGoing() method of DoorTIle and updating the
+     * current
      * floor of the player.
      */
     private void moveToFloor() {
-        DoorTile door = (DoorTile)getFloors().getCurrTile();
-        if(door.getGoing() == "up")
-            playerInY-=1;
-        else if(door.getGoing() == "down")
-            playerInY+=1;
-        else if(door.getGoing() == "right")
-            playerInY+=1;  
-        else if(door.getGoing() == "left")
-            playerInY-=1;        
+        DoorTile door = (DoorTile) getFloors().getCurrTile();
+        if (door.getGoing() == "up")
+            playerInY -= 1;
+        else if (door.getGoing() == "down")
+            playerInY += 1;
+        else if (door.getGoing() == "right")
+            playerInY += 1;
+        else if (door.getGoing() == "left")
+            playerInY -= 1;
     }
 
     /**
@@ -193,6 +227,6 @@ public class Area {
      * @return Floor[] floors
      */
     public Floor getFloors() {
-        return this.floors[playerInY-1][playerInX-1];
+        return this.floors[playerInY - 1][playerInX - 1];
     }
 }

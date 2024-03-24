@@ -1,7 +1,7 @@
 public class Boss extends Entity {
 
-    public Boss(String name, int HP) { // add String spritePath
-        super(name, HP);
+    public Boss(String name) { // add String spritePath
+        super(name);
         }
     }
 
