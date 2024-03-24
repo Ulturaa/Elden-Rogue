@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Boss extends Entity {
 
+
     public Boss(String name) { // add String spritePath
         super(name);
     }
