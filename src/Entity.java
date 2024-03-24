@@ -18,16 +18,25 @@ public abstract class Entity {
      */
     private String name;
     private int HP;
-    private double[] stats = new double[3];
+    private int ATK;
+    private double[] stats;
+
+    /**
+     * Constructs a new {Entity}.
+     * 
+     */
+    public Entity() {
+        stats = new double[3];
+    }
 
     /**
      * Constructs a new {Entity} with the specified name and hit points.
      * 
      * @param name The name of the entity.
-     * @param HP   The hit points of the entity.
      */
     public Entity(String name) {
         this.name = name;
+        stats = new double[3];
     }
 
     /**
@@ -38,6 +47,15 @@ public abstract class Entity {
     public void setHP(int HP) {
         this.HP = HP;
     }
+
+    /**
+     * Sets the Attack points(ATK) of the entity.
+     * 
+     * @param ATK The new attack value.
+     */
+    public void setATK(int ATK) {
+        this.ATK = ATK;
+    }
     
 
     /**
@@ -47,6 +65,24 @@ public abstract class Entity {
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Gets the health points (HP) of the entity.
+     * 
+     * @return The health points of the entity.
+     */
+    public int getHP() {
+        return this.HP;
+    }
+
+    /**
+     * Gets the attack of the entity.
+     * 
+     * @return The attack of the entity.
+     */
+    public int getATK() {
+        return this.ATK;
     }
 
     /**
@@ -70,16 +106,14 @@ public abstract class Entity {
     }
 
     /**
-     * Gets the health points (HP) of the entity.
+     * Sets the name and stats for the entity
+     * Abstract class to be set by the boss and enemy classes.
      * 
-     * @return The health points of the entity.
      */
-    public int getHP() {
-        return this.HP;
-    }
+    //public abstract void statistics(int type);
 
     /**
-     * Abstract class for enemy and boss to create.
+     * Computes for the runes when entity is defeated.
      * Abstract because the formula differs between enemy and boss.
      * 
      * @return the droped runes when defeated.

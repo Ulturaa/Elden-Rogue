@@ -10,7 +10,6 @@ public class Area {
     private Character character;
     private int playerInX;
     private int playerInY;
-    private Enemy enemy;
 
     /**
      * This is the constructor for the class Area. This initalizes the attributes of
@@ -103,23 +102,10 @@ public class Area {
             if (st.getIsEnabled() == true) {
                 if (st.TileEvent() == false) {
                     Random random = new Random();
-                    String eName = "";
                     int eType;
 
                     eType = random.nextInt(3 - 1 + 1) + 1;
-
-                    switch (eType) {
-                        case 1:
-                            eName = "Godrick Soldier";
-                            break;
-                        case 2:
-                            eName = "Godrick Archer";
-                            break;
-                        case 3:
-                            eName = "Godrick Night";
-                            break;
-                    }
-                    Enemy enemy = new Enemy(eName, eType);
+                    Enemy enemy = new Enemy(eType, areaNum);
 
                     System.out.println("-- A enemy has appeared! --");
                     System.out.println("--------- Gaooo! ---------");
