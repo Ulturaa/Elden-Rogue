@@ -82,25 +82,44 @@ public class Enemy extends Entity {
 
             switch (this.type) {
                 case 1:
-                    this.HP = random.nextInt(30 - 20 + 1) + 1;
-                    this.ATK = random.nextInt(80 - 70 + 1) + 1;
+                    this.HP = random.nextInt(30 - 20 + 1) + 20;
+                    // this.ATK = random.nextInt(80 - 70 + 1) + 1;
                     this.stats[0] = 0.20;
                     this.stats[1] = 0.15;
                     this.stats[2] = 0.10;
                     break;
                 case 2:
-                    this.HP = random.nextInt(35 - 22 + 1) + 1;
-                    this.ATK = random.nextInt(130 - 120 + 1) + 1;
+                    this.HP = random.nextInt(35 - 25 + 1) + 25;
+                    // this.ATK = random.nextInt(130 - 120 + 1) + 1;
                     this.stats[0] = 0.50;
                     this.stats[1] = 0.15;
                     this.stats[2] = 0.20;
                     break;
                 case 3:
-                    this.HP = random.nextInt(35 - 22 + 1) + 1;
-                    this.ATK = random.nextInt(130 - 120 + 1) + 1;
+                    this.HP = random.nextInt(80 - 70 + 1) + 70;
+                    // this.ATK = random.nextInt(130 - 120 + 1) + 1;
                     this.stats[0] = 0.50;
                     this.stats[1] = 0.15;
                     this.stats[2] = 0.20;
+                    break;
+            }
+
+        }
+    }
+
+    public void randAttack(int type) {
+        if (this.type == type) {
+            Random random = new Random();
+
+            switch (this.type) {
+                case 1:
+                    this.ATK = random.nextInt(80 - 70 + 1) + 70;
+                    break;
+                case 2:
+                    this.ATK = random.nextInt(120 - 110 + 1) + 110;
+                    break;
+                case 3:
+                    this.ATK = random.nextInt(130 - 120 + 1) + 120;
                     break;
             }
 
@@ -112,7 +131,7 @@ public class Enemy extends Entity {
      * 
      * @return the computed runes.
      */
-    public int dropRunes(int roll) {
+    public double dropRunes(int roll) {
         return getHP() * 2;
     }
 

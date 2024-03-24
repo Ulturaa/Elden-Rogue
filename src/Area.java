@@ -109,7 +109,7 @@ public class Area {
                     Enemy enemy = new Enemy(eType, areaNum);
 
                     // enemy.statistics(eType);
-                    Battle battle = new Battle(character, enemy);
+                    Battle battle = new Battle(character, enemy, areaNum);
 
                     System.out.println("-- A enemy has appeared! --");
                     System.out.println("--------- Gaooo! ---------");

@@ -19,8 +19,8 @@ public abstract class Entity {
      * sprite is the image/picture of the enemy.
      */
     protected String name;
-    protected int HP;
-    protected int ATK;
+    protected double HP;
+    protected double ATK;
     protected double[] stats;
 
     /**
@@ -46,7 +46,7 @@ public abstract class Entity {
      * 
      * @param HP The new hit points value.
      */
-    public void setHP(int HP) {
+    public void setHP(double HP) {
         this.HP = HP;
     }
 
@@ -55,7 +55,7 @@ public abstract class Entity {
      * 
      * @param ATK The new attack value.
      */
-    public void setATK(int ATK) {
+    public void setATK(double ATK) {
         this.ATK = ATK;
     }
 
@@ -73,7 +73,7 @@ public abstract class Entity {
      * 
      * @return The health points of the entity.
      */
-    public int getHP() {
+    public double getHP() {
         return this.HP;
     }
 
@@ -82,7 +82,7 @@ public abstract class Entity {
      * 
      * @return The attack of the entity.
      */
-    public int getATK() {
+    public double getATK() {
         return this.ATK;
     }
 
@@ -119,5 +119,5 @@ public abstract class Entity {
      * 
      * @return the droped runes when defeated.
      */
-    public abstract int dropRunes(int roll);
+    public abstract double dropRunes(int roll);
 }

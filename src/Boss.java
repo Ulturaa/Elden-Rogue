@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Boss extends Entity {
 
-
     public Boss(String name) { // add String spritePath
         super(name);
     }
@@ -20,7 +19,7 @@ public class Boss extends Entity {
      * 
      * @return the computed runes.
      */
-    public int dropRunes(int roll) {
+    public double dropRunes(int roll) {
         return getHP() * 5;
     }
 }
