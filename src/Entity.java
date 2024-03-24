@@ -18,10 +18,10 @@ public abstract class Entity {
      * entity.
      * sprite is the image/picture of the enemy.
      */
-    private String name;
-    private int HP;
-    private int ATK;
-    private double[] stats;
+    protected String name;
+    protected int HP;
+    protected int ATK;
+    protected double[] stats;
 
     /**
      * Constructs a new {Entity}.

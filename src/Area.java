@@ -107,13 +107,13 @@ public class Area {
                     eType = random.nextInt(3 - 1 + 1) + 1;
 
                     Enemy enemy = new Enemy(eType, areaNum);
+
+                    // enemy.statistics(eType);
                     Battle battle = new Battle(character, enemy);
-       
 
                     System.out.println("-- A enemy has appeared! --");
                     System.out.println("--------- Gaooo! ---------");
 
-                    enemy.statistics(eType);
                     // battle.battleScreen(enemy);
                     battle.battleSequence();
                     // System.out.println("ENEMY:" + enemy.getName());

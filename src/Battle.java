@@ -5,6 +5,12 @@ public class Battle {
     private boolean playerTurn;
     private Enemy enemy;
 
+    private double enemyHP;
+
+    private double pDamage;
+    private double sDamage;
+    private double iDamage;
+
     Scanner bc = new Scanner(System.in);
 
     public Battle(Character character, Enemy enemy) {
@@ -47,7 +53,8 @@ public class Battle {
                         aOp = bc.nextInt();
                         switch (aOp) {
                             case 1:
-
+                                enemyHP = enemy.getHP();
+                                enemyHP -= this.pDamage;
                                 break;
                             case 2:
                                 break;

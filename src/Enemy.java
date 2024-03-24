@@ -14,11 +14,11 @@ public class Enemy extends Entity {
      * name type String. Is the name of the Entity obj.
      * HP type Integer. It is the HP of the Entity.
      */
-    private String name;
+    // private String name;
     private int type;
-    private int HP;
-    private int ATK;
-    private double[] stats;
+    // private int HP;
+    // private int ATK;
+    // private double[] stats;
 
     /**
      * Constructs a new Enemy object with the specified name and health.
@@ -32,9 +32,9 @@ public class Enemy extends Entity {
     public Enemy(int eType, int aNum) {
         super();
         this.type = eType;
-        this.HP = 0;
-        this.ATK = 0;
-        this.stats = new double[3];
+        // this.HP = 0;
+        // this.ATK = 0;
+        // this.stats = new double[3];
         for (int i = 0; i < 2; i++)
             stats[i] = 0;
 
