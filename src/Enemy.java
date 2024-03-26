@@ -131,8 +131,8 @@ public class Enemy extends Entity {
      * 
      * @return the computed runes.
      */
-    public double dropRunes(int roll) {
-        return getHP() * 2;
+    public int dropRunes() {
+        return (int)getHP() * 2;
     }
 
 }

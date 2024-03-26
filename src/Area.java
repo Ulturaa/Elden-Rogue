@@ -115,7 +115,14 @@ public class Area {
                     System.out.println("--------- Gaooo! ---------");
 
                     // battle.battleScreen(enemy);
-                    battle.battleSequence();
+                    if(battle.battleSequence() == false) {
+                        return true;
+                    } else {
+                        System.out.println("Enemy " + enemy.getName() + " has dropped " + enemy.dropRunes() + " runes.");
+                        character.setRunes(character.getRunes() + enemy.dropRunes());
+                    }
+
+                    
                     // System.out.println("ENEMY:" + enemy.getName());
                     // System.out.println("HP:" + enemy.getHP());
                     // System.out.println("ATK:" + enemy.getATK());
@@ -143,6 +150,7 @@ public class Area {
                 character.setRunes(character.getRunes() + BossRunes);
                 // !!!!!! Implement a better way to enable the tile !!!!!! //
                 floors[playerInY - 1][playerInX - 1].SlayedBoss();
+                character.addAreaClear(areaNum);
             } else {
                 System.out.println("-- The boss has already been slain --");
             }

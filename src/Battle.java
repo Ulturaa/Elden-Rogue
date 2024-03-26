@@ -56,7 +56,7 @@ public class Battle {
                         System.out.println("\nWhat attack would you like to do?");
                         System.out.println("[1] PHYSICAL");
                         System.out.println("[2] SORCERY");
-                        System.out.println("[2] INCANTATION");
+                        System.out.println("[3] INCANTATION");
                         aOp = bc.nextInt();
                         switch (aOp) {
                             case 1:
@@ -104,7 +104,7 @@ public class Battle {
 
     }
 
-    public void battleSequence() {
+    public boolean battleSequence() {
         int maxHP;
         int battleChoice;
         int battleCounter = 0;
@@ -157,6 +157,7 @@ public class Battle {
                 if (enemy.getHP() <= 0) {
                     isBattle = false;
                     System.out.println("ENEMY FELLED");
+                    return true;
                 }
             } else {
 
@@ -166,10 +167,21 @@ public class Battle {
                 if (character.getStats(0) <= 0) {
                     isBattle = false;
                     System.out.println("YOU DIED");
+                    return false;
                 }
                 playerTurn = true;
             }
         }
         battleCounter += 1;
+        return false;
     }
 }
+
+/*
+    Notes:
+
+    - Add a temp holder for player health. Once player is defeated, restore health to normal then exit battle.
+    If player defeats enemy, lost health is retained.
+
+    - Implement try catch for input mismatch.
+ */

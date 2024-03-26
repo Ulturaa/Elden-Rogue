@@ -119,5 +119,5 @@ public abstract class Entity {
      * 
      * @return the droped runes when defeated.
      */
-    public abstract double dropRunes(int roll);
+    public abstract int dropRunes();
 }

@@ -19,7 +19,7 @@ public class Boss extends Entity {
      * 
      * @return the computed runes.
      */
-    public double dropRunes(int roll) {
-        return getHP() * 5;
+    public int dropRunes() {
+        return (int)getHP() * 5;
     }
 }

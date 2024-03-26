@@ -48,7 +48,7 @@ public class Character {
         this.job = "Jobless";
         this.runes = 1000000;
         this.level = 1;
-        this.areasCleared = new int[3];
+        this.areasCleared = new int[3]; // 3 to represent clear
         for (int i = 0; i < 3; i++)
             areasCleared[i] = 0;
         this.stats = new int[6];
@@ -153,12 +153,19 @@ public class Character {
     /**
      * This function is called whenever a Area boss is cleared.
      * Adds 1 to the array list areasCleared.
-     * 
-     * @return The level of the character.
+     *
      */
-    public void addAreaClear(int fNum) {
-        areasCleared[fNum]++;
+    public void addAreaClear(int aNum) {
+        areasCleared[aNum-1]++;
+    }
 
+    /**
+     * Returns the number of times an area has been cleared.
+     * 
+     * @return The number of times an area has been cleared.
+     */
+    public int getAreaClear(int aNum) {
+        return this.areasCleared[aNum-1];
     }
 
     public void setWeapon(Weapon weapon) {
