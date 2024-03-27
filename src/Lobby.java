@@ -185,9 +185,10 @@ public class Lobby {
                             Area area = null;
                             do {
                                 System.out.println("FAST TRAVEL\n");
-                                System.out.println("[1] STORMVEIL CASTLE");
-                                System.out.println("[2] RAYA LUCARIA ACADEMY");
-                                System.out.println("[3] THE ELDEN THRONE");
+                                System.out.println("[1] STORMVEIL CASTLE        Clears: [" + character.getAreaClear(1) + "]");
+                                System.out.println("[2] RAYA LUCARIA ACADEMY    Clears: [" + character.getAreaClear(2) + "]");
+                                if(character.getAreaClear(1) >= 10 && character.getAreaClear(2) >= 10)
+                                    System.out.println("[3] THE ELDEN THRONE        Clears: [" + character.getAreaClear(3) + "]");
                                 System.out.println("[0] RETURN TO LOBBY");
                                 System.out.print("\nTravel to where: ");
                                 try {
@@ -202,13 +203,10 @@ public class Lobby {
                                                 area = new StormveilCastle(character);
                                                 break;
                                             case 2:
-                                                System.out.println("WIP");
-                                                toLobby = true;
+                                                area = new RayaLucaria(character);
                                                 break;
                                             case 3:
-                                                // Implement a function to get # of times a dungeon has been cleared
-                                                boolean locked = true;
-                                                if (locked == true) {
+                                                if (character.getAreaClear(1) >= 10 && character.getAreaClear(2) >= 10) {
                                                     System.out.println("WIP [LOCKED]");
                                                 } else {
                                                     System.out.println("WIP");

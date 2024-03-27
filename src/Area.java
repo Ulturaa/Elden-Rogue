@@ -101,25 +101,19 @@ public class Area {
             SpawnTile st = (SpawnTile) currTile;
             if (st.getIsEnabled() == true) {
                 if (st.TileEvent() == false) {
-                    Random random = new Random();
-                    int eType;
-
-                    eType = random.nextInt(3 - 1 + 1) + 1;
-
+                    int eType = new Random().nextInt(3 - 1 + 1) + 1;
                     Enemy enemy = new Enemy(eType, areaNum);
-
-                    // enemy.statistics(eType);
+                    int runeDrop = enemy.dropRunes();
                     Battle battle = new Battle(character, enemy, areaNum);
 
                     System.out.println("-- A enemy has appeared! --");
                     System.out.println("--------- Gaooo! ---------");
-
                     // battle.battleScreen(enemy);
                     if(battle.battleSequence() == false) {
                         return true;
                     } else {
-                        System.out.println("Enemy " + enemy.getName() + " has dropped " + enemy.dropRunes() + " runes.");
-                        character.setRunes(character.getRunes() + enemy.dropRunes());
+                        System.out.println("Enemy " + enemy.getName() + " has dropped " + runeDrop + " runes.");
+                        character.setRunes(character.getRunes() + runeDrop);
                     }
 
                     
@@ -179,9 +173,9 @@ public class Area {
         else if (door.getGoing() == "down")
             playerInY += 1;
         else if (door.getGoing() == "right")
-            playerInY += 1;
+            playerInX += 1;
         else if (door.getGoing() == "left")
-            playerInY -= 1;
+            playerInX -= 1;
     }
 
     /**

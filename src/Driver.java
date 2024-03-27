@@ -1,7 +1,7 @@
 /**
  * This class is the driver to initialize the whole game.
  * 
- * @author Carl Mervyn Marinas 
+ * @author Carl Mervyn Marinas
  * @author Kevin Harder 
  * @version 1.0
  */
