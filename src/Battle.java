@@ -8,10 +8,13 @@ public class Battle {
 
     private int areaNum;
     private double enemyHP;
+    // private int battleCounter;
 
     private double pDamage;
     private double sDamage;
     private double iDamage;
+
+    private int defaultPlayerHP;
 
     private double dodgeRate;
 
@@ -23,10 +26,13 @@ public class Battle {
         this.character = character;
         this.enemy = enemy;
         this.areaNum = areaNum;
+        // this.battleCounter = character.getBattleCount();
+
     }
 
     public void battleScreen() {
 
+        System.out.println("BATTLE COUNT:" + character.getBattleCount());
         System.out.println(character.getJob() + " : " + character.getName());
 
         System.out.println("HP:  " + character.getStats(0));
@@ -37,7 +43,7 @@ public class Battle {
         System.out.println("HP:  " + enemy.getHP());
         // System.out.println("SPRITE");
         System.out.println("\n\n");
-        System.out.println("system messages here");
+        // System.out.println("system messages here");
 
     }
 
@@ -91,6 +97,8 @@ public class Battle {
                         character.setStats(health, 0);
                         System.out.println("DODGE FAILED! Enemy has attacked!");
                         if (character.getStats(0) <= 0) {
+                            System.out.println(defaultPlayerHP);
+                            character.setStats(defaultPlayerHP, 0);
                             isBattle = false;
                             System.out.println("YOU DIED");
                         }
@@ -107,13 +115,14 @@ public class Battle {
     public boolean battleSequence() {
         int maxHP;
         int battleChoice;
-        int battleCounter = 0;
+        // int battleCounter = 0;
         int playerHP;
 
         playerTurn = true;
         isBattle = true;
 
-        if (character.getWeapon() != null && battleCounter == 0) {
+        defaultPlayerHP = character.getStats(0);
+        if (character.getWeapon() != null && character.getBattleCount() == 0) {
             maxHP = 100 * ((character.getStats(0) + character.getWeapon().getWeaponStat(0)) / 2);
             pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - enemy.getStats(0));
             sDamage = (character.getStats(4) + character.getWeapon().getWeaponStat(4)) * (1 - enemy.getStats(1));
@@ -121,7 +130,7 @@ public class Battle {
             character.setStats(maxHP, 0);
             dodgeRate = (20 + ((character.getStats(1) + character.getWeapon().getWeaponStat(1)) / 2)) / 100;
 
-        } else if (character.getWeapon() == null && battleCounter == 0) {
+        } else if (character.getWeapon() == null && character.getBattleCount() == 0) {
             maxHP = 100 * (character.getStats(0) / 2);
             pDamage = (character.getStats(3)) * (1 - enemy.getStats(0));
             sDamage = (character.getStats(4)) * (1 - enemy.getStats(1));
@@ -129,7 +138,7 @@ public class Battle {
             character.setStats(maxHP, 0);
             dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100;
 
-        } else if (character.getWeapon() != null && battleCounter > 0) {
+        } else if (character.getWeapon() != null && character.getBattleCount() > 0) {
             pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - enemy.getStats(0));
             sDamage = (character.getStats(4) + character.getWeapon().getWeaponStat(4)) * (1 - enemy.getStats(1));
             iDamage = (character.getStats(5) + character.getWeapon().getWeaponStat(5)) * (1 - enemy.getStats(2));
@@ -157,6 +166,8 @@ public class Battle {
                 if (enemy.getHP() <= 0) {
                     isBattle = false;
                     System.out.println("ENEMY FELLED");
+                    character.setBattleCount(character.getBattleCount() + 1);
+                    // this.battleCounter += 1;
                     return true;
                 }
             } else {
@@ -165,23 +176,28 @@ public class Battle {
                 character.setStats(playerHP, 0);
                 System.out.println("Enemy has attacked!");
                 if (character.getStats(0) <= 0) {
+                    character.setStats(defaultPlayerHP, 0);
                     isBattle = false;
                     System.out.println("YOU DIED");
+                    // battleCounter = 0;
+                    character.setBattleCount(0);
+                    character.setStats(defaultPlayerHP, 0);
                     return false;
                 }
                 playerTurn = true;
             }
         }
-        battleCounter += 1;
+
         return false;
     }
 }
 
 /*
-    Notes:
-
-    - Add a temp holder for player health. Once player is defeated, restore health to normal then exit battle.
-    If player defeats enemy, lost health is retained.
-
-    - Implement try catch for input mismatch.
+ * Notes:
+ * 
+ * - Add a temp holder for player health. Once player is defeated, restore
+ * health to normal then exit battle.
+ * If player defeats enemy, lost health is retained.
+ * 
+ * - Implement try catch for input mismatch.
  */

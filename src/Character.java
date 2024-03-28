@@ -34,6 +34,7 @@ public class Character {
     private int level;
     private int[] areasCleared;
     private int[] stats;
+    private int battleCount;
 
     // NEW ADDITIONS
     private Weapon weapon;
@@ -49,6 +50,7 @@ public class Character {
         this.runes = 1000000;
         this.level = 1;
         this.areasCleared = new int[3]; // 3 to represent clear
+        this.battleCount = 0;
         for (int i = 0; i < 3; i++)
             areasCleared[i] = 0;
         this.stats = new int[6];
@@ -156,7 +158,7 @@ public class Character {
      *
      */
     public void addAreaClear(int aNum) {
-        areasCleared[aNum-1]++;
+        areasCleared[aNum - 1]++;
     }
 
     /**
@@ -165,7 +167,7 @@ public class Character {
      * @return The number of times an area has been cleared.
      */
     public int getAreaClear(int aNum) {
-        return this.areasCleared[aNum-1];
+        return this.areasCleared[aNum - 1];
     }
 
     public void setWeapon(Weapon weapon) {
@@ -174,5 +176,13 @@ public class Character {
 
     public Weapon getWeapon() {
         return this.weapon;
+    }
+
+    public void setBattleCount(int count) {
+        this.battleCount = count;
+    }
+
+    public int getBattleCount() {
+        return this.battleCount;
     }
 }
