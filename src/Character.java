@@ -185,4 +185,5 @@ public class Character {
     public int getBattleCount() {
         return this.battleCount;
     }
+
 }

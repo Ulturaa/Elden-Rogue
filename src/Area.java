@@ -104,25 +104,18 @@ public class Area {
                     int eType = new Random().nextInt(3 - 1 + 1) + 1;
                     Enemy enemy = new Enemy(eType, areaNum);
                     int runeDrop = enemy.dropRunes();
+                    // int defaultHP = character.getStats(0);
                     Battle battle = new Battle(character, enemy, areaNum);
 
                     System.out.println("-- A enemy has appeared! --");
                     System.out.println("--------- Gaooo! ---------");
                     // battle.battleScreen(enemy);
-                    if(battle.battleSequence() == false) {
+                    if (battle.battleSequence() == false) {
                         return true;
                     } else {
                         System.out.println("Enemy " + enemy.getName() + " has dropped " + runeDrop + " runes.");
                         character.setRunes(character.getRunes() + runeDrop);
                     }
-
-                    
-                    // System.out.println("ENEMY:" + enemy.getName());
-                    // System.out.println("HP:" + enemy.getHP());
-                    // System.out.println("ATK:" + enemy.getATK());
-                    // System.out.println("PD:" + enemy.getStats(0));
-                    // System.out.println("SD:" + enemy.getStats(1));
-                    // System.out.println("ID:" + enemy.getStats(2));
 
                 } else {
                     int runes = new Random().nextInt(150 - 50) + 50;
@@ -136,6 +129,34 @@ public class Area {
             BossTile bt = (BossTile) currTile;
             if (bt.getIsEnabled() == true) {
                 // Begin a bossfight //
+
+                Boss Godrick = new GodrickTheGrafted();
+                Boss Rennala = new RennalaQueenOfTheFullMoon();
+                Boss Beast = new TheEldenBeast();
+                Boss boss = Godrick;
+                int runeDrop = Godrick.dropRunes();
+                switch (areaNum) {
+                    case 1:
+                        boss = Godrick;
+                        break;
+                    case 2:
+                        boss = Rennala;
+                        break;
+                    case 3:
+                        boss = Beast;
+                        break;
+                }
+                Battle battle = new Battle(character, boss, runeDrop);
+                System.out.println("-- The boss lies here --");
+                System.out.println("-- For MCO1 the boss is defeated --");
+                // battle.battleScreen(enemy);
+                if (battle.battleSequence() == false) {
+                    return true;
+                } else {
+                    System.out.println("Enemy " + Godrick.getName() + " has dropped " + runeDrop + " runes.");
+                    character.setRunes(character.getRunes() + runeDrop);
+                }
+
                 System.out.println("-- The boss lies here --");
                 System.out.println("-- For MCO1 the boss is defeated --");
                 int BossHP = 200; // Temporary
