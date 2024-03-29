@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 /**
  * The {@code Game} class manages the flow and logic of the Elden Rogue game.
- * It includes methods for the title screen, character creation, and   the game lobby.
+ * It includes methods for the title screen, character creation, and the game
+ * lobby.
  * 
  *
  * @version 1.0
@@ -12,9 +13,9 @@ import java.util.Scanner;
 public class Game {
 
     /**
-     *  @character The character object representing the player's in-game avatar.
-     *  @Create is the charcreate object for character creation
-     *  @lobby is the object for managing the game's lobby
+     * @character The character object representing the player's in-game avatar.
+     * @Create is the charcreate object for character creation
+     * @lobby is the object for managing the game's lobby
      * 
      */
     private Character character;
@@ -22,8 +23,14 @@ public class Game {
     private Lobby lobby;
 
     /**
-     * Displays the title screen of the game and handles user input for starting or exiting the game.
+     * Displays the title screen of the game and handles user input for starting or
+     * exiting the game.
      */
+
+    public Game() {
+
+    }
+
     public void TitleScreen() {
         int tprompt = 0;
         lobby = new Lobby(this);
@@ -60,9 +67,11 @@ public class Game {
     }
 
     /**
-     * Handles the character creation process, allowing the player to input a name, select a job class, and confirm their character.
+     * Handles the character creation process, allowing the player to input a name,
+     * select a job class, and confirm their character.
      * 
-     * @exception InputMismatchException When Integer input is given a Character or String.
+     * @exception InputMismatchException When Integer input is given a Character or
+     *                                   String.
      */
     public void CC() {
         int prompt;
@@ -136,6 +145,14 @@ public class Game {
 
         } while (loop);
         sc.close();
+
     }
 
+    public Character getCharacter() {
+        return character;
+    }
+
+    public CharCreate getCharCreate() {
+        return create;
+    }
 }
