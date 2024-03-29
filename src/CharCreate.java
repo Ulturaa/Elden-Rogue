@@ -66,6 +66,20 @@ public class CharCreate {
         System.out.println("Welcome!  " + this.name);
     }
 
+    public void setCharName(String scname) {
+
+        // System.out.println("Please Input the name of your character:");
+        // scname = sc.nextLine();
+
+        if (scname.length() > 25) {
+            scname = scname.substring(0, 25);
+        }
+
+        this.name = scname;
+
+        // System.out.println("Welcome! " + this.name);
+    }
+
     /**
      * Allows the player to select a job class from the predefined list.
      * 
