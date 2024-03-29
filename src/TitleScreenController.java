@@ -3,21 +3,20 @@ import java.awt.event.ActionListener;
 
 public class TitleScreenController {
     private TitleScreenView tsv;
-    private TItleScreenModel tsm;
+    private TitleScreenModel tsm;
 
-    TitleScreenController(TitleScreenView tsv, TItleScreenModel tsm) {
-
+    public TitleScreenController(TitleScreenView tsv, TitleScreenModel tsm) {
         this.tsv = tsv;
         this.tsm = tsm;
 
-        tsv.StartBtnActionListener(new ActionListener() {
+        this.tsv.StartBtnActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 System.out.println("To Character Creation.");
             }
         });
 
-        tsv.ExitBtnActionListener(new ActionListener() {
+        this.tsv.ExitBtnActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 System.exit(0);
@@ -26,7 +25,9 @@ public class TitleScreenController {
     }
 
     public static void main(String[] args) {
-        new TitleScreenController(new TitleScreenView(), new TItleScreenModel());
+        TitleScreenView tsv = new TitleScreenView();
+        TitleScreenModel tsm = new TitleScreenModel();
+        TitleScreenController tsc = new TitleScreenController(tsv, tsm);
     }
 
 }

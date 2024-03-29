@@ -1,5 +1,4 @@
-public class TItleScreenModel {
-    public TItleScreenModel() {
-        
+public class TitleScreenModel {
+    public TitleScreenModel() {
     }
 }
