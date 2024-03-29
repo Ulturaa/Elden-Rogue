@@ -35,6 +35,7 @@ public class Character {
     private int[] areasCleared;
     private int[] stats;
     private int battleCount;
+    private int currentHP;
 
     // NEW ADDITIONS
     private Weapon weapon;
@@ -51,6 +52,7 @@ public class Character {
         this.level = 1;
         this.areasCleared = new int[3]; // 3 to represent clear
         this.battleCount = 0;
+        this.currentHP = 0;
         for (int i = 0; i < 3; i++)
             areasCleared[i] = 0;
         this.stats = new int[6];
@@ -184,6 +186,14 @@ public class Character {
 
     public int getBattleCount() {
         return this.battleCount;
+    }
+
+    public void setCurrHP(int HP) {
+        this.currentHP = HP;
+    }
+
+    public int getCurrHP() {
+        return this.currentHP;
     }
 
 }

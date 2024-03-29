@@ -12,7 +12,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TitleScreenView{
+public class TitleScreenView {
     private JFrame titleScreenFrame;
     private JLabel titleLbl;
     private JButton startBtn, exitBtn;
@@ -80,5 +80,3 @@ public class TitleScreenView{
         TitleScreenView tsv = new TitleScreenView();
     }
 }
-
-
