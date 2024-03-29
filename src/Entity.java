@@ -111,7 +111,7 @@ public abstract class Entity {
      * Abstract class to be set by the boss and enemy classes.
      * 
      */
-    // public abstract void statistics(int type);
+    public abstract void randAttack();
 
     /**
      * Computes for the runes when entity is defeated.

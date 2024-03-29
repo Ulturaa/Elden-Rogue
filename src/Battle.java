@@ -10,13 +10,10 @@ public class Battle {
 
     private int areaNum;
     private double enemyHP;
-    // private int battleCounter;
 
     private double pDamage;
     private double sDamage;
     private double iDamage;
-
-    private int defaultPlayerHP;
 
     private double dodgeRate;
 
@@ -29,22 +26,13 @@ public class Battle {
         this.enemy = enemy;
         this.entity = enemy;
         this.areaNum = areaNum;
-        // defaultPlayerHP = character.getStats(0);
 
     }
-
-    // public Battle(Character character, Boss boss, int areaNum) {
-    // this.character = character;
-    // this.boss = boss;
-    // this.areaNum = areaNum;
-
-    // }
 
     public Battle(Character character, Entity entity, int areaNum) {
         this.character = character;
         this.entity = entity;
         this.areaNum = areaNum;
-        // defaultPlayerHP = character.getStats(0);
     }
 
     public void battleScreen() {
@@ -176,7 +164,7 @@ public class Battle {
                 // randomize attack here
                 if (entity.getName() != "Godrick the Grafted" && entity.getName() != "Rennala, Queen of the full moon"
                         && entity.getName() != "The Elden Beast") {
-                    enemy.randAttack(enemy.getType());
+                    enemy.randAttack();
                 } // else {
                   // switch (entity.getName()) {
                   // case "Godrick the Grafted":

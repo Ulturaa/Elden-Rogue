@@ -107,23 +107,19 @@ public class Enemy extends Entity {
         }
     }
 
-    public void randAttack(int type) {
-        if (this.type == type) {
-            Random random = new Random();
-
-            switch (this.type) {
-                case 1:
-                    this.ATK = random.nextInt(80 - 70 + 1) + 70;
-                    break;
-                case 2:
-                    this.ATK = random.nextInt(120 - 110 + 1) + 110;
-                    break;
-                case 3:
-                    this.ATK = random.nextInt(130 - 120 + 1) + 120;
-                    break;
-            }
-
-        }
+    public void randAttack() {
+        Random random = new Random();
+        switch (this.type) {
+            case 1:
+                this.ATK = random.nextInt(80 - 70 + 1) + 70;
+                break;
+            case 2:
+            this.ATK = random.nextInt(120 - 110 + 1) + 110;
+                break;
+            case 3:
+                this.ATK = random.nextInt(130 - 120 + 1) + 120;
+                break;
+       }
     }
 
     /**

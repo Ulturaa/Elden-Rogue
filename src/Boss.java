@@ -2,6 +2,9 @@ import java.util.Random;
 
 public class Boss extends Entity {
 
+    private int atkUb;
+    private int atkLb;
+
     public Boss(String name) { // add String spritePath
         super(name);
     }
@@ -11,7 +14,12 @@ public class Boss extends Entity {
         setStats(pD, 0);
         setStats(sD, 1);
         setStats(iD, 2);
-        setATK(new Random().nextInt(atkUb - atkLb) + atkLb + 1);
+        this.atkUb = atkUb;
+        this.atkLb = atkLb;
+    }
+
+    public void randAttack() {
+        setATK(new Random().nextInt(this.atkUb - this.atkLb) + this.atkLb + 1);
     }
 
     /**
