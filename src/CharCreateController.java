@@ -69,12 +69,16 @@ public class CharCreateController {
                 System.out.println("Confirming");
                 JLabel sysMessage = new JLabel();
 
-                if (ccm.getCharacterName() == "" || ccm.getLevel() == "1") {
+                if (ccm.getCharacterName() != "" && ccm.getLevel() != "1") {
+                    ccv.closeFrame();
+                    Character character = ccm.getCharacter();
+                    LobbyModel lm = new LobbyModel(character);
+                    LobbyView lv = new LobbyView();
+                    LobbyController lc = new LobbyController(lm, lv);
+                } else {
                     sysMessage = ccv.sysMessage("Please input BOTH NAME AND JOB CLASS");
                     System.out.println("Please input BOTH NAME AND JOB CLASS");
-                } else {
-                    ccv.clearSysMessage(sysMessage);
-                    // go to lobby
+
                 }
             }
         });

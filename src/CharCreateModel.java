@@ -42,4 +42,8 @@ public class CharCreateModel {
     public String getstat(int i) {
         return String.valueOf(character.getStats(i));
     }
+
+    public Character getCharacter() {
+        return this.character;
+    }
 }

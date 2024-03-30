@@ -24,7 +24,6 @@ public class CharCreateView {
     private JButton inpNameBtn, selectJobBtn, confirmBtn, backBtn;
     private ArrayList<JButton> CCButtonlist = new ArrayList<JButton>();
     private ArrayList<JLabel> CCLabellist = new ArrayList<JLabel>();
-    private boolean sub = false;
 
     public CharCreateView() {
         CCFrame = new JFrame();
@@ -84,35 +83,6 @@ public class CharCreateView {
         while (i.hasNext()) {
             this.CCFrame.add(i.next());
         }
-
-    }
-
-    public void createAndGetInput() {
-
-        JTextField textField = new JTextField(25);
-
-        // Create a JButton to submit the input
-
-        JButton submitButton = new JButton("Submit");
-        submitButton.setPreferredSize(new Dimension(200, 30));
-
-        // Add ActionListener to the button
-        submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                String input = textField.getText();
-                System.out.println("Input received: " + input);
-                setNameinput(input);
-
-            }
-        });
-        JLabel inpLbl = new JLabel("Input Name: ");
-        inpLbl.setForeground(Color.YELLOW);
-        CCFrame.add(inpLbl);
-        CCFrame.add(textField);
-        CCFrame.add(submitButton);
-        CCFrame.revalidate();
-        CCFrame.repaint();
 
     }
 
