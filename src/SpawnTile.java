@@ -15,7 +15,7 @@ public class SpawnTile extends Tile {
      * The spawn tile is initially enabled.
      */
     public SpawnTile() {
-        super(" S ");
+        super(" S ", "Spirtes/Spawn.png");
         isEnabled = true;
     }
 

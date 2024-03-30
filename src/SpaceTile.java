@@ -8,6 +8,6 @@ public class SpaceTile extends Tile {
      * It sets the String Icon as "   ".
      */
     public SpaceTile() {
-        super("   ");
+        super("   ", "Spirtes/Tile.png");
     }
 }

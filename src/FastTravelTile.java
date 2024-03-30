@@ -19,7 +19,7 @@ public class FastTravelTile extends Tile {
      * @param enabled {true} if fast travel is initially enabled, {false} otherwise.
      */
     public FastTravelTile(boolean enabled) {
-        super(" ^ ");
+        super(" ^ ", "Spirtes/Warp.png");
         if (enabled == false)
             isEnabled = false;
         else

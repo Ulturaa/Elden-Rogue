@@ -9,6 +9,6 @@ public class BoarderTile extends Tile {
      * Constructs a new {BoarderTile} with the default character representation "███".
      */
     public BoarderTile() {
-        super("███");   
+        super("███", "Spirtes/Wall.png");   
     }
 }

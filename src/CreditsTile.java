@@ -8,7 +8,7 @@ public class CreditsTile extends Tile{
      * Constructs a new Credits Tile with the character icon " C ".
      */
     public CreditsTile() {
-        super(" C ");
+        super(" C ", "Spirtes/Blank.png");
     }
 
     /**

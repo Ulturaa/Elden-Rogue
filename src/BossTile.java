@@ -19,7 +19,7 @@ public class BossTile extends Tile {
      * The boss tile is initially enabled.
      */
     public BossTile() {
-        super(" B ");
+        super(" B ", "Spirtes/Blank.png");
         isEnabled = true;   
     }
 

@@ -17,7 +17,7 @@ public class DoorTile extends Tile{
      * @param going String of the direction of the door.
      */
     public DoorTile(String going) {
-        super(" | ");
+        super(" | ", "Spirtes/Door.png");
         this.going = going;   
     }
 
