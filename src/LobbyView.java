@@ -88,4 +88,8 @@ public class LobbyView {
             System.out.println("Invalid index");
         }
     }
+
+    public void setVisible(boolean b) {
+        LFrame.setVisible(b);
+    }
 }
