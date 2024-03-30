@@ -5,7 +5,11 @@ public class TitleScreenController {
     private TitleScreenView tsv;
     private TitleScreenModel tsm;
 
-    public TitleScreenController(TitleScreenView tsv, TitleScreenModel tsm) {
+    private Character character;
+    private CharCreate charCreate;
+
+    public TitleScreenController(TitleScreenView tsv, TitleScreenModel tsm, Character character,
+            CharCreate charCreate) {
         this.tsv = tsv;
         this.tsm = tsm;
         this.charCreate = charCreate;
@@ -31,10 +35,8 @@ public class TitleScreenController {
         });
     }
 
-    public static void main(String[] args) {
-        TitleScreenView tsv = new TitleScreenView();
-        TitleScreenModel tsm = new TitleScreenModel();
-        TitleScreenController tsc = new TitleScreenController(tsv, tsm);
-    }
+    // public static void main(String[] args) {
+    // // new TitleScreenController(new TitleScreenView(), new TitleScreenModel());
+    // }
 
 }

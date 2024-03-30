@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -16,11 +17,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CharCreateView {
+    private String nameInput;
+    private String selectedJob;
     private JFrame CCFrame;
     private JLabel CCTitle, CharLbl;
     private JButton inpNameBtn, selectJobBtn, confirmBtn, backBtn;
     private ArrayList<JButton> CCButtonlist = new ArrayList<JButton>();
     private ArrayList<JLabel> CCLabellist = new ArrayList<JLabel>();
+    private boolean sub = false;
 
     public CharCreateView() {
         CCFrame = new JFrame();
@@ -83,11 +87,12 @@ public class CharCreateView {
 
     }
 
-    public String createAndGetInput() {
+    public void createAndGetInput() {
 
         JTextField textField = new JTextField(25);
 
         // Create a JButton to submit the input
+
         JButton submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(200, 30));
 
@@ -96,12 +101,11 @@ public class CharCreateView {
             public void actionPerformed(ActionEvent e) {
 
                 String input = textField.getText();
-
                 System.out.println("Input received: " + input);
+                setNameinput(input);
+
             }
         });
-
-        // Add the components to the frame
         JLabel inpLbl = new JLabel("Input Name: ");
         inpLbl.setForeground(Color.YELLOW);
         CCFrame.add(inpLbl);
@@ -109,11 +113,86 @@ public class CharCreateView {
         CCFrame.add(submitButton);
         CCFrame.revalidate();
         CCFrame.repaint();
-        // Set frame visibility
-        // CC.setVisible(true);
 
-        // Wait for input and return it
-        return textField.getText();
+    }
+
+    public void setNameinput(String s) {
+        this.nameInput = s;
+    }
+
+    public void getTextfrom(JTextField textfield) {
+        this.nameInput = textfield.getText();
+    }
+
+    public String getnameInput() {
+        return this.nameInput;
+    }
+
+    public void getuserNameInput() {
+        String input = JOptionPane.showInputDialog(null, "Enter your name:");
+        if (input != null) {
+            System.out.println("Input received: " + input);
+            this.nameInput = input;
+        } else {
+            // User canceled the input dialog
+            System.out.println("Input canceled.");
+        }
+    }
+
+    public String getSelectedJob() {
+        return this.selectedJob;
+    }
+
+    public void showJobchoices() {
+        // Create an array of button labels
+        String[] jobs = { "Vagabond", "Samurai", "Warrior", "Hero", "Astrologer", "Prophet" };
+
+        // Show the option pane with buttons
+        int choice = JOptionPane.showOptionDialog(null, "Choose an option:", "Title", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, jobs, jobs[0]);
+
+        // Set the selected option based on the user's choice
+        if (choice >= 0 && choice < jobs.length) {
+            selectedJob = jobs[choice];
+        } else {
+            selectedJob = null; // No option selected or dialog closed
+        }
+    }
+
+    public void updateLabel(int index, String newText) {
+        if (index >= 0 && index < CCLabellist.size()) {
+            JLabel labelToUpdate = CCLabellist.get(index);
+            /// final String original = labelToUpdate.getText();
+            labelToUpdate.setText(newText);
+
+            CCFrame.revalidate();
+            CCFrame.repaint();
+        } else {
+            System.out.println("Invalid index");
+        }
+    }
+
+    public JLabel sysMessage(String s) {
+        JLabel sysLabel = new JLabel();
+
+        sysLabel.setText(s);
+        sysLabel.setForeground(Color.YELLOW);
+        sysLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        CCFrame.add(sysLabel);
+        CCFrame.revalidate();
+        CCFrame.repaint();
+
+        return sysLabel;
+    }
+
+    public void clearSysMessage(JLabel label) {
+        CCFrame.remove(label);
+        CCFrame.revalidate();
+        CCFrame.repaint();
+    }
+
+    public void closeFrame() {
+        CCFrame.dispose();
     }
 
 }
