@@ -45,7 +45,7 @@ public class StormveilCastle extends Area {
         f3.setTile(6,2,new DoorTile("down"));  // door //
         f3.setTile(0,2,new FastTravelTile(false));  // fast travel //
         BossTile bt = new BossTile();
-        bt.setSprite("Sprites/Godrick.png");
+        bt.setSprite("Spirtes/Godrick.png");
         f3.setTile(3,2,bt);  // boss //
         f3.setTile(6,2,new PlayerTile());  // player //
         

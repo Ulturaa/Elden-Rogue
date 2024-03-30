@@ -52,7 +52,7 @@ public class RayaLucaria extends Area{
         f4.setTile(6,1,new SpawnTile());
         f4.setTile(6,5,new SpawnTile());
         BossTile bt = new BossTile();
-        bt.setSprite("Sprites/Rennala.png");
+        bt.setSprite("Spirtes/Rennala.png");
         f4.setTile(4,3, bt);
         f4.setTile(0,0,new BoarderTile());
         f4.setTile(0,1,new BoarderTile());

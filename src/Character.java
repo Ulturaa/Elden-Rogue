@@ -54,7 +54,7 @@ public class Character {
         this.battleCount = 0;
         this.currentHP = 0;
         for (int i = 0; i < 3; i++)
-            areasCleared[i] = 0;
+            areasCleared[i] = 10;
         this.stats = new int[6];
         for (int i = 0; i < 5; i++)
             stats[i] = 0;

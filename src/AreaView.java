@@ -24,27 +24,24 @@ public class AreaView {
     private JLabel areaLbl, hpLbl, runesLbl;
     private JPanel areaPanel, buttonPanel;
 
+    Area area;
 
     public AreaView(Area area) {
+        this.area = area;
         areaFrame = new JFrame();
         areaFrame = new JFrame();
-        areaFrame.setSize(820, 920);
+        areaFrame.setSize(820, 980);
         areaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         areaFrame.setLocationRelativeTo(null);
         areaFrame.setResizable(false);
-        areaFrame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+        areaFrame.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
         areaFrame.getContentPane().setBackground(Color.black);
-
-        areaPanel = new JPanel();
-        areaPanel.setBackground(Color.WHITE);
-        areaPanel.setLayout(new GridLayout(area.getFloors().getYBounds(),area.getFloors().getXBounds()));
-        areaPanel.setPreferredSize(new Dimension(area.getFloors().getXBounds()*75, area.getFloors().getYBounds()*75));
-
-        for(int i=0; i < area.getFloors().getYBounds(); i++) {
-            for(int j=0; j < area.getFloors().getXBounds(); j++) {
-                areaPanel.add(area.getFloors().getTile(i,j));
-            }
-        }
+        
+        this.areaPanel = new JPanel();
+        this.areaPanel.setBackground(Color.CYAN);
+        this.areaPanel.setLayout(new GridLayout(area.getFloors().getYBounds(),area.getFloors().getXBounds()));
+        this.areaPanel.setPreferredSize(new Dimension(area.getFloors().getXBounds()*75, area.getFloors().getYBounds()*75));
+        printArea(area);
         
         buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.GREEN);
@@ -53,21 +50,21 @@ public class AreaView {
         buttonPanel.setPreferredSize(new Dimension(720, 280));
 
         areaLbl = new JLabel();
-        areaLbl.setText(area.getAreaName());
+        areaLbl.setText(this.area.getAreaName());
         areaLbl.setBounds(15,15,300,20);
         areaLbl.setFont(new Font("Times New Roman", Font.BOLD, 30));
         areaLbl.setForeground(Color.WHITE);
         buttonPanel.add(areaLbl);
 
         hpLbl = new JLabel();
-        hpLbl.setText("HP: " + Integer.toString(area.getCharacter().getCurrHP()));
+        hpLbl.setText("HP: " + Integer.toString(this.area.getCharacter().getCurrHP()));
         hpLbl.setBounds(15,55,300,20);
         hpLbl.setFont(new Font("Times New Roman", Font.BOLD, 30));
         hpLbl.setForeground(Color.WHITE);
         buttonPanel.add(hpLbl);
 
         runesLbl = new JLabel();
-        runesLbl.setText("Runes: " + Integer.toString(area.getCharacter().getRunes()));
+        runesLbl.setText("Runes: " + Integer.toString(this.area.getCharacter().getRunes()));
         runesLbl.setBounds(15,95,300,20);
         runesLbl.setFont(new Font("Times New Roman", Font.BOLD, 30));
         runesLbl.setForeground(Color.WHITE);
@@ -150,15 +147,20 @@ public class AreaView {
 
 
     public void printArea(Area area) {
-        this.areaPanel = new JPanel();
-        this.areaPanel.setBackground(Color.WHITE);
+        this.areaPanel.removeAll();
+        this.areaPanel.setBackground(Color.CYAN);
         this.areaPanel.setLayout(new GridLayout(area.getFloors().getYBounds(),area.getFloors().getXBounds()));
         this.areaPanel.setPreferredSize(new Dimension(area.getFloors().getXBounds()*75, area.getFloors().getYBounds()*75));
         
         for(int i=0; i < area.getFloors().getYBounds(); i++) {
             for(int j=0; j < area.getFloors().getXBounds(); j++) {
-                areaPanel.add(area.getFloors().getTile(i,j));
+                JLabel t = area.getFloors().getTile(i,j);
+                t.repaint();
+                t.revalidate();
+                areaPanel.add(t);
             }
         }
+        this.areaPanel.repaint();
+        this.areaPanel.revalidate();
     }
 }

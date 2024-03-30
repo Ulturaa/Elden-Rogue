@@ -38,6 +38,7 @@ public abstract class Tile extends JLabel{
      */
     public void setSprite(String path) {
         this.sprite = new ImageIcon(path);
+        this.setIcon(sprite);
     }
 
     /**

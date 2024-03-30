@@ -14,9 +14,11 @@ public class AreaController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Up");
-
-                
-                printArea(area);
+                if(am.movePlayer('W') == true){
+                    av.printArea(av.area);
+                } else {
+                    System.out.println("OOB");
+                }
             }
         });
 
@@ -24,6 +26,11 @@ public class AreaController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("down");
+                if(am.movePlayer('S') == true){
+                    av.printArea(av.area);
+                } else {
+                    System.out.println("OOB");
+                }
             }
         });
         
@@ -31,6 +38,11 @@ public class AreaController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Left");
+                if(am.movePlayer('A') == true){
+                    av.printArea(av.area);
+                } else {
+                    System.out.println("OOB");
+                }
             }
         });
 
@@ -38,6 +50,11 @@ public class AreaController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("right");
+                if(am.movePlayer('D') == true){
+                    av.printArea(av.area);
+                } else {
+                    System.out.println("OOB");
+                }
             }
         });
 
@@ -45,13 +62,17 @@ public class AreaController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("interact");
+                am.interact();
+                av.printArea(av.area);
             }
         });
     }
 
     public static void main(String[] args) {
         Character c = new Character();
-        Area a = new StormveilCastle(c);
-        new AreaController(new AreaView(a), new AreaModel());
+        //Area a = new StormveilCastle(c);
+        Area a = new RayaLucaria(c);
+        //Area a = new EldenThrone(c);
+        new AreaController(new AreaView(a), new AreaModel(a,c));
     }
 }

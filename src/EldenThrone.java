@@ -13,11 +13,11 @@ public class EldenThrone extends Area {
         // Create floor object //
         Floor f2 = new Floor(7, 7);
         // Add tiles //
-        f2.setTile(0,3,new DoorTile("down"));  // door //
-        f2.setTile(6,3,new DoorTile("up"));  // door //
+        f2.setTile(0,3,new DoorTile("up"));  // door //
+        f2.setTile(6,3,new DoorTile("down"));  // door //
         BossTile bt = new BossTile();
-        bt.setSprite("Sprites/EldenBeast.png");
-        f2.setTile(4,3, bt);
+        bt.setSprite("Spirtes/EldenBeast.png");
+        f2.setTile(3,3, bt);
         f2.setTile(0,0,new BoarderTile());
         f2.setTile(0,6,new BoarderTile());
         f2.setTile(6,0,new BoarderTile());
@@ -40,8 +40,8 @@ public class EldenThrone extends Area {
         f3.setTile(8,1,new PlayerTile());  // player //
 
         // Add the floors to the array //
+        addFloor(f1, 2, 0);
         addFloor(1, 0, f2);
-        addFloor(2, 0, f3);
-        addFloor(f1, 0, 0);
+        addFloor(0, 0, f3);
     }
 }

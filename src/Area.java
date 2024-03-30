@@ -142,17 +142,9 @@ public class Area {
                 } else {
                     System.out.println("Enemy " + boss.getName() + " has dropped " + runeDrop + " runes.");
                     character.setRunes(character.getRunes() + runeDrop);
+                    character.addAreaClear(areaNum);
+                    floors[playerInY - 1][playerInX - 1].SlayedBoss();
                 }
-
-                System.out.println("-- The boss lies here --");
-                System.out.println("-- For MCO1 the boss is defeated --");
-                int BossHP = 200; // Temporary
-                int BossRunes = BossHP * 5;
-                System.out.println("-- You gained " + BossRunes + " runes for defeating the boss! --");
-                character.setRunes(character.getRunes() + BossRunes);
-                // !!!!!! Implement a better way to enable the tile !!!!!! //
-                floors[playerInY - 1][playerInX - 1].SlayedBoss();
-                character.addAreaClear(areaNum);
             } else {
                 System.out.println("-- The boss has already been slain --");
             }
@@ -160,7 +152,7 @@ public class Area {
             CreditsTile ct = (CreditsTile) currTile;
             System.out.println("-- Play the credits --");
             ct.playCredits();
-            // Play credits //
+            return true;
         } else
             System.out.println("-- Nothing happened --");
 

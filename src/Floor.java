@@ -81,8 +81,10 @@ public class Floor {
      * then it updates the position of the player tile.
      * 
      * @param input     This is a character input
+     * 
+     * @return  true if valid, false if invalid.
      */
-    public void movePlayer(char input) {
+    public boolean movePlayer(char input) {
         boolean found = false;
         int x = 0;
         int y = 0;
@@ -100,25 +102,31 @@ public class Floor {
                 fMap[y][x] = currTile;  // replaces player with current tile
                 currTile = fMap[y-1][x]; // gets next tile
                 fMap[y-1][x] = temp; // puts player to next tile
+                return true;
             } else if(input == 'S' || input == 's') {
                 Tile temp = fMap[y][x]; // Gets the player
                 fMap[y][x] = currTile;  // replaces player with current tile
                 currTile = fMap[y+1][x]; // gets next tile
                 fMap[y+1][x] = temp; // puts player to next tile
+                return true;
             } else if(input == 'A' || input == 'a') {
                 Tile temp = fMap[y][x]; // Gets the player
                 fMap[y][x] = currTile;  // replaces player with current tile
                 currTile = fMap[y][x-1]; // gets next tile
                 fMap[y][x-1] = temp; // puts player to next tile
+                return true;
             } else if(input == 'D' || input == 'd') {
                 Tile temp = fMap[y][x]; // Gets the player
                 fMap[y][x] = currTile;  // replaces player with current tile
                 currTile = fMap[y][x+1]; // gets next tile
                 fMap[y][x+1] = temp; // puts player to next tile
+                return true;
             } 
         } else {
             System.out.println("Out of bounds");
+            return false;
         }
+        return false;
     }
 
     /**
@@ -130,7 +138,7 @@ public class Floor {
      * @param input The char input of the desired direction.
      * @return      True if I the desired move is valid, else false.
      */
-    private boolean verifyMove(int x, int y, char input) {
+    public boolean verifyMove(int x, int y, char input) {
         if(input == 'W' || input == 'w') {
             if(y-1 < yBounds && y-1 >= 0 && !(fMap[y-1][x] instanceof BoarderTile))
                 return true;

@@ -2,15 +2,18 @@ public class AreaModel {
     
     private Area area;
     private Character character;
-    public AreaModel() {
+
+    public AreaModel(Area area, Character character) {
+        this.area = area;
+        this.character = character;
     }
 
-    public void movePlayer(char input) {
-        area.movePlayer(input);
+    public boolean movePlayer(char input) {
+        return area.getFloors().movePlayer(input);
     }
 
     public void interact() {
-        
+        area.interact();
     }
 
     public Area getArea() {
