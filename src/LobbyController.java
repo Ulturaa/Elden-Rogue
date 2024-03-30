@@ -29,6 +29,12 @@ public class LobbyController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("LEVEL UP SCREEN");
+                lv.setVisible(false);
+                Character character = lm.getCharacter();
+
+                LevelUpView luv = new LevelUpView();
+                LevelUpModel lum = new LevelUpModel(character);
+                LevelUpController luc = new LevelUpController(lum, luv, lv);
             }
         });
 
@@ -36,6 +42,10 @@ public class LobbyController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("OPENING INVENTORY");
+                lv.setVisible(false);
+                InventoryModel im = new InventoryModel();
+                InventoryView iv = new InventoryView();
+                InventoryController ic = new InventoryController(im, iv);
             }
         });
 
