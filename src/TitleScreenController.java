@@ -3,17 +3,13 @@ import java.awt.event.ActionListener;
 
 public class TitleScreenController {
     private TitleScreenView tsv;
-<<<<<<< Updated upstream
     private TitleScreenModel tsm;
-=======
-    private TItleScreenModel tsm;
+
     private Character character;
     private CharCreate charCreate;
 
-    TitleScreenController(TitleScreenView tsv, TItleScreenModel tsm, Character character, CharCreate charCreate) {
->>>>>>> Stashed changes
-
-    public TitleScreenController(TitleScreenView tsv, TitleScreenModel tsm) {
+    public TitleScreenController(TitleScreenView tsv, TitleScreenModel tsm, Character character,
+            CharCreate charCreate) {
         this.tsv = tsv;
         this.tsm = tsm;
         this.charCreate = charCreate;
@@ -39,14 +35,8 @@ public class TitleScreenController {
         });
     }
 
-    public static void main(String[] args) {
-<<<<<<< Updated upstream
-        TitleScreenView tsv = new TitleScreenView();
-        TitleScreenModel tsm = new TitleScreenModel();
-        TitleScreenController tsc = new TitleScreenController(tsv, tsm);
-=======
-        // new TitleScreenController(new TitleScreenView(), new TItleScreenModel());
->>>>>>> Stashed changes
-    }
+    // public static void main(String[] args) {
+    // // new TitleScreenController(new TitleScreenView(), new TitleScreenModel());
+    // }
 
 }

@@ -73,6 +73,11 @@ public class Game {
      * @exception InputMismatchException When Integer input is given a Character or
      *                                   String.
      */
+    public void cc() {
+        create = new CharCreate();
+        character = new Character();
+    }
+
     public void CC() {
         int prompt;
 

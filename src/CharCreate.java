@@ -41,7 +41,7 @@ public class CharCreate {
      */
     public CharCreate() {
         jobList.add("Vagabond");
-        jobList.add("Samurai");
+        jobList.add("Vagabond");
         jobList.add("Warrior");
         jobList.add("Hero");
         jobList.add("Astrologer");
