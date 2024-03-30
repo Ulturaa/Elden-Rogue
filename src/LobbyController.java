@@ -42,6 +42,10 @@ public class LobbyController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("OPENING INVENTORY");
+                lv.setVisible(false);
+                InventoryModel im = new InventoryModel();
+                InventoryView iv = new InventoryView();
+                InventoryController ic = new InventoryController(im, iv);
             }
         });
 
