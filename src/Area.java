@@ -230,4 +230,14 @@ public class Area {
     public Floor getFloors() {
         return this.floors[playerInY - 1][playerInX - 1];
     }
+
+    /**
+     * This method returns the character.
+     * This is for the stats display of the view.
+     * 
+     * @return Character
+     */
+    public Character getCharacter() {
+        return character;
+    }
 }

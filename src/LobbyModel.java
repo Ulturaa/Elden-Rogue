@@ -20,4 +20,8 @@ public class LobbyModel {
     public String getRunes() {
         return String.valueOf(character.getRunes());
     }
+
+    public Character getCharacter() {
+        return character;
+    }
 }

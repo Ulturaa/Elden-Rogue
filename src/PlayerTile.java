@@ -8,6 +8,6 @@ public class PlayerTile extends Tile{
      * It sets the String Icon as " P ".
      */
     public PlayerTile() {
-        super(" P ", "Sprites/Walking.gif");
+        super(" P ", "Spirtes/Walking.gif");
     }
 }

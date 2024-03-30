@@ -1,15 +1,18 @@
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.Dimension;
+import java.awt.Image;
 
 /**
  * This is a Tile class. Tiles are the objects to be used
  * to create floors.
  */
-public abstract class Tile {
+public abstract class Tile extends JLabel{
 
     /**
      * icon     The string display for the object.
      */
-    private String icon;
+    private String iconT;
     private ImageIcon sprite;
 
     /**
@@ -19,8 +22,13 @@ public abstract class Tile {
      * @param icon  The string display of the tile.
      */
     public Tile(String icon, String path) {
-        this.icon = icon;
+        this.iconT = icon;
         this.sprite = new ImageIcon(path);
+        //this.setIcon(new ImageIcon(sprite.getImage().getScaledInstance(75,75,Image.SCALE_SMOOTH)));
+        this.setIcon(sprite);
+        this.setPreferredSize(new Dimension(75,75));
+        this.setHorizontalAlignment(JLabel.CENTER);
+        this.setVerticalAlignment(JLabel.CENTER);
     }
 
     /**
@@ -37,8 +45,8 @@ public abstract class Tile {
      * 
      * @return Icon - A string
      */
-    public String getIcon() {
-        return icon;
+    public String getIconT() {
+        return iconT;
     }
 
     /**

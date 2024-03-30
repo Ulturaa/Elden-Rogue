@@ -62,7 +62,7 @@ public class Floor {
         for(int i = 0; i < yBounds; i++) {
             System.out.print("█");
             for(int j = 0; j < xBounds; j++) {
-                System.out.print(fMap[i][j].getIcon());
+                System.out.print(fMap[i][j].getIconT());
             }
             System.out.println("█");
         }
@@ -172,5 +172,35 @@ public class Floor {
      */
     public Tile getCurrTile(){
         return currTile;
+    }
+
+    /**
+     * This method gets the width of the floor.
+     * 
+     * @param x - x value
+     * @param y - y value
+     * 
+     * @return tile
+     */
+    public Tile getTile(int x, int y){
+        return fMap[x][y];
+    }
+
+    /**
+     * This method gets the height of the floor.
+     * 
+     * @return yBounds
+     */
+    public int getYBounds(){
+        return yBounds;
+    }
+
+    /**
+     * This method gets the width of the floor.
+     * 
+     * @return yBounds
+     */
+    public int getXBounds(){
+        return xBounds;
     }
 }

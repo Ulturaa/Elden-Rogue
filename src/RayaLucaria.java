@@ -1,7 +1,7 @@
 public class RayaLucaria extends Area{
 
     public RayaLucaria(Character character) {
-        super(2, "Raya Luaria", character, 2, 3);
+        super(2, "Raya Luaria", character, 3, 1);
 
         // Create floor object //
         Floor f1 = new Floor(5, 5);
@@ -51,7 +51,9 @@ public class RayaLucaria extends Area{
         f4.setTile(4,5,new SpawnTile());
         f4.setTile(6,1,new SpawnTile());
         f4.setTile(6,5,new SpawnTile());
-        f4.setTile(4,3, new BossTile());
+        BossTile bt = new BossTile();
+        bt.setSprite("Sprites/Rennala.png");
+        f4.setTile(4,3, bt);
         f4.setTile(0,0,new BoarderTile());
         f4.setTile(0,1,new BoarderTile());
         f4.setTile(0,5,new BoarderTile());

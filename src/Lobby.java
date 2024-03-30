@@ -206,12 +206,7 @@ public class Lobby {
                                                 area = new RayaLucaria(character);
                                                 break;
                                             case 3:
-                                                if (character.getAreaClear(1) >= 10 && character.getAreaClear(2) >= 10) {
-                                                    System.out.println("WIP [LOCKED]");
-                                                } else {
-                                                    System.out.println("WIP");
-                                                }
-                                                toLobby = true;
+                                                area = new EldenThrone(character);
                                                 break;
                                         }
                                         System.out.print("\033\143");
