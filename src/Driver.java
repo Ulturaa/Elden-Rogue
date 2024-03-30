@@ -15,12 +15,11 @@ public class Driver {
      */
     public static void main(String[] args) {
         Game game = new Game();
-        // game.TitleScreen();
+        game.TitleScreen();
 
-        Character character = game.getCharacter();
-        CharCreate charCreate = game.getCharCreate();
+        //Character character = game.getCharacter();
+        //CharCreate charCreate = game.getCharCreate();
 
-        TitleScreenController tsc = new TitleScreenController(new TitleScreenView(), new TItleScreenModel(), character,
-                charCreate);
+        //TitleScreenController tsc = new TitleScreenController(new TitleScreenView(), new TItleScreenModel(), character,charCreate);
     }
 }

@@ -104,12 +104,8 @@ public class Area {
                     int eType = new Random().nextInt(3 - 1 + 1) + 1;
                     Enemy enemy = new Enemy(eType, areaNum);
                     int runeDrop = enemy.dropRunes();
-                    // int defaultHP = character.getStats(0);
+                    
                     Battle battle = new Battle(character, enemy, areaNum);
-
-                    System.out.println("-- A enemy has appeared! --");
-                    System.out.println("--------- Gaooo! ---------");
-                    // battle.battleScreen(enemy);
                     if (battle.battleSequence() == false) {
                         return true;
                     } else {
@@ -129,31 +125,22 @@ public class Area {
             BossTile bt = (BossTile) currTile;
             if (bt.getIsEnabled() == true) {
                 // Begin a bossfight //
-
-                Boss Godrick = new GodrickTheGrafted();
-                Boss Rennala = new RennalaQueenOfTheFullMoon();
-                Boss Beast = new TheEldenBeast();
-                Boss boss = Godrick;
-                int runeDrop = Godrick.dropRunes();
+                Boss boss = null;
                 switch (areaNum) {
                     case 1:
-                        boss = Godrick;
-                        break;
+                        boss = new GodrickTheGrafted(); break;
                     case 2:
-                        boss = Rennala;
-                        break;
+                        boss = new RennalaQueenOfTheFullMoon(); break;
                     case 3:
-                        boss = Beast;
-                        break;
+                        boss = new TheEldenBeast(); break;
                 }
-                Battle battle = new Battle(character, boss, runeDrop);
-                System.out.println("-- The boss lies here --");
-                System.out.println("-- For MCO1 the boss is defeated --");
-                // battle.battleScreen(enemy);
+                int runeDrop = boss.dropRunes();
+                Battle battle = new Battle(character, boss, areaNum);
+
                 if (battle.battleSequence() == false) {
                     return true;
                 } else {
-                    System.out.println("Enemy " + Godrick.getName() + " has dropped " + runeDrop + " runes.");
+                    System.out.println("Enemy " + boss.getName() + " has dropped " + runeDrop + " runes.");
                     character.setRunes(character.getRunes() + runeDrop);
                 }
 

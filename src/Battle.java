@@ -4,8 +4,6 @@ import java.util.Random;
 public class Battle {
     private Character character;
     private boolean playerTurn;
-    private Enemy enemy;
-    private Boss boss;
     private Entity entity;
 
     private int areaNum;
@@ -20,14 +18,6 @@ public class Battle {
     private boolean isBattle;
 
     Scanner bc = new Scanner(System.in);
-
-    public Battle(Character character, Enemy enemy, int areaNum) {
-        this.character = character;
-        this.enemy = enemy;
-        this.entity = enemy;
-        this.areaNum = areaNum;
-
-    }
 
     public Battle(Character character, Entity entity, int areaNum) {
         this.character = character;
@@ -120,12 +110,9 @@ public class Battle {
     public boolean battleSequence() {
         int maxHP;
         int playerHP;
-        Random random = new Random();
-
         playerTurn = true;
         isBattle = true;
 
-        // System.out.println(defaultPlayerHP);
         if (character.getWeapon() != null && character.getBattleCount() == 0) {
             maxHP = 100 * ((character.getStats(0) + character.getWeapon().getWeaponStat(0)) / 2);
             pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - entity.getStats(0));
@@ -155,53 +142,49 @@ public class Battle {
         }
 
         playerHP = character.getCurrHP();
-        enemyHP = entity.getHP() * areaNum;
+        
+
+        if(entity instanceof Enemy){
+            enemyHP = entity.getHP() * areaNum;
+        } else {
+            enemyHP = entity.getHP();
+        }
 
         while (isBattle) {
             if (playerTurn) {
                 battleScreen();
 
-                // randomize attack here
-                if (entity.getName() != "Godrick the Grafted" && entity.getName() != "Rennala, Queen of the full moon"
-                        && entity.getName() != "The Elden Beast") {
-                    enemy.randAttack();
-                } // else {
-                  // switch (entity.getName()) {
-                  // case "Godrick the Grafted":
-                  // entity.setATK(random.nextInt(300 - 150 + 1) + 150);
-
-                // break;
-                // case "Rennala, Queen of the full moon":
-                // break;
-                // case "The Elden Beast":
-                // break;
-                // }
-
-                // }
+                if(entity instanceof Enemy){
+                    Enemy e = (Enemy) entity;
+                    e.randAttack();
+                    entity.setATK(e.getATK());
+                } else {
+                    Boss b = (Boss) entity;
+                    b.randAttack();
+                    entity.setATK(b.getATK());
+                }
 
                 System.out.println("\nINCOMING ENEMY DMG:" + entity.getATK() + "\n");
 
                 battleOptions();
-                // battleChoice = bc.nextInt();
                 if (entity.getHP() <= 0) {
                     isBattle = false;
-                    System.out.println("ENEMY FELLED");
+                    if(entity instanceof Enemy)
+                        System.out.println("ENEMY FELLED");
+                    else
+                        System.out.println("GREAT ENEMY FELLED");
                     character.setBattleCount(character.getBattleCount() + 1);
-                    // this.battleCounter += 1;
                     return true;
                 }
             } else {
 
                 playerHP -= entity.getATK() * areaNum;
-                // System.out.println(areaNum);
-                // System.out.println(entity.getATK());
-                // System.out.println(playerHP);
                 character.setCurrHP(playerHP);
                 System.out.println("Enemy has attacked!");
                 if (character.getCurrHP() <= 0) {
                     character.setCurrHP(character.getStats(0));
                     isBattle = false;
-                    System.out.println("YOU DIED");
+                    System.out.println("YOU DIED " + entity.getATK() + " " + areaNum);
                     character.setBattleCount(0);
                     return false;
                 }
@@ -212,13 +195,3 @@ public class Battle {
         return false;
     }
 }
-
-/*
- * Notes:
- * 
- * - Add a temp holder for player health. Once player is defeated, restore
- * health to normal then exit battle.
- * If player defeats enemy, lost health is retained.
- * 
- * - Implement try catch for input mismatch.
- */
