@@ -138,10 +138,10 @@ public class Floor {
             if(y+1 < yBounds && y+1 >= 0 && !(fMap[y+1][x] instanceof BoarderTile))
             return true;
         } else if(input == 'A' || input == 'a') {
-            if(x-1 < yBounds && x-1 >= 0 && !(fMap[y][x-1] instanceof BoarderTile))
+            if(x-1 < xBounds && x-1 >= 0 && !(fMap[y][x-1] instanceof BoarderTile))
                 return true;
         } else if(input == 'D' || input == 'd') {
-            if(x+1 < yBounds && x+1 >= 0 && !(fMap[y][x+1] instanceof BoarderTile))
+            if(x+1 < xBounds && x+1 >= 0 && !(fMap[y][x+1] instanceof BoarderTile))
                 return true;
         } 
 

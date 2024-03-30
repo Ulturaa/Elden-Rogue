@@ -1,7 +1,7 @@
 public class RayaLucaria extends Area{
 
     public RayaLucaria(Character character) {
-        super(2, "Raya Luaria", character, 3, 1);
+        super(2, "Raya Luaria", character, 3, 3);
 
         // Create floor object //
         Floor f1 = new Floor(5, 5);

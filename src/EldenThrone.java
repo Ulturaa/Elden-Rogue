@@ -1,6 +1,6 @@
 public class EldenThrone extends Area {
     public EldenThrone(Character character) {
-        super(3, "Elden Throne", character, 9, 3);
+        super(3, "Elden Throne", character, 3, 1);
 
         // Create floor object //
         Floor f1 = new Floor(3, 9);
