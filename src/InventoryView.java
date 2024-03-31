@@ -90,12 +90,12 @@ public class InventoryView {
         Iterator<JButton> i = ICButtonlist.iterator();
 
         while (i.hasNext()) {
-            this.IFrame.remove(i.next());
+            this.ipanel.remove(i.next());
         }
     }
 
     public void clearICButtonlist() {
-        ICButtonlist.clear();
+        this.ICButtonlist = new ArrayList<JButton>();
     }
 
     public void setILabel(String s) {
@@ -111,8 +111,9 @@ public class InventoryView {
         JTextArea WText = new JTextArea();
 
         WText.setText(s);
-        WText.setForeground(Color.BLACK);
-        WText.setFont(new Font("Times New Roman", Font.BOLD, 10));
+        WText.setBackground(Color.BLACK);
+        WText.setForeground(Color.YELLOW);
+        WText.setFont(new Font("Times New Roman", Font.BOLD, 15));
         WText.setWrapStyleWord(true);
         WText.setLineWrap(true);
 
@@ -176,7 +177,7 @@ public class InventoryView {
         scrollPane = new JScrollPane();
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
+        scrollPane.setBackground(Color.BLACK);
         IFrame.add(scrollPane);
         IFrame.revalidate();
         IFrame.repaint();
@@ -199,17 +200,20 @@ public class InventoryView {
     }
 
     public void removeButtons() {
-        Component[] components = ipanel.getComponents();
-        for (Component component : components) {
-            if (component instanceof JButton) {
-                ipanel.remove(component);
-            }
+
+        for (JButton button : ICButtonlist) {
+            ipanel.remove(button); // Remove the button from the panel
         }
         ipanel.revalidate();
         ipanel.repaint();
+        ICButtonlist.clear();
     }
 
     public void setVisiblepanel(boolean b) {
         ipanel.setVisible(b);
+    }
+
+    public void setVisibleScroll(boolean b) {
+        scrollPane.setVisible(b);
     }
 }
