@@ -26,17 +26,21 @@ public class InventoryController {
         im.addWeapons();
 
         ArrayList<Weapon> weaponList = im.getWeaponList();
+        iv.scrollPane();
         iv.createFlowLayoutPanel();
         buttonLoop(weaponList);
 
         iv.composeICButtonlist();
         iv.setVisiblepanel(false);
+        iv.setVisibleScroll(false);
+        // iv.clearICButtonlist();
 
         iv.setIButton("Select Weapon", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 iv.removeButtons();
+
                 iv.refresh();
                 System.out.println("SELECT");
                 for (Object item : weaponList) {
@@ -47,13 +51,21 @@ public class InventoryController {
                 buttonLoop(weaponList);
                 iv.composeICButtonlist();
                 iv.setVisiblepanel(true);
-
-                // iv.scrollPane();
+                iv.setVisibleScroll(true);
                 iv.setIButtonvisbility(0, false);
                 String weaponLabel = "";
 
-                // iv.setWText(weaponLabel);
-
+                for (int j = 0; j < weaponList.size(); j++) {
+                    weaponLabel += weaponList.get(j).getName() + "\n" + "HP:" + weaponList.get(j).getWeaponStat(0)
+                            + "\n"
+                            + "END:"
+                            + weaponList.get(j).getWeaponStat(1) + "\n" + "DEX:" + weaponList.get(j).getWeaponStat(2)
+                            + "\n" + "STR:"
+                            + weaponList.get(j).getWeaponStat(3) + "\n" + "INT:" + weaponList.get(j).getWeaponStat(4)
+                            + "\n" + "FTH:"
+                            + weaponList.get(j).getWeaponStat(5) + "\n\n";
+                }
+                iv.setWText(weaponLabel);
                 iv.refresh();
 
             }
@@ -108,12 +120,15 @@ public class InventoryController {
                         iv.updateLabel(0, "Currently Equipped Weapon: " + im.getWeaponName());
                         iv.setIButtonvisbility(0, true);
                         iv.setVisiblepanel(false);
-                        // iv.refresh();
+                        iv.setVisibleScroll(false);
                         lv.setVisible(true);
 
-                        // weaponList.clear();
                         iv.closeFrame();
 
+                    } else {
+                        iv.setILabel("DEXTERITY TOO LOW");
+                        iv.composeILabels();
+                        iv.refresh();
                     }
 
                 }
