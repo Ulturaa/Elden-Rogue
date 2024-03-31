@@ -206,7 +206,7 @@ public class Lobby {
                                                 area = new RayaLucaria(character);
                                                 break;
                                             case 3:
-                                                area = new EldenThrone(character);
+                                                area = new EldenThrone(character); 
                                                 break;
                                         }
                                         System.out.print("\033\143");

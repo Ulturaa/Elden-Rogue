@@ -10,10 +10,12 @@ public class AreaController {
 
     AreaView av;
     AreaModel am;
+    LobbyView lv;
 
-    public AreaController(AreaView av, AreaModel am) {
+    public AreaController(AreaView av, AreaModel am, LobbyView lv) {
         this.av = av;
         this.am = am;
+        this.lv = lv;
 
         this.av.upBtnActionListener(new ActionListener() {
             @Override
@@ -71,7 +73,6 @@ public class AreaController {
                     FastTravelTile ft = (FastTravelTile) am.getCurrTile();
                     if (ft.getIsEnabled() == true) {
                         JOptionPane.showMessageDialog(null, "Returning to Lobby", "", JOptionPane.PLAIN_MESSAGE);
-                        //Change to update eventLbl in areaView
                         toLobby =  true;
                     } else {
                         av.updateLabels("This is locked.\n Defeat the boss of the dungeon.");
@@ -91,6 +92,7 @@ public class AreaController {
                                 
                                 Battle battle = new Battle(am.getCharacter(), enemy, am.getArea().getAreaNum());
                                 if (battle.battleSequence() == false) {
+                                    JOptionPane.showMessageDialog(null, "<html>"+ "You died." +"</html>", "Oh no!", JOptionPane.WARNING_MESSAGE);
                                     toLobby =  true;
                                 } else {
                                     am.getCharacter().setRunes(am.getCharacter().getRunes() + runeDrop);
@@ -122,6 +124,7 @@ public class AreaController {
                         Battle battle = new Battle(am.getCharacter(), boss, am.getArea().getAreaNum());
 
                         if (battle.battleSequence() == false) {
+                            JOptionPane.showMessageDialog(null, "<html>"+ "You died." +"</html>", "Oh no!", JOptionPane.WARNING_MESSAGE);
                             toLobby = true;
                         } else {
                             av.updateLabels("Greater enemy has been felled.\n" + boss.getName() + " has dropped " + runeDrop + " runes.");
@@ -141,15 +144,12 @@ public class AreaController {
                     av.updateLabels("Nothing happened");
                 
                 av.printArea(av.area);
+
+                if(toLobby == true) {
+                    av.closeArea();
+                    lv.setVisible(true);
+                }
             }
         });
-    }
-
-    public static void main(String[] args) {
-        Character c = new Character();
-        //Area a = new StormveilCastle(c);
-        //Area a = new RayaLucaria(c);
-        Area a = new EldenThrone(c);
-        new AreaController(new AreaView(a), new AreaModel(a,c));
     }
 }
