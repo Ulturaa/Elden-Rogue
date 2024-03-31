@@ -15,6 +15,7 @@ import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,6 +24,7 @@ public class InventoryView {
     private JLabel ITitle;
     private Weapon selectedWeapon;
     private JScrollPane scrollPane;
+    private JPanel ipanel;
 
     private ArrayList<JButton> IButtonlist = new ArrayList<JButton>();
     private ArrayList<JButton> ICButtonlist = new ArrayList<JButton>();
@@ -80,7 +82,7 @@ public class InventoryView {
         Iterator<JButton> i = ICButtonlist.iterator();
 
         while (i.hasNext()) {
-            this.IFrame.add(i.next());
+            this.ipanel.add(i.next());
         }
     }
 
@@ -90,6 +92,10 @@ public class InventoryView {
         while (i.hasNext()) {
             this.IFrame.remove(i.next());
         }
+    }
+
+    public void clearICButtonlist() {
+        ICButtonlist.clear();
     }
 
     public void setILabel(String s) {
@@ -176,4 +182,34 @@ public class InventoryView {
         IFrame.repaint();
     }
 
+    public void createFlowLayoutPanel() {
+        // Create a JPanel
+        ipanel = new JPanel();
+
+        // Set the layout manager to FlowLayout
+        ipanel.setLayout(new FlowLayout());
+        ipanel.setBackground(Color.BLACK);
+
+        // Return the created panel
+        IFrame.add(ipanel);
+    }
+
+    public void panelAdd(Component comp) {
+        ipanel.add(comp);
+    }
+
+    public void removeButtons() {
+        Component[] components = ipanel.getComponents();
+        for (Component component : components) {
+            if (component instanceof JButton) {
+                ipanel.remove(component);
+            }
+        }
+        ipanel.revalidate();
+        ipanel.repaint();
+    }
+
+    public void setVisiblepanel(boolean b) {
+        ipanel.setVisible(b);
+    }
 }

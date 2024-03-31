@@ -16,6 +16,13 @@ public class LobbyController {
         lv.setLLabel("LEVEL: " + lm.getLevel());
         lv.setLLabel("RUNES: " + lm.getRunes());
 
+        Character character = lm.getCharacter();
+        Inventory inventory = lm.getInventory();
+        InventoryModel im = new InventoryModel(character, inventory);
+        InventoryView iv = new InventoryView();
+        InventoryController ic = new InventoryController(im, iv, lv);
+        iv.setVisible(false);
+
         lv.composeLLabels();
 
         lv.setLButton("FAST TRAVEL", new ActionListener() {
@@ -43,11 +50,7 @@ public class LobbyController {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("OPENING INVENTORY");
                 lv.setVisible(false);
-                Character character = lm.getCharacter();
-                Inventory inventory = lm.getInventory();
-                InventoryModel im = new InventoryModel(character, inventory);
-                InventoryView iv = new InventoryView();
-                InventoryController ic = new InventoryController(im, iv, lv);
+                iv.setVisible(true);
             }
         });
 
