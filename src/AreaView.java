@@ -31,7 +31,7 @@ public class AreaView {
 
     public AreaView(Area area) {
         this.area = area;
-        areaFrame = new JFrame();
+        
         areaFrame = new JFrame();
         areaFrame.setSize(820, 980);
         areaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
