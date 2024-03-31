@@ -16,14 +16,14 @@ public class Inventory {
         this.equippedWeapon = null;
     }
 
-    // public void addWeapon(/* Weapon weapon */) {// for debugging
-    // Weapon weapon1 = new Weapon("Sword", 3000);
-    // Weapon weapon2 = new Weapon("Katana", 3000);
-    // Weapon weapon3 = new Weapon("Whip", 3000);
-    // this.weaponList.add(weapon1);
-    // this.weaponList.add(weapon2);
-    // this.weaponList.add(weapon3);
-    // }
+    public void addWeapon(/* Weapon weapon */) {// for debugging
+        Weapon weapon1 = new Weapon("Sword", 3000);
+        Weapon weapon2 = new Weapon("Katana", 3000);
+        Weapon weapon3 = new Weapon("Whip", 3000);
+        this.weaponList.add(weapon1);
+        this.weaponList.add(weapon2);
+        this.weaponList.add(weapon3);
+    }
 
     public void addWeapon(Weapon weapon) {
         this.weaponList.add(weapon);
@@ -51,6 +51,42 @@ public class Inventory {
                 System.out.println("EQUIPPED WEAPON: " + character.getWeapon().getName());
             } else
                 System.out.println("DEXTERITY IS TOO LOW EQUIP A DIFFERENT WEAPON");
+
+        }
+
+    }
+
+    public boolean equip(int i, Character character) {
+        if (this.equippedWeapon == null) {
+            if (character.getStats(2) >= this.weaponList.get(i).getWeaponStat(2)) {
+                this.equippedWeapon = this.weaponList.get(i);
+                System.out.println(this.equippedWeapon.getName());
+                character.setWeapon(this.equippedWeapon);
+                this.weaponList.remove(i);
+                System.out.println("EQUIPPED WEAPON: " + character.getWeapon().getName());
+                return true;
+            } else {
+
+                System.out.println("DEXTERITY IS TOO LOW EQUIP A DIFFERENT WEAPON");
+                return false;
+            }
+
+        } else {
+            if (character.getStats(2) >= this.weaponList.get(i).getWeaponStat(2)) {
+                Weapon weaponHolder;
+
+                weaponHolder = this.equippedWeapon;
+                this.equippedWeapon = this.weaponList.get(i);
+                character.setWeapon(this.equippedWeapon);
+                this.weaponList.remove(i);
+                addWeapon(weaponHolder);
+                System.out.println("EQUIPPED WEAPON: " + character.getWeapon().getName());
+                return true;
+            } else {
+
+                System.out.println("DEXTERITY IS TOO LOW EQUIP A DIFFERENT WEAPON");
+                return false;
+            }
 
         }
 
@@ -108,5 +144,9 @@ public class Inventory {
             equipWeapon(wChoice - 1, character);
         }
 
+    }
+
+    public ArrayList<Weapon> getWeaponList() {
+        return this.weaponList;
     }
 }

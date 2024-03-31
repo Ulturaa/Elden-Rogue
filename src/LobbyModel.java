@@ -6,6 +6,7 @@ public class LobbyModel {
     public LobbyModel(Character character) {
         this.character = character;
         this.inventory = new Inventory();
+        this.shop = new Shop();
     }
 
     public String getName() {
@@ -22,6 +23,10 @@ public class LobbyModel {
 
     public String getRunes() {
         return String.valueOf(character.getRunes());
+    }
+
+    public Inventory getInventory() {
+        return this.inventory;
     }
 
     public Character getCharacter() {

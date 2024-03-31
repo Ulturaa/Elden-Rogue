@@ -43,9 +43,11 @@ public class LobbyController {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("OPENING INVENTORY");
                 lv.setVisible(false);
-                InventoryModel im = new InventoryModel();
+                Character character = lm.getCharacter();
+                Inventory inventory = lm.getInventory();
+                InventoryModel im = new InventoryModel(character, inventory);
                 InventoryView iv = new InventoryView();
-                InventoryController ic = new InventoryController(im, iv);
+                InventoryController ic = new InventoryController(im, iv, lv);
             }
         });
 

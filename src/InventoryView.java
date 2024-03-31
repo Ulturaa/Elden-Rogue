@@ -6,6 +6,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,9 +21,13 @@ import java.util.Iterator;
 public class InventoryView {
     private JFrame IFrame;
     private JLabel ITitle;
+    private Weapon selectedWeapon;
+    private JScrollPane scrollPane;
 
     private ArrayList<JButton> IButtonlist = new ArrayList<JButton>();
+    private ArrayList<JButton> ICButtonlist = new ArrayList<JButton>();
     private ArrayList<JLabel> ILabellist = new ArrayList<JLabel>();
+    // private ArrayList<JLabel> WLabellist = new ArrayList<JLabel>();
 
     public InventoryView() {
         IFrame = new JFrame();
@@ -42,12 +48,24 @@ public class InventoryView {
         IFrame.setVisible(true);
     }
 
+    public void setWeaponButtons(ArrayList<Weapon> weaponList) {
+
+    }
+
     public void setIButton(String btnLabel, ActionListener actionListener) {
         JButton IButton = new JButton(btnLabel);
         IButton.addActionListener(actionListener);
         IButton.setPreferredSize(new Dimension(200, 30));
 
         IButtonlist.add(IButton);
+    }
+
+    public void setICButton(String btnLabel, ActionListener actionListener) {
+        JButton ICButton = new JButton(btnLabel);
+        ICButton.addActionListener(actionListener);
+        ICButton.setPreferredSize(new Dimension(200, 30));
+
+        ICButtonlist.add(ICButton);
     }
 
     public void composeIButtonlist() {
@@ -58,6 +76,22 @@ public class InventoryView {
         }
     }
 
+    public void composeICButtonlist() {
+        Iterator<JButton> i = ICButtonlist.iterator();
+
+        while (i.hasNext()) {
+            this.IFrame.add(i.next());
+        }
+    }
+
+    public void removeICButtonlist() {
+        Iterator<JButton> i = ICButtonlist.iterator();
+
+        while (i.hasNext()) {
+            this.IFrame.remove(i.next());
+        }
+    }
+
     public void setILabel(String s) {
         JLabel ILabel = new JLabel();
 
@@ -65,6 +99,19 @@ public class InventoryView {
         ILabel.setForeground(Color.YELLOW);
         ILabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
         ILabellist.add(ILabel);
+    }
+
+    public void setWText(String s) {
+        JTextArea WText = new JTextArea();
+
+        WText.setText(s);
+        WText.setForeground(Color.BLACK);
+        WText.setFont(new Font("Times New Roman", Font.BOLD, 10));
+        WText.setWrapStyleWord(true);
+        WText.setLineWrap(true);
+
+        scrollPane.setViewportView(WText);
+        // WLabellist.add(WText);
     }
 
     public void composeILabels() {
@@ -92,4 +139,41 @@ public class InventoryView {
     public void setVisible(boolean b) {
         IFrame.setVisible(b);
     }
+
+    public void closeFrame() {
+        IFrame.dispose();
+    }
+
+    public void createButtonsFromArray(ArrayList<Weapon> itemList, JPanel panel) {
+        for (Weapon item : itemList) {
+            JButton button = new JButton("item");
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // Handle button click event here
+                    System.out.println("Button clicked: " + item);
+                }
+            });
+            panel.add(button);
+        }
+    }
+
+    public void refresh() {
+        IFrame.revalidate();
+        IFrame.repaint();
+    }
+
+    public void setIButtonvisbility(int i, boolean b) {
+        IButtonlist.get(i).setVisible(b);
+    }
+
+    public void scrollPane() {
+        scrollPane = new JScrollPane();
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        IFrame.add(scrollPane);
+        IFrame.revalidate();
+        IFrame.repaint();
+    }
+
 }

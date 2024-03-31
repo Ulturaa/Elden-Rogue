@@ -30,6 +30,10 @@ public class LevelUpModel {
         return String.valueOf(character.getStats(i));
     }
 
+    public String getJob() {
+        return character.getJob();
+    }
+
     public boolean upgradeStat(int lvlupchoice) {
 
         int upgraded;

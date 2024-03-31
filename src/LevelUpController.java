@@ -190,6 +190,10 @@ public class LevelUpController {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("BACK TO LOBBY ");
                 lv.setVisible(true);
+                lv.updateLabel(0, "NAME: " + lum.getName());
+                lv.updateLabel(1, "JOB CLASS: " + lum.getJob());
+                lv.updateLabel(2, "LEVEL: " + lum.getLevel());
+                lv.updateLabel(3, "RUNES: " + lum.getRunes());
                 luv.closeFrame();
             }
         });
