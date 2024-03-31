@@ -16,12 +16,14 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.GridBagLayout;
+
 
 public class AreaView {
 
     private JFrame areaFrame;
     private JButton upBtn, downBtn, leftBtn, rightBtn, intBtn;
-    private JLabel areaLbl, hpLbl, runesLbl;
+    private JLabel areaLbl, hpLbl, runesLbl, eventLbl;
     private JPanel areaPanel, buttonPanel;
 
     Area area;
@@ -69,6 +71,13 @@ public class AreaView {
         runesLbl.setFont(new Font("Times New Roman", Font.BOLD, 30));
         runesLbl.setForeground(Color.WHITE);
         buttonPanel.add(runesLbl);
+
+        eventLbl = new JLabel();
+        eventLbl.setText("");
+        eventLbl.setBounds(15,175,300,60);
+        eventLbl.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        eventLbl.setForeground(Color.WHITE);
+        buttonPanel.add(eventLbl);
 
         upBtn = new JButton("UP");
         upBtn.setFocusable(false);
@@ -145,10 +154,15 @@ public class AreaView {
 		this.intBtn.addActionListener(actionListener);
 	}
 
+    public void updateLabels(String eventStr) {
+        hpLbl.setText("HP: " + Integer.toString(this.area.getCharacter().getCurrHP()));
+        runesLbl.setText("Runes: " + Integer.toString(this.area.getCharacter().getRunes()));
+        eventLbl.setText("<html>"+ eventStr +"</html>");
+    }
+
 
     public void printArea(Area area) {
         this.areaPanel.removeAll();
-        this.areaPanel.setBackground(Color.CYAN);
         this.areaPanel.setLayout(new GridLayout(area.getFloors().getYBounds(),area.getFloors().getXBounds()));
         this.areaPanel.setPreferredSize(new Dimension(area.getFloors().getXBounds()*75, area.getFloors().getYBounds()*75));
         

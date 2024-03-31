@@ -20,6 +20,14 @@ public class AreaModel {
         return area;
     }
 
+    public Floor getFloors() {
+        return area.getFloors();
+    }
+
+    public Tile getCurrTile() {
+        return area.getFloors().getCurrTile();
+    }
+
     public Character getCharacter() {
         return character;
     }

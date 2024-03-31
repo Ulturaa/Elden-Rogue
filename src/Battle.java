@@ -184,7 +184,7 @@ public class Battle {
                 if (character.getCurrHP() <= 0) {
                     character.setCurrHP(character.getStats(0));
                     isBattle = false;
-                    System.out.println("YOU DIED " + entity.getATK());
+                    System.out.println("YOU DIED");
                     character.setBattleCount(0);
                     return false;
                 }

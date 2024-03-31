@@ -89,9 +89,7 @@ public class Area {
             FastTravelTile ft = (FastTravelTile) currTile;
             if (ft.getIsEnabled() == true) {
                 System.out.println("-- Fast Traveling --");
-                // increase value of # dungeon clered //
                 return true;
-                // Return to lobby //
             } else {
                 System.out.println("-- This is locked. Defeat the boss of the dungeon. --");
             }
@@ -101,16 +99,21 @@ public class Area {
             SpawnTile st = (SpawnTile) currTile;
             if (st.getIsEnabled() == true) {
                 if (st.TileEvent() == false) {
-                    int eType = new Random().nextInt(3 - 1 + 1) + 1;
-                    Enemy enemy = new Enemy(eType, areaNum);
-                    int runeDrop = enemy.dropRunes();
-                    
-                    Battle battle = new Battle(character, enemy, areaNum);
-                    if (battle.battleSequence() == false) {
-                        return true;
-                    } else {
-                        System.out.println("Enemy " + enemy.getName() + " has dropped " + runeDrop + " runes.");
-                        character.setRunes(character.getRunes() + runeDrop);
+                    if(areaNum == 3) {
+                        System.out.println("No treasure was found.");
+                    }
+                    else {
+                        int eType = new Random().nextInt(3 - 1 + 1) + 1;
+                        Enemy enemy = new Enemy(eType, areaNum);
+                        int runeDrop = enemy.dropRunes();
+                        
+                        Battle battle = new Battle(character, enemy, areaNum);
+                        if (battle.battleSequence() == false) {
+                            return true;
+                        } else {
+                            System.out.println("Enemy " + enemy.getName() + " has dropped " + runeDrop + " runes.");
+                            character.setRunes(character.getRunes() + runeDrop);
+                        }
                     }
 
                 } else {
@@ -166,7 +169,7 @@ public class Area {
      * current
      * floor of the player.
      */
-    private void moveToFloor() {
+    public void moveToFloor() {
         DoorTile door = (DoorTile) getFloors().getCurrTile();
         if (door.getGoing() == "up")
             playerInY -= 1;
