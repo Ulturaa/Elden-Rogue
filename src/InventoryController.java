@@ -23,11 +23,14 @@ public class InventoryController {
 
         iv.composeILabels();
 
-        im.addWeapons();
+        // im.addWeapons();
 
         ArrayList<Weapon> weaponList = im.getWeaponList();
         iv.scrollPane();
         iv.createFlowLayoutPanel();
+        iv.setILabel("DEXTERITY TOO LOW");
+        iv.composeILabels();
+        iv.setVisibleLabel(1, false);
         buttonLoop(weaponList);
 
         iv.composeICButtonlist();
@@ -48,6 +51,8 @@ public class InventoryController {
                 }
 
                 System.out.println("smo");
+                System.out.println(weaponList.size());
+
                 buttonLoop(weaponList);
                 iv.composeICButtonlist();
                 iv.setVisiblepanel(true);
@@ -75,6 +80,7 @@ public class InventoryController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("BACK TO LOBBY");
+                iv.setVisibleLabel(1, false);
                 lv.setVisible(true);
                 iv.closeFrame();
 
@@ -109,16 +115,17 @@ public class InventoryController {
 
                     System.out.println("WEAPONS");
                     selectedWeapon = weaponName;
-
+                    System.out.println(weaponList.size());
                     System.out.println("WEAPON CLICKED " + weaponName);
                     System.out.println("Index: " + index);
                     if (im.equipWeapon(index)) {
-                        System.out.println(weaponList.get(index).getName());
+                        // System.out.println(weaponList.get(index).getName());
                         for (Object item : weaponList) {
                             System.out.println(item);
                         }
                         iv.updateLabel(0, "Currently Equipped Weapon: " + im.getWeaponName());
                         iv.setIButtonvisbility(0, true);
+                        iv.setVisibleLabel(1, false);
                         iv.setVisiblepanel(false);
                         iv.setVisibleScroll(false);
                         lv.setVisible(true);
@@ -126,8 +133,7 @@ public class InventoryController {
                         iv.closeFrame();
 
                     } else {
-                        iv.setILabel("DEXTERITY TOO LOW");
-                        iv.composeILabels();
+                        iv.setVisibleLabel(1, true);
                         iv.refresh();
                     }
 
