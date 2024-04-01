@@ -20,11 +20,16 @@ public class LobbyController {
         lv.setLLabel("RUNES: " + lm.getRunes());
 
         Character character = lm.getCharacter();
-        //Inventory inventory = lm.getInventory();
-        //InventoryModel im = new InventoryModel(character, inventory);
-        //InventoryView iv = new InventoryView();
-        //InventoryController ic = new InventoryController(im, iv, lv);
-        //iv.setVisible(false);
+        Inventory inventory = lm.getInventory();
+        Shop shop = lm.getShop();
+        InventoryModel im = new InventoryModel(character, inventory);
+        InventoryView iv = new InventoryView();
+        InventoryController ic = new InventoryController(im, iv, lv);
+        ShopModel sm = new ShopModel(character, inventory, shop);
+        ShopView sv = new ShopView();
+        ShopController sc = new ShopController(sm, sv, lv);
+        iv.setVisible(false);
+        sv.setVisible(false);
 
         lv.composeLLabels();
 
@@ -33,36 +38,40 @@ public class LobbyController {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> aList = new ArrayList<>();
                 String[] aArr;
-                
+
                 aList.add("STORMVEIL CASTLE | Clears: [" + lm.getCharacter().getAreaClear(1) + "]");
                 aList.add("RAYA LUCARIA ACADEMY | Clears: [" + lm.getCharacter().getAreaClear(2) + "]");
 
-                if(lm.getCharacter().getAreaClear(1) >= 10 && lm.getCharacter().getAreaClear(2) >= 10)
+                if (lm.getCharacter().getAreaClear(1) >= 10 && lm.getCharacter().getAreaClear(2) >= 10)
                     aList.add("THE ELDEN THRONE | Clears: [" + lm.getCharacter().getAreaClear(3) + "]");
-                
+
                 aArr = new String[aList.size()];
-                for(int i = 0; i < aList.size(); i++)
+                for (int i = 0; i < aList.size(); i++)
                     aArr[i] = aList.get(i);
 
-                int sel = JOptionPane.showOptionDialog(null, "SELECT AREA", "", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, aArr, -1);
+                int sel = JOptionPane.showOptionDialog(null, "SELECT AREA", "", JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.PLAIN_MESSAGE, null, aArr, -1);
                 System.out.println(sel);
                 Area area = null;
-                if(sel >= 0 && sel <=2){
-                    switch(sel) {
+                if (sel >= 0 && sel <= 2) {
+                    switch (sel) {
                         case 0:
-                            area = new StormveilCastle(lm.getCharacter()); break;
+                            area = new StormveilCastle(lm.getCharacter());
+                            break;
                         case 1:
-                            area = new RayaLucaria(lm.getCharacter()); break;
+                            area = new RayaLucaria(lm.getCharacter());
+                            break;
                         case 2:
-                            area = new EldenThrone(lm.getCharacter()); break;                           
+                            area = new EldenThrone(lm.getCharacter());
+                            break;
                     }
                     AreaView av = new AreaView(area);
                     AreaModel am = new AreaModel(area, lm.getCharacter());
                     AreaController ac = new AreaController(av, am, lv);
                     lv.setVisible(false);
-                } else 
+                } else
                     System.out.println("back to lobby");
-                
+
             }
         });
 
@@ -84,7 +93,7 @@ public class LobbyController {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("OPENING INVENTORY");
                 lv.setVisible(false);
-                //iv.setVisible(true);
+                iv.setVisible(true);
             }
         });
 
@@ -92,6 +101,8 @@ public class LobbyController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("ENTERING SHOP");
+                lv.setVisible(false);
+                sv.setVisible(true);
             }
         });
 

@@ -65,7 +65,7 @@ public class InventoryView {
     public void setICButton(String btnLabel, ActionListener actionListener) {
         JButton ICButton = new JButton(btnLabel);
         ICButton.addActionListener(actionListener);
-        ICButton.setPreferredSize(new Dimension(200, 30));
+        ICButton.setPreferredSize(new Dimension(100, 30));
 
         ICButtonlist.add(ICButton);
     }
@@ -177,6 +177,7 @@ public class InventoryView {
         scrollPane = new JScrollPane();
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setPreferredSize(new Dimension(400, 200));
         scrollPane.setBackground(Color.BLACK);
         IFrame.add(scrollPane);
         IFrame.revalidate();
@@ -184,14 +185,12 @@ public class InventoryView {
     }
 
     public void createFlowLayoutPanel() {
-        // Create a JPanel
+
         ipanel = new JPanel();
 
-        // Set the layout manager to FlowLayout
         ipanel.setLayout(new FlowLayout());
         ipanel.setBackground(Color.BLACK);
 
-        // Return the created panel
         IFrame.add(ipanel);
     }
 
@@ -215,5 +214,9 @@ public class InventoryView {
 
     public void setVisibleScroll(boolean b) {
         scrollPane.setVisible(b);
+    }
+
+    public void setVisibleLabel(int i, boolean b) {
+        ILabellist.get(i).setVisible(b);
     }
 }

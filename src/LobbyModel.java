@@ -32,4 +32,8 @@ public class LobbyModel {
     public Character getCharacter() {
         return this.character;
     }
+
+    public Shop getShop() {
+        return this.shop;
+    }
 }
