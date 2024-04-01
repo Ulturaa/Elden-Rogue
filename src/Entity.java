@@ -6,6 +6,7 @@
  * 
  */
 import javax.swing.ImageIcon;
+import java.awt.Image;
 import java.util.Random;
 
 public abstract class Entity {
@@ -22,6 +23,7 @@ public abstract class Entity {
     protected double HP;
     protected double ATK;
     protected double[] stats;
+    private ImageIcon bSprite;
 
     /**
      * Constructs a new {Entity}.
@@ -94,6 +96,25 @@ public abstract class Entity {
      */
     public void setStats(double stats, int i) {
         this.stats[i] = stats;
+    }
+
+    /**
+     * Gets the sprite or image of the entity.
+     * To be used for display in battle.
+     * 
+     * @return ImageIcon of the entity.
+     */
+    public ImageIcon getBSprite() {
+        return this.bSprite;
+    }
+
+    /**
+     * Sets the Sprite for the entity
+     * 
+     * @param path String filepath of the image.
+     */
+    public void setBSprite(String path) {
+        this.bSprite = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(480,360,Image.SCALE_SMOOTH));
     }
 
     /**

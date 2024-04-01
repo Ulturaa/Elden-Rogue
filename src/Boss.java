@@ -16,6 +16,7 @@ public class Boss extends Entity {
         setStats(iD, 2);
         this.atkUb = atkUb;
         this.atkLb = atkLb;
+        randAttack();
     }
 
     public void randAttack() {

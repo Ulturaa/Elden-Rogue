@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class Battle {
     private Character character;
-    private boolean playerTurn;
     private Entity entity;
+    private boolean playerTurn;
 
     private int areaNum;
     private double enemyHP;
@@ -88,7 +88,7 @@ public class Battle {
                         System.out.println("\nDODGE SUCCESS! ENEMY ATTACK EVADED!");
                     } else {
                         int health = character.getCurrHP();
-                        health -= entity.getATK() * areaNum;
+                        health -= entity.getATK();
                         character.setCurrHP(health);
                         System.out.println("DODGE FAILED! Enemy has attacked!");
                         if (character.getCurrHP() <= 0) {
@@ -108,10 +108,10 @@ public class Battle {
     }
 
     public boolean battleSequence() {
-        int maxHP;
-        int playerHP;
         playerTurn = true;
         isBattle = true;
+        int maxHP;
+        int playerHP;
 
         if (character.getWeapon() != null && character.getBattleCount() == 0) {
             maxHP = 100 * ((character.getStats(0) + character.getWeapon().getWeaponStat(0)) / 2);

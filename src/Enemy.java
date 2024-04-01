@@ -39,18 +39,22 @@ public class Enemy extends Entity {
             stats[i] = 0;
 
         statistics(eType);
+        randAttack();
 
         switch (aNum) {
             case 1:
                 switch (type) {
                     case 1:
                         this.name = "Godrick Soldier";
+                        this.setBSprite("BattleSprites/GodrickSoldier.png");
                         break;
                     case 2:
                         this.name = "Godrick Archer";
+                        this.setBSprite("BattleSprites/GodrickArcher.png");
                         break;
                     case 3:
                         this.name = "Godrick Knight";
+                        this.setBSprite("BattleSprites/GodrickKnight.png");
                         break;
                 }
                 break;
@@ -58,12 +62,15 @@ public class Enemy extends Entity {
                 switch (type) {
                     case 1:
                         this.name = "Living Jar";
+                        this.setBSprite("BattleSprites/LivingJar.png");
                         break;
                     case 2:
                         this.name = "Glintstone Sorcerer";
+                        this.setBSprite("BattleSprites/GlintstoneSorcerer.png");
                         break;
                     case 3:
                         this.name = "Battlemage";
+                        this.setBSprite("BattleSprites/Battlmage.png");
                         break;
                 }
                 break;
@@ -103,7 +110,6 @@ public class Enemy extends Entity {
                     this.stats[2] = 0.20;
                     break;
             }
-
         }
     }
 
