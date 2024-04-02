@@ -16,6 +16,15 @@ public class BattleModel {
 
     private double dodgeRate;
 
+    /**
+     * Constructor for the battle model.
+     * This sets up the HP, damage, and stats for the enemy(entity) and player(character).
+     * 
+     * 
+     * @param character The player character.
+     * @param entity    The enemy to be fought. (Superclass of Enemy and Boss).    
+     * @param areaNum   The area number. To be used for the Enemy type.
+     */
     public BattleModel(Character character, Entity entity, int areaNum) {
         this.character = character;
         this.entity = entity;
@@ -43,30 +52,32 @@ public class BattleModel {
             this.enemyHP = entity.getHP();
         }
         rollEntityAttack();
-        System.out.println(enemyHP);
     }
 
+    /**
+     * Attach function for the player.
+     * When the player chooses "Attack" this function is called.
+     * This function subtracts the enemy's health based on the attack the player choose.
+     * This function also subtratcts the enemy damage from the players health.
+     * 
+     * @param   aOp The attach choice of the player.
+     * @return  The calculated damage based on selected.
+     */
     public double Attack(int aOp) {
         switch (aOp) {
             case 0:
                 enemyHP -= this.pDamage;
                 entity.setHP(enemyHP);
-                System.out.println("PHYSICAL attack! damage dealt: " + pDamage);
-
                 character.setCurrHP(character.getCurrHP() - (int)entity.getATK());
                 return pDamage;
             case 1:
                 enemyHP -= this.sDamage;
                 entity.setHP(enemyHP);
-                System.out.println("SORCERY attack! damage dealt: " + sDamage);
-
                 character.setCurrHP(character.getCurrHP() - (int)entity.getATK());
                 return sDamage;
             case 2:
                 enemyHP -= this.iDamage;
                 entity.setHP(enemyHP);
-                System.out.println("INCANTATION attack! damage dealt: " + iDamage);
-
                 character.setCurrHP(character.getCurrHP() - (int)entity.getATK());
                 return iDamage;
             default:
@@ -74,24 +85,34 @@ public class BattleModel {
         }
     }
 
+    /**
+     * Dodge function for the player.
+     * When the player chooses "Dodge" this function is called.
+     * This function determines wether the player successfuly doges the attack
+     * based on their endurace stat and weapon endurance.
+     * 
+     * @return  True if success, false if fail.
+     */
     public boolean Dodge() {
         Random random = new Random();
         Double rand = (random.nextInt(100 - 1) + 1)/100.0;
-        System.out.println("Rand: " + rand + " Dodge rate: " + this.dodgeRate);
         if (rand <= this.dodgeRate) {
-            System.out.println("DODGE SUCCESS! ENEMY ATTACK EVADED!");
             return true;
         } else {
             int health = character.getCurrHP();
             health -= entity.getATK();
             character.setCurrHP(health);
-            System.out.println("DODGE FAILED! Enemy has attacked!");
-            
             return false;
         }
         
     }
 
+    /**
+     * Randomizes the enemy attack based on parameters.
+     * This also sets the attack value of the enemy for that turn.
+     * 
+     * @return  The randomized attack value.
+     */
     public double rollEntityAttack() {
         if(entity instanceof Enemy){
             Enemy e = (Enemy) entity;
@@ -123,7 +144,13 @@ public class BattleModel {
     public Entity getEntity() {
         return this.entity;
     }
-    
+
+    /**
+     * Determines wether the player is dead.
+     * If player currHP is <= 0, player is dead.
+     * 
+     * @return  True if player health <= 0, else false.
+     */
     public boolean hasPlayerDied() {
         if(character.getCurrHP() <= 0)
             return true;
@@ -131,6 +158,12 @@ public class BattleModel {
             return false;
     }
 
+    /**
+     * Determines wether the enemy(Entity) is dead.
+     * If entity hp is <= 0, player is dead.
+     * 
+     * @return  True if enemy health <= 0, else false.
+     */
     public boolean hasEntityDied() {
         if(entity.getHP() <= 0)
             return true;

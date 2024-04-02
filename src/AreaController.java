@@ -15,6 +15,15 @@ public class AreaController {
     LobbyView lv;
     int runeDrop;
 
+    /**
+     * This is the constructor for the class Area. This sets up the MVC for
+     * area.
+     * 
+     * @param av    The AreaView Class for view.
+     * @param am    The AreaModel Class for data.
+     * @param lv    The LobbyView class to coordinate with the controller in 
+     *              hiding-opening/unhiding-closing lobby and area.
+     */
     public AreaController(AreaView av, AreaModel am, LobbyView lv) {
         this.am = am;
         this.av = av;
@@ -170,6 +179,12 @@ public class AreaController {
         });
     }
 
+    /**
+     * This method is called to return to the lobby from area.
+     * The AreaView is closed through a methd and the visibility
+     * of lobby is set to true.
+     * The runes label in lobby is also updated here.
+     */
     public void ToLobby() {
         av.closeArea();
         lv.setVisible(true);

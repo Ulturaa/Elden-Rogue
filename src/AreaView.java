@@ -8,10 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowAdapter;
 
 public class AreaView {
 
@@ -22,6 +19,12 @@ public class AreaView {
 
     Area area;
 
+    /**
+     * This is the constructor for the area view. This sets up the Frame, Panels, Labels, Buttons
+     * of the view.
+     * 
+     * @param area          The current area.
+     */
     public AreaView(Area area) {
         this.area = area;
         
@@ -148,12 +151,23 @@ public class AreaView {
 		this.intBtn.addActionListener(actionListener);
 	}
 
+    /**
+     * This method gets the character object.
+     * 
+     * @param eventStr  The event that happened to update the evenLabel.
+     */
     public void updateLabels(String eventStr) {
         hpLbl.setText("HP: " + Integer.toString(this.area.getCharacter().getCurrHP()));
         runesLbl.setText("Runes: " + Integer.toString(this.area.getCharacter().getRunes()));
         eventLbl.setText("<html>"+ eventStr +"</html>");
     }
 
+    /**
+     * This method prints the area tiles.
+     * This is done within areaPanel and all the tiles area printed inside of the panel.
+     * 
+     * @param area  The current area.
+     */
     public void printArea(Area area) {
         this.areaPanel.removeAll();
         this.areaPanel.setLayout(new GridLayout(area.getFloors().getYBounds(),area.getFloors().getXBounds()));
@@ -171,10 +185,20 @@ public class AreaView {
         this.areaPanel.revalidate();
     }
 
+    /**
+     * This method sets the visibility of the areaFrame.
+     * This is used to hide/unhide during/after battle.
+     * 
+     * @param bool True/False
+     */
     public void setVisible(boolean bool) {
         areaFrame.setVisible(bool);
     }
 
+    /**
+     * This method closes/disposes of the areaFrame
+     * 
+     */
     public void closeArea() {
         areaFrame.dispose();
     }

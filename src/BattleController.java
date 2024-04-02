@@ -8,6 +8,16 @@ public class BattleController {
     private BattleModel bm;
     private AreaView av;
 
+    /**
+     * This is the constructor for the class battle. This sets up the MVC for
+     * area.
+     * The action listeners for the buttons are located here.
+     * 
+     * @param bv    The BattleView Class for view.
+     * @param bm    The BattleModel Class for data.
+     * @param av    The AreaView Class to coordinate with the controller in 
+     *              hiding-opening/unhiding-closing area and battle.
+     */
     public BattleController(BattleView bv, BattleModel bm, AreaView av){ 
         this.bv = bv;
         this.bm = bm;
@@ -36,6 +46,7 @@ public class BattleController {
                     bv.setEventLbl("You dealt " + dmg + " damage.");
                     bm.rollEntityAttack();
                     bv.updateLabels(bm.getEntity().getHP(), bm.getEntity().getATK(), bm.getCharacter().getCurrHP());
+
                     if(bm.hasPlayerDied() ==  true) {
                         JOptionPane.showMessageDialog(null, "Player has died", "You died.", JOptionPane.ERROR_MESSAGE);
                         bv.Dispose();
@@ -77,19 +88,5 @@ public class BattleController {
                 }
             }
         });
-    }
-    
-    public static void main(String[] args) {
-        BattleView bv;
-        //new BattleView(new Enemy(2, 1), new Character());
-        
-        //new BattleView(new RennalaQueenOfTheFullMoon(), new Character());
-        //new BattleView(new GodrickTheGrafted(), new Character());
-        BattleModel bm = new BattleModel(new Character(), new RennalaQueenOfTheFullMoon(), 1);
-        bv = new BattleView(new RennalaQueenOfTheFullMoon(), new Character());
-        AreaView av = new AreaView(new StormveilCastle(new Character()));
-        av.closeArea();
-        new BattleController(bv, bm, av);
-        
     }
 }

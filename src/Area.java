@@ -1,8 +1,5 @@
 import java.util.Random;
 
-/**
- * 
- */
 public class Area {
     private Floor[][] floors;
     private String areaName;

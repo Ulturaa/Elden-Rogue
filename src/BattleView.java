@@ -19,6 +19,13 @@ public class BattleView{
     private JPanel nPnl, hPnl, iPnl, dPnl, pPnl, ePnl, bPnl;
     private JLabel eNameLbl, eHPLbl, eIcnLbl, eDmgLbl, pHpLbl, eventLbl;
 
+    /**
+     * This is the constructor for the battle view. This sets up the Frame, Panels, Labels, Buttons
+     * of the view.
+     * 
+     * @param enemy         Type is the Class Entity, which is the super class of the Enemy and Boss classes.
+     * @param character     The character object.
+     */
     public BattleView(Entity enemy, Character character){
         ene = enemy;
         chara = character;
@@ -139,6 +146,14 @@ public class BattleView{
         battleFrm.setVisible(true);
     }
 
+    /**
+     * This method updates the enemy HP, enemy Damage
+     * and player health labels.
+     * 
+     * @param eHp   Enemy HP.
+     * @param eDmg  Enemy Damage.
+     * @param pHp   Player health.
+     */
     public void updateLabels(double eHp, double eDmg, int pHp) {
         if(eHp <= 0)
             eHPLbl.setText("HP: 0" );
@@ -151,36 +166,6 @@ public class BattleView{
             pHpLbl.setText("HP: " + pHp);
 
         eDmgLbl.setText("Incoming damage: " + eDmg);
-    }
-
-    /**
-     * The method sets the text for the Enemy HP label.
-     * Is used to update the health of the enemy.
-     * 
-     * @param hp The current health of the player.
-     */
-    public void setEHPLbl(Double eHp) {
-        eHPLbl.setText("HP: " + eHp);
-    }
-    
-    /**
-     * The method sets the text for the Damage label.
-     * Is used to update the damage.
-     * 
-     * @param dmg The incoming damage.
-     */
-    public void setDmgLbl(double dmg) {
-        eDmgLbl.setText("Incoming damage: " + dmg);
-    }
-
-    /**
-     * The method sets the text for the Player HP label.
-     * Is used to update the health of the player.
-     * 
-     * @param hp The current health of the player.
-     */
-    public void setPHPLbl(int hp) {
-        pHpLbl.setText("HP: " + hp);
     }
 
     /**
@@ -212,7 +197,7 @@ public class BattleView{
 	}
 
     /**
-     * Sets a window adapter for the Dodge button.
+     * Sets a window adapter for the battleFrm.
      * Listens for when the window is disposed/closed.
      *
      * @param actionListener The action listener for the Dodge button.
@@ -221,6 +206,11 @@ public class BattleView{
         battleFrm.addWindowListener(windowAdapter);
     }
 
+    /**
+     * This method closes/disposes of the current
+     * window.
+     * 
+     */
     public void Dispose() {
         battleFrm.dispose();
     }

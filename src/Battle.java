@@ -19,29 +19,41 @@ public class Battle {
 
     Scanner bc = new Scanner(System.in);
 
+    /**
+     * This is the constructor for the class battle. This initalizes the attributes of
+     * battle.
+     * 
+     * @param character     The character object.
+     * @param entity        The enemy/boss object.
+     * @param areaNum       The number of the area. Used for class enemy stats calc.
+     */
     public Battle(Character character, Entity entity, int areaNum) {
         this.character = character;
         this.entity = entity;
         this.areaNum = areaNum;
     }
 
+    /**
+     * This method prints the battle screen which include the
+     * BattleCount, Character details, and Entity details.
+     * 
+     */
     public void battleScreen() {
-
         System.out.println("BATTLE COUNT:" + character.getBattleCount());
         System.out.println(character.getJob() + " : " + character.getName());
-
         System.out.println("HP:  " + character.getCurrHP());
-
-        // System.out.println("SPRITE");
-
         System.out.println("\n\nENEMY:" + entity.getName());
         System.out.println("HP:  " + entity.getHP());
-        // System.out.println("SPRITE");
         System.out.println("\n\n");
-        // System.out.println("system messages here");
 
     }
 
+    /**
+     * This method prints the battle options Attack and Dodge.
+     * After selecting the option, the computations are done for the
+     * corresponding options. (Entity and Character damage/health or Character dodges/gets hit).
+     * 
+     */
     public void battleOptions() {
         int bOp;
         int aOp;
@@ -106,6 +118,14 @@ public class Battle {
 
     }
 
+    /**
+     * This method sets up the battle and battle sequence.
+     * This includes the character enemy and health. Here also
+     * is the logic to determine if the battle has ended (if either 
+     * the player or enemy has died).
+     * 
+     * @return true/false   - True if entity has died, false if player has died.
+     */
     public boolean battleSequence() {
         playerTurn = true;
         isBattle = true;
