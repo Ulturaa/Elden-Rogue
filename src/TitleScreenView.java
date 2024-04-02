@@ -1,14 +1,9 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JPanel;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TitleScreenView {
@@ -77,9 +72,5 @@ public class TitleScreenView {
 
     public void closeFrame() {
         titleScreenFrame.dispose();
-    }
-
-    public static void main(String[] args) {
-        TitleScreenView tsv = new TitleScreenView();
     }
 }

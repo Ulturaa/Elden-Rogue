@@ -21,7 +21,6 @@ public class Driver {
         CharCreate charCreate = game.getCharCreate();
         TitleScreenModel tsm = new TitleScreenModel();
         TitleScreenView tsv = new TitleScreenView();
-
         TitleScreenController tsc = new TitleScreenController(tsv, tsm, character, charCreate);
     }
 }

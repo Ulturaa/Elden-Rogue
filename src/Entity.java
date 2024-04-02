@@ -7,7 +7,6 @@
  */
 import javax.swing.ImageIcon;
 import java.awt.Image;
-import java.util.Random;
 
 public abstract class Entity {
 

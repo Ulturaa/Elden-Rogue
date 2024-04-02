@@ -4,11 +4,8 @@ public class BattleModel {
     private Character character;
     private Entity entity;
 
-    private boolean playerTurn;
-
     private int areaNum;
     private double enemyHP;
-    private int playerHP;
 
     private double pDamage;
     private double sDamage;
@@ -44,10 +41,8 @@ public class BattleModel {
             this.dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100.0;
         }
 
-        playerHP = character.getCurrHP();
-
         if(entity instanceof Enemy){
-            this.enemyHP = entity.getHP() * areaNum;
+            this.enemyHP = entity.getHP() * this.areaNum;
         } else {
             this.enemyHP = entity.getHP();
         }
