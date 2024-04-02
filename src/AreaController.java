@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Random;
 
 import javax.swing.JLabel;
@@ -11,11 +13,15 @@ public class AreaController {
     AreaView av;
     AreaModel am;
     LobbyView lv;
+    int runeDrop;
 
     public AreaController(AreaView av, AreaModel am, LobbyView lv) {
-        this.av = av;
         this.am = am;
+        this.av = av;
         this.lv = lv;
+        runeDrop = 0;
+        am.setPlayerHP();
+        av.updateLabels("");
 
         this.av.upBtnActionListener(new ActionListener() {
             @Override
@@ -68,12 +74,11 @@ public class AreaController {
         this.av.intBtnActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Boolean toLobby = false;
                 if (am.getCurrTile() instanceof FastTravelTile) {
                     FastTravelTile ft = (FastTravelTile) am.getCurrTile();
                     if (ft.getIsEnabled() == true) {
                         JOptionPane.showMessageDialog(null, "Returning to Lobby", "", JOptionPane.PLAIN_MESSAGE);
-                        toLobby =  true;
+                        ToLobby();
                     } else {
                         av.updateLabels("This is locked.\n Defeat the boss of the dungeon.");
                     }
@@ -88,16 +93,24 @@ public class AreaController {
                             } else {
                                 int eType = new Random().nextInt(3 - 1 + 1) + 1;
                                 Enemy enemy = new Enemy(eType, am.getArea().getAreaNum());
-                                int runeDrop = enemy.dropRunes();
+                                runeDrop = enemy.dropRunes();
                                 
-                                Battle battle = new Battle(am.getCharacter(), enemy, am.getArea().getAreaNum());
-                                if (battle.battleSequence() == false) {
-                                    JOptionPane.showMessageDialog(null, "<html>"+ "You died." +"</html>", "Oh no!", JOptionPane.WARNING_MESSAGE);
-                                    toLobby =  true;
-                                } else {
-                                    am.getCharacter().setRunes(am.getCharacter().getRunes() + runeDrop);
-                                    av.updateLabels("Enemy has been felled.\n" + "Enemy " + enemy.getName() + " has dropped " + runeDrop + " runes.");
-                                }
+                                av.setVisible(false);
+                                BattleModel bm = new BattleModel(am.getCharacter(), enemy, am.getArea().getAreaNum());
+                                BattleView bv = new BattleView(enemy, am.getCharacter());
+                                BattleController bc = new BattleController(bv, bm, av);
+
+                                bv.areaFrameWindowListener(new WindowAdapter() {
+                                    @Override
+                                    public void windowClosed(WindowEvent e) {
+                                        if (bm.hasPlayerDied() == true) {
+                                            ToLobby();
+                                        } else {
+                                            am.getCharacter().setRunes(am.getCharacter().getRunes() + runeDrop);
+                                            av.updateLabels("Enemy has been felled.\n" + bm.getEntity().getName() + " has dropped " + runeDrop + " runes.");
+                                        }
+                                    }
+                                });
                             }
 
                         } else {
@@ -120,18 +133,27 @@ public class AreaController {
                             case 3:
                                 boss = new TheEldenBeast(); break;
                         }
-                        int runeDrop = boss.dropRunes();
-                        Battle battle = new Battle(am.getCharacter(), boss, am.getArea().getAreaNum());
+                        runeDrop = boss.dropRunes();
 
-                        if (battle.battleSequence() == false) {
-                            JOptionPane.showMessageDialog(null, "<html>"+ "You died." +"</html>", "Oh no!", JOptionPane.WARNING_MESSAGE);
-                            toLobby = true;
-                        } else {
-                            av.updateLabels("Greater enemy has been felled.\n" + boss.getName() + " has dropped " + runeDrop + " runes.");
-                            am.getCharacter().setRunes(am.getCharacter().getRunes() + runeDrop);
-                            am.getCharacter().addAreaClear(am.getArea().getAreaNum());
-                            am.getFloors().SlayedBoss();
-                        }
+                        av.setVisible(false);
+                        BattleModel bm = new BattleModel(am.getCharacter(), boss, am.getArea().getAreaNum());
+                        BattleView bv = new BattleView(boss, am.getCharacter());
+                        BattleController bc = new BattleController(bv, bm, av);
+
+
+                        bv.areaFrameWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                if (bm.hasPlayerDied() == true) {
+                                    ToLobby();
+                                } else {
+                                    av.updateLabels("Greater enemy has been felled.\n" + bm.getEntity().getName() + " has dropped " + runeDrop + " runes.");
+                                    am.getCharacter().setRunes(am.getCharacter().getRunes() + runeDrop);
+                                    am.getCharacter().addAreaClear(am.getArea().getAreaNum());
+                                    am.getFloors().SlayedBoss();
+                                }
+                            }
+                        });
                     } else {
                         av.updateLabels("The boss has already been slain.");
                     }
@@ -139,17 +161,18 @@ public class AreaController {
                     CreditsTile ct = (CreditsTile) am.getCurrTile();
                     System.out.println("-- Play the credits --");
                     ct.playCredits();
-                    toLobby = true;
+                    ToLobby();
                 } else
                     av.updateLabels("Nothing happened");
                 
                 av.printArea(av.area);
-
-                if(toLobby == true) {
-                    av.closeArea();
-                    lv.setVisible(true);
-                }
             }
         });
+    }
+
+    public void ToLobby() {
+        av.closeArea();
+        lv.setVisible(true);
+        lv.updateLabel(3, "RUNES: " + am.getCharacter().getRunes());
     }
 }

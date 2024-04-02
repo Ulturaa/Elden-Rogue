@@ -1,28 +1,16 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JPanel;
-import javax.swing.ImageIcon;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.WindowAdapter;
 
-public class BattleView {
+public class BattleView{
     
     private Character chara;
     private Entity ene;
@@ -151,10 +139,18 @@ public class BattleView {
         battleFrm.setVisible(true);
     }
 
-    public void updateLabels() {
-        setEHPLbl();
-        setDmgLbl();
-        setPHPLbl();
+    public void updateLabels(double eHp, double eDmg, int pHp) {
+        if(eHp <= 0)
+            eHPLbl.setText("HP: 0" );
+        else
+            eHPLbl.setText("HP: " + eHp);
+
+        if(pHp <= 0)
+            pHpLbl.setText("HP: 0");
+        else
+            pHpLbl.setText("HP: " + pHp);
+
+        eDmgLbl.setText("Incoming damage: " + eDmg);
     }
 
     /**
@@ -163,8 +159,8 @@ public class BattleView {
      * 
      * @param hp The current health of the player.
      */
-    public void setEHPLbl() {
-        eHPLbl.setText("HP: " + ene.getHP());
+    public void setEHPLbl(Double eHp) {
+        eHPLbl.setText("HP: " + eHp);
     }
     
     /**
@@ -173,8 +169,18 @@ public class BattleView {
      * 
      * @param dmg The incoming damage.
      */
-    public void setDmgLbl() {
-        eDmgLbl.setText("Incoming damage " + ene.getATK());
+    public void setDmgLbl(double dmg) {
+        eDmgLbl.setText("Incoming damage: " + dmg);
+    }
+
+    /**
+     * The method sets the text for the Player HP label.
+     * Is used to update the health of the player.
+     * 
+     * @param hp The current health of the player.
+     */
+    public void setPHPLbl(int hp) {
+        pHpLbl.setText("HP: " + hp);
     }
 
     /**
@@ -185,16 +191,6 @@ public class BattleView {
      */
     public void setEventLbl(String text) {
         this.eventLbl.setText(text);
-    }
-
-    /**
-     * The method sets the text for the Player HP label.
-     * Is used to update the health of the player.
-     * 
-     * @param hp The current health of the player.
-     */
-    public void setPHPLbl() {
-        pHpLbl.setText("HP: " + chara.getCurrHP());
     }
 
     /**
@@ -214,4 +210,18 @@ public class BattleView {
     public void dgeBtnActionListener(ActionListener actionListener) {
 		this.dgeBtn.addActionListener(actionListener);
 	}
+
+    /**
+     * Sets a window adapter for the Dodge button.
+     * Listens for when the window is disposed/closed.
+     *
+     * @param actionListener The action listener for the Dodge button.
+     */
+    public void areaFrameWindowListener(WindowAdapter windowAdapter) {
+        battleFrm.addWindowListener(windowAdapter);
+    }
+
+    public void Dispose() {
+        battleFrm.dispose();
+    }
 }

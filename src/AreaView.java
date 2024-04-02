@@ -1,24 +1,17 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JPanel;
-import javax.swing.ImageIcon;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.GridBagLayout;
-
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowAdapter;
 
 public class AreaView {
 
@@ -75,7 +68,7 @@ public class AreaView {
 
         eventLbl = new JLabel();
         eventLbl.setText("");
-        eventLbl.setBounds(15,175,300,60);
+        eventLbl.setBounds(15,175,300,80);
         eventLbl.setFont(new Font("Times New Roman", Font.BOLD, 20));
         eventLbl.setForeground(Color.WHITE);
         buttonPanel.add(eventLbl);
@@ -176,6 +169,10 @@ public class AreaView {
         }
         this.areaPanel.repaint();
         this.areaPanel.revalidate();
+    }
+
+    public void setVisible(boolean bool) {
+        areaFrame.setVisible(bool);
     }
 
     public void closeArea() {

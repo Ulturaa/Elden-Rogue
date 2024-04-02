@@ -8,6 +8,7 @@ public class BattleModel {
 
     private int areaNum;
     private double enemyHP;
+    private int playerHP;
 
     private double pDamage;
     private double sDamage;
@@ -17,32 +18,15 @@ public class BattleModel {
 
     private boolean isBattle;
 
-    public BattleModel(Character character, Entity entity) {
+    public BattleModel(Character character, Entity entity, int areaNum) {
         this.character = character;
         this.entity = entity;
+        this.areaNum = areaNum;
 
         playerTurn = true;
         isBattle = true;
-        int maxHP;
-        int playerHP;
 
-        if (character.getWeapon() != null && character.getBattleCount() == 0) {
-            maxHP = 100 * ((character.getStats(0) + character.getWeapon().getWeaponStat(0)) / 2);
-            pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - entity.getStats(0));
-            sDamage = (character.getStats(4) + character.getWeapon().getWeaponStat(4)) * (1 - entity.getStats(1));
-            iDamage = (character.getStats(5) + character.getWeapon().getWeaponStat(5)) * (1 - entity.getStats(2));
-            character.setCurrHP(maxHP);
-            dodgeRate = (20 + ((character.getStats(1) + character.getWeapon().getWeaponStat(1)) / 2)) / 100;
-
-        } else if (character.getWeapon() == null && character.getBattleCount() == 0) {
-            maxHP = 100 * (character.getStats(0) / 2);
-            pDamage = (character.getStats(3)) * (1 - entity.getStats(0));
-            sDamage = (character.getStats(4)) * (1 - entity.getStats(1));
-            iDamage = (character.getStats(5)) * (1 - entity.getStats(2));
-            character.setCurrHP(maxHP);
-            dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100;
-
-        } else if (character.getWeapon() != null && character.getBattleCount() > 0) {
+        if (character.getWeapon() != null && character.getBattleCount() > 0) {
             pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - entity.getStats(0));
             sDamage = (character.getStats(4) + character.getWeapon().getWeaponStat(4)) * (1 - entity.getStats(1));
             iDamage = (character.getStats(5) + character.getWeapon().getWeaponStat(5)) * (1 - entity.getStats(2));
@@ -57,38 +41,46 @@ public class BattleModel {
         playerHP = character.getCurrHP();
 
         if(entity instanceof Enemy){
-            enemyHP = entity.getHP() * areaNum;
+            this.enemyHP = entity.getHP() * areaNum;
         } else {
-            enemyHP = entity.getHP();
+            this.enemyHP = entity.getHP();
         }
+        rollEntityAttack();
+        System.out.println(enemyHP);
     }
 
-    public void Attack(int aOp) {
-        int enemyHP = 0;
+    public double Attack(int aOp) {
         switch (aOp) {
-            case 1:
+            case 0:
                 enemyHP -= this.pDamage;
                 entity.setHP(enemyHP);
                 System.out.println("PHYSICAL attack! damage dealt: " + pDamage);
-                break;
-            case 2:
+
+                character.setCurrHP(character.getCurrHP() - (int)entity.getATK());
+                return pDamage;
+            case 1:
                 enemyHP -= this.sDamage;
                 entity.setHP(enemyHP);
                 System.out.println("SORCERY attack! damage dealt: " + sDamage);
-                break;
-            case 3:
+
+                character.setCurrHP(character.getCurrHP() - (int)entity.getATK());
+                return sDamage;
+            case 2:
                 enemyHP -= this.iDamage;
                 entity.setHP(enemyHP);
                 System.out.println("INCANTATION attack! damage dealt: " + iDamage);
-                break;
+
+                character.setCurrHP(character.getCurrHP() - (int)entity.getATK());
+                return iDamage;
             default:
-                break;
+                return 0;
         }
     }
 
     public boolean Dodge() {
         Random random = new Random();
         int rand = random.nextInt(100 - 1 + 1) + 1;
+        System.out.println("Rand: " + rand + " Dodge rate: " + dodgeRate);
         if (rand <= dodgeRate) {
             System.out.println("DODGE SUCCESS! ENEMY ATTACK EVADED!");
             return true;
@@ -97,8 +89,10 @@ public class BattleModel {
             health -= entity.getATK();
             character.setCurrHP(health);
             System.out.println("DODGE FAILED! Enemy has attacked!");
+            
             return false;
         }
+        
     }
 
     public double rollEntityAttack() {
@@ -131,5 +125,19 @@ public class BattleModel {
      */
     public Entity getEntity() {
         return this.entity;
+    }
+    
+    public boolean hasPlayerDied() {
+        if(character.getCurrHP() <= 0)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean hasEntityDied() {
+        if(entity.getHP() <= 0)
+            return true;
+        else
+            return false;
     }
 }

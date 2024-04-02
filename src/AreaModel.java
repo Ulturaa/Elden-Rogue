@@ -28,6 +28,14 @@ public class AreaModel {
         return area.getFloors().getCurrTile();
     }
 
+    public void setPlayerHP() {
+        if(character.getWeapon() != null) {
+            character.setCurrHP(100 * ((character.getStats(0) + character.getWeapon().getWeaponStat(0)) / 2));
+        } else {
+            character.setCurrHP(100 * (character.getStats(0) / 2)); 
+        }
+    }
+
     public Character getCharacter() {
         return character;
     }

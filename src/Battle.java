@@ -92,7 +92,6 @@ public class Battle {
                         character.setCurrHP(health);
                         System.out.println("DODGE FAILED! Enemy has attacked!");
                         if (character.getCurrHP() <= 0) {
-                            // .out.println(defaultPlayerHP);
                             character.setCurrHP(character.getStats(0));
                             isBattle = false;
                             System.out.println("YOU DIED");
@@ -142,7 +141,6 @@ public class Battle {
         }
 
         playerHP = character.getCurrHP();
-        
 
         if(entity instanceof Enemy){
             enemyHP = entity.getHP() * areaNum;
@@ -178,7 +176,7 @@ public class Battle {
                 }
             } else {
 
-                playerHP -= entity.getATK() * areaNum;
+                playerHP -= entity.getATK();
                 character.setCurrHP(playerHP);
                 System.out.println("Enemy has attacked!");
                 if (character.getCurrHP() <= 0) {
