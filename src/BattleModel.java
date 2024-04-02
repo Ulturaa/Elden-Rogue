@@ -30,12 +30,14 @@ public class BattleModel {
             pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - entity.getStats(0));
             sDamage = (character.getStats(4) + character.getWeapon().getWeaponStat(4)) * (1 - entity.getStats(1));
             iDamage = (character.getStats(5) + character.getWeapon().getWeaponStat(5)) * (1 - entity.getStats(2));
-            dodgeRate = (20 + ((character.getStats(1) + character.getWeapon().getWeaponStat(1)) / 2)) / 100;
+            this.dodgeRate = (20 + ((character.getStats(1) + character.getWeapon().getWeaponStat(1)) / 2)) / 100;
+            System.out.println("Dodge rate = (20 + ((" + character.getStats(1) + " " + character.getWeapon().getWeaponStat(1) + ") / 2) / 100");
         } else {
             pDamage = (character.getStats(3)) * (1 - entity.getStats(0));
             sDamage = (character.getStats(4)) * (1 - entity.getStats(1));
             iDamage = (character.getStats(5)) * (1 - entity.getStats(2));
-            dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100;
+            this.dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100;
+            System.out.println("Dodge rate = (20 + ((" + character.getStats(1) + ") / 2) / 100");
         }
 
         playerHP = character.getCurrHP();
