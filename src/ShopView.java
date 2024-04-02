@@ -2,6 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -26,6 +28,7 @@ public class ShopView {
     private ArrayList<JButton> SButtonlist = new ArrayList<JButton>();
     private ArrayList<JLabel> SLabellist = new ArrayList<JLabel>();
     private ArrayList<JPanel> WPanellist = new ArrayList<JPanel>();
+
     private ArrayList<JButton> SwordButtonlist = new ArrayList<JButton>();
     private ArrayList<JButton> KatanaButtonlist = new ArrayList<JButton>();
     private ArrayList<JButton> WhipButtonlist = new ArrayList<JButton>();
@@ -35,6 +38,7 @@ public class ShopView {
 
     private ArrayList<JScrollPane> ScrollList = new ArrayList<JScrollPane>();
     private ArrayList<JTextArea> WeaponTextList = new ArrayList<JTextArea>();
+
     private ArrayList<JLabel> wImageList = new ArrayList<JLabel>();
 
     public ShopView() {
@@ -44,23 +48,29 @@ public class ShopView {
         SFrame.setLocationRelativeTo(null);
         SFrame.setResizable(false);
         SFrame.setLayout(new BoxLayout(SFrame.getContentPane(), BoxLayout.Y_AXIS));
+        // SFrame.getContentPane().add(Box.createVerticalGlue());
         // SFrame.setLayout(new FlowLayout());
         SFrame.getContentPane().setBackground(Color.black);
 
         STitle = new JLabel("Shop");
+        // STitle.setAlignmentX(JLabel.LEFT_ALIGNMENT); // Set horizontal alignment to
+        // left
+        // STitle.setAlignmentY(JLabel.TOP_ALIGNMENT);
+        STitle.setHorizontalAlignment(SwingConstants.LEFT);
         STitle.setForeground(Color.YELLOW);
         STitle.setFont(new Font("Times New Roman", Font.BOLD, 40));
         STitle.setBounds(170, 20, 400, 60);
 
-        ImageIcon img = new ImageIcon(
-                new ImageIcon("Weapons/ShortSword.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        img.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        JLabel ia = new JLabel();
-        ia.setText("hello");
-        ia.setIcon(img);
+        // ImageIcon img = new ImageIcon(
+        // new ImageIcon("Weapons/ShortSword.png").getImage().getScaledInstance(30, 30,
+        // Image.SCALE_SMOOTH));
+        // img.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        // JLabel ia = new JLabel();
+        // ia.setText("hello");
+        // ia.setIcon(img);
 
         SFrame.add(STitle);
-        SFrame.add(ia);
+        // SFrame.add(ia);
         SFrame.setVisible(true);
 
     }
@@ -268,25 +278,34 @@ public class ShopView {
         // }
     }
 
-    public void setWeaponImage(String s) {
-        ImageIcon wImage = new ImageIcon(s);
+    public void setWeaponImage(String s, String n) {
+        ImageIcon wImage = new ImageIcon(new ImageIcon(s).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
+
         JLabel wIMG = new JLabel();
         wIMG.setIcon(wImage);
+        wIMG.setText(n);
+        wIMG.setForeground(Color.YELLOW);
+        wIMG.setFont(new Font("Times New Roman", Font.BOLD, 10));
+        wIMG.setHorizontalTextPosition(JLabel.RIGHT);
+        wIMG.setVerticalTextPosition(JLabel.CENTER);
         // JLabel wIMG = new JLabel(s);
         wImageList.add(wIMG);
     }
 
     public void addImagetoScroll(int j, int k) {
-        JPanel viewportPanel = new JPanel(new FlowLayout());
-        viewportPanel.add(wImageList.get(k));
-        JScrollPane scrollPane = ScrollList.get(j);
-        scrollPane.setViewportView(viewportPanel);
+        // JPanel viewportPanel = new JPanel(new FlowLayout());
+        // viewportPanel.add(wImageList.get(k));
+        // JScrollPane scrollPane = ScrollList.get(j);
+        // scrollPane.setViewportView(viewportPanel);
+
+        ScrollList.get(j).setViewportView(wImageList.get(k));
 
         SFrame.revalidate();
         SFrame.repaint();
     }
 
     public void addImagetoPanel(int j, int k) {
-        WPanellist.get(j).add(wImageList.get(0));
+        WPanellist.get(j).add(wImageList.get(k));
     }
+
 }
