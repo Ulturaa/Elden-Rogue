@@ -16,28 +16,23 @@ public class BattleModel {
 
     private double dodgeRate;
 
-    private boolean isBattle;
-
     public BattleModel(Character character, Entity entity, int areaNum) {
         this.character = character;
         this.entity = entity;
         this.areaNum = areaNum;
-
-        playerTurn = true;
-        isBattle = true;
+        this.dodgeRate = 0.0;
 
         if (character.getWeapon() != null && character.getBattleCount() > 0) {
             pDamage = (character.getStats(3) + character.getWeapon().getWeaponStat(3)) * (1 - entity.getStats(0));
             sDamage = (character.getStats(4) + character.getWeapon().getWeaponStat(4)) * (1 - entity.getStats(1));
             iDamage = (character.getStats(5) + character.getWeapon().getWeaponStat(5)) * (1 - entity.getStats(2));
-            this.dodgeRate = (20 + ((character.getStats(1) + character.getWeapon().getWeaponStat(1)) / 2)) / 100;
-            System.out.println("Dodge rate = (20 + ((" + character.getStats(1) + " " + character.getWeapon().getWeaponStat(1) + ") / 2) / 100");
+            this.dodgeRate = ((20 + ((character.getStats(1) + character.getWeapon().getWeaponStat(1)) / 2)) / 100.0);
+            System.out.println("Dodge rate = (20 + ((" + character.getStats(1) + " " + character.getWeapon().getWeaponStat(1) + " / 2)) / 100");
         } else {
             pDamage = (character.getStats(3)) * (1 - entity.getStats(0));
             sDamage = (character.getStats(4)) * (1 - entity.getStats(1));
             iDamage = (character.getStats(5)) * (1 - entity.getStats(2));
-            this.dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100;
-            System.out.println("Dodge rate = (20 + ((" + character.getStats(1) + ") / 2) / 100");
+            this.dodgeRate = (20 + ((character.getStats(1)) / 2)) / 100.0;
         }
 
         playerHP = character.getCurrHP();
@@ -81,9 +76,9 @@ public class BattleModel {
 
     public boolean Dodge() {
         Random random = new Random();
-        int rand = random.nextInt(100 - 1 + 1) + 1;
-        System.out.println("Rand: " + rand + " Dodge rate: " + dodgeRate);
-        if (rand <= dodgeRate) {
+        Double rand = (random.nextInt(100 - 1) + 1)/100.0;
+        System.out.println("Rand: " + rand + " Dodge rate: " + this.dodgeRate);
+        if (rand <= this.dodgeRate) {
             System.out.println("DODGE SUCCESS! ENEMY ATTACK EVADED!");
             return true;
         } else {
