@@ -16,10 +16,37 @@ public class ShopController {
         this.sv = sv;
         this.lv = lv;
 
-        sv.setWPanel();// panel 1
-        sv.setSwordScroll();
-        sv.addScrolltoPanel(0, 1);
-        sv.setVisibleSwordScroll(0, false);
+        sv.setWPanel();// panel 0
+        sv.setScroll();// scroll 0 start here
+        sv.setScroll();// 1
+        sv.setScroll();// 2
+        sv.setScroll();// 3
+        sv.setScroll();// 4
+        sv.setScroll();// 5
+        String swordText = "";
+
+        for (int i = 1; i <= 4; i++) {
+
+            swordText += "RUNE COST: " + sm.getWeaponOption(1, i).getRuneCost() + "\n" + "WEAPON NAME: "
+                    + sm.getWeaponOption(1, i).getName()
+                    + "\n" + "DEX REQUIREMENT: " + sm.getWeaponOption(1, i).getWeaponStat(2) + "\n"
+                    + "HP: " + sm.getWeaponOption(1, i).getWeaponStat(0)
+                    + "\n" + "END: " + sm.getWeaponOption(1, i).getWeaponStat(1) + "\n" + "STR: "
+                    + sm.getWeaponOption(1, i).getWeaponStat(3) + "\n"
+                    + "INT: " + sm.getWeaponOption(1, i).getWeaponStat(4)
+                    + "\n" + "FTH: " + sm.getWeaponOption(1, i).getWeaponStat(5) + "\n\n";
+
+        }
+        sv.setWeaponImage("F:\\school stuff\\CCPPROG3\\src\\MCO\\Elden-Rogue\\src\\Weapon Images\\Short Sword.png");
+        // sv.addImagetoScroll(0, 0);
+        sv.addImagetoPanel(0, 0);
+        sv.setWText(swordText);// text 0
+        sv.addTexttoScroll(0, 0);
+        sv.addScrolltoPanel(0, 0);
+        sv.setVisibleScroll(0, false);// scroll 0 end here
+
+        // scroll 1 start here
+
         sv.setSwordButton(sm.getWeaponOption(1, 1).getName(), new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (sm.shopIt(1, 1)) {
@@ -86,6 +113,25 @@ public class ShopController {
 
         sv.addtoPanel(0, 1);
         sv.setWPanel();// panel 1
+
+        // scroll 1 start here
+        String katanaText = "";
+        for (int i = 1; i <= 4; i++) {
+
+            katanaText += "RUNE COST: " + sm.getWeaponOption(2, i).getRuneCost() + "\n" + "WEAPON NAME: "
+                    + sm.getWeaponOption(2, i).getName()
+                    + "\n" + "DEX REQUIREMENT: " + sm.getWeaponOption(2, i).getWeaponStat(2) + "\n"
+                    + "HP: " + sm.getWeaponOption(2, i).getWeaponStat(0)
+                    + "\n" + "END: " + sm.getWeaponOption(2, i).getWeaponStat(1) + "\n" + "STR: "
+                    + sm.getWeaponOption(2, i).getWeaponStat(3) + "\n"
+                    + "INT: " + sm.getWeaponOption(2, i).getWeaponStat(4)
+                    + "\n" + "FTH: " + sm.getWeaponOption(2, i).getWeaponStat(5) + "\n\n";
+
+        }
+        sv.setWText(katanaText);// text 1
+        sv.addTexttoScroll(1, 1);
+        sv.addScrolltoPanel(1, 1);
+        sv.setVisibleScroll(1, false);// scroll 1 end here
 
         sv.setKatanaButton(sm.getWeaponOption(2, 1).getName(), new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -156,6 +202,25 @@ public class ShopController {
         sv.addtoPanel(1, 2);
         sv.setWPanel();// panel 2
 
+        // scroll 2 start here
+        String whipText = "";
+        for (int i = 1; i <= 4; i++) {
+
+            whipText += "RUNE COST: " + sm.getWeaponOption(3, i).getRuneCost() + "\n" + "WEAPON NAME: "
+                    + sm.getWeaponOption(3, i).getName()
+                    + "\n" + "DEX REQUIREMENT: " + sm.getWeaponOption(3, i).getWeaponStat(2) + "\n"
+                    + "HP: " + sm.getWeaponOption(3, i).getWeaponStat(0)
+                    + "\n" + "END: " + sm.getWeaponOption(3, i).getWeaponStat(1) + "\n" + "STR: "
+                    + sm.getWeaponOption(3, i).getWeaponStat(3) + "\n"
+                    + "INT: " + sm.getWeaponOption(3, i).getWeaponStat(4)
+                    + "\n" + "FTH: " + sm.getWeaponOption(3, i).getWeaponStat(5) + "\n\n";
+
+        }
+        sv.setWText(whipText);// text 2
+        sv.addTexttoScroll(2, 2);
+        sv.addScrolltoPanel(2, 2);
+        sv.setVisibleScroll(2, false);// scroll 2 end here
+
         sv.setWhipButton(sm.getWeaponOption(3, 1).getName(), new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (sm.shopIt(3, 1)) {
@@ -223,6 +288,25 @@ public class ShopController {
         });
         sv.addtoPanel(2, 3);
         sv.setWPanel();// panel 3
+
+        // scroll 3 start here
+        String greatSwordText = "";
+        for (int i = 1; i <= 4; i++) {
+
+            greatSwordText += "RUNE COST: " + sm.getWeaponOption(4, i).getRuneCost() + "\n" + "WEAPON NAME: "
+                    + sm.getWeaponOption(4, i).getName()
+                    + "\n" + "DEX REQUIREMENT: " + sm.getWeaponOption(4, i).getWeaponStat(2) + "\n"
+                    + "HP: " + sm.getWeaponOption(4, i).getWeaponStat(0)
+                    + "\n" + "END: " + sm.getWeaponOption(4, i).getWeaponStat(1) + "\n" + "STR: "
+                    + sm.getWeaponOption(4, i).getWeaponStat(3) + "\n"
+                    + "INT: " + sm.getWeaponOption(4, i).getWeaponStat(4)
+                    + "\n" + "FTH: " + sm.getWeaponOption(4, i).getWeaponStat(5) + "\n\n";
+
+        }
+        sv.setWText(greatSwordText);// text 3
+        sv.addTexttoScroll(3, 3);
+        sv.addScrolltoPanel(3, 3);
+        sv.setVisibleScroll(3, false);// scroll 3 end here
 
         sv.setGreatSwordButton(sm.getWeaponOption(4, 1).getName(), new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -293,6 +377,25 @@ public class ShopController {
 
         sv.addtoPanel(3, 4);
         sv.setWPanel();// panel 4
+
+        // scroll 4 start here
+        String staffText = "";
+        for (int i = 1; i <= 4; i++) {
+
+            staffText += "RUNE COST: " + sm.getWeaponOption(5, i).getRuneCost() + "\n" + "WEAPON NAME: "
+                    + sm.getWeaponOption(5, i).getName()
+                    + "\n" + "DEX REQUIREMENT: " + sm.getWeaponOption(5, i).getWeaponStat(2) + "\n"
+                    + "HP: " + sm.getWeaponOption(5, i).getWeaponStat(0)
+                    + "\n" + "END: " + sm.getWeaponOption(5, i).getWeaponStat(1) + "\n" + "STR: "
+                    + sm.getWeaponOption(5, i).getWeaponStat(3) + "\n"
+                    + "INT: " + sm.getWeaponOption(5, i).getWeaponStat(4)
+                    + "\n" + "FTH: " + sm.getWeaponOption(5, i).getWeaponStat(5) + "\n\n";
+
+        }
+        sv.setWText(staffText);// text 4
+        sv.addTexttoScroll(4, 4);
+        sv.addScrolltoPanel(4, 4);
+        sv.setVisibleScroll(4, false);// scroll 4 end here
         sv.setStaffButton(sm.getWeaponOption(5, 1).getName(), new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (sm.shopIt(5, 1)) {
@@ -361,6 +464,26 @@ public class ShopController {
 
         sv.addtoPanel(4, 5);
         sv.setWPanel();// panel 5
+
+        // scroll 5 start here
+        String sealText = "";
+        for (int i = 1; i <= 4; i++) {
+
+            sealText += "RUNE COST: " + sm.getWeaponOption(6, i).getRuneCost() + "\n" + "WEAPON NAME: "
+                    + sm.getWeaponOption(6, i).getName()
+                    + "\n" + "DEX REQUIREMENT: " + sm.getWeaponOption(5, i).getWeaponStat(2) + "\n"
+                    + "HP: " + sm.getWeaponOption(6, i).getWeaponStat(0)
+                    + "\n" + "END: " + sm.getWeaponOption(6, i).getWeaponStat(1) + "\n" + "STR: "
+                    + sm.getWeaponOption(6, i).getWeaponStat(3) + "\n"
+                    + "INT: " + sm.getWeaponOption(6, i).getWeaponStat(4)
+                    + "\n" + "FTH: " + sm.getWeaponOption(6, i).getWeaponStat(5) + "\n\n";
+
+        }
+        sv.setWText(sealText);// text 5
+        sv.addTexttoScroll(5, 5);
+        sv.addScrolltoPanel(5, 5);
+        sv.setVisibleScroll(5, false);// scroll 5 end here
+
         sv.setSealButton(sm.getWeaponOption(6, 1).getName(), new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (sm.shopIt(6, 1)) {
@@ -451,7 +574,7 @@ public class ShopController {
                 sv.setSButtonvisbility(4, false);
                 sv.setSButtonvisbility(5, false);
                 sv.setSButtonvisbility(6, false);
-                sv.setVisibleSwordScroll(0, true);
+                sv.setVisibleScroll(0, true);
 
             }
         });
@@ -469,7 +592,7 @@ public class ShopController {
                 sv.setSButtonvisbility(4, false);
                 sv.setSButtonvisbility(5, false);
                 sv.setSButtonvisbility(6, false);
-
+                sv.setVisibleScroll(1, true);
             }
         });
 
@@ -485,6 +608,7 @@ public class ShopController {
                 sv.setSButtonvisbility(4, false);
                 sv.setSButtonvisbility(5, false);
                 sv.setSButtonvisbility(6, false);
+                sv.setVisibleScroll(2, true);
             }
         });
 
@@ -500,6 +624,7 @@ public class ShopController {
                 sv.setSButtonvisbility(4, false);
                 sv.setSButtonvisbility(5, false);
                 sv.setSButtonvisbility(6, false);
+                sv.setVisibleScroll(3, true);
             }
         });
 
@@ -515,6 +640,7 @@ public class ShopController {
                 sv.setSButtonvisbility(4, false);
                 sv.setSButtonvisbility(5, false);
                 sv.setSButtonvisbility(6, false);
+                sv.setVisibleScroll(4, true);
             }
         });
 
@@ -530,6 +656,7 @@ public class ShopController {
                 sv.setSButtonvisbility(4, false);
                 sv.setSButtonvisbility(5, false);
                 sv.setSButtonvisbility(6, false);
+                sv.setVisibleScroll(5, true);
             }
         });
 

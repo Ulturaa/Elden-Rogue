@@ -7,9 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -31,7 +33,9 @@ public class ShopView {
     private ArrayList<JButton> StaffButtonlist = new ArrayList<JButton>();
     private ArrayList<JButton> SealButtonlist = new ArrayList<JButton>();
 
-    private ArrayList<JScrollPane> SwordScrollList = new ArrayList<JScrollPane>();
+    private ArrayList<JScrollPane> ScrollList = new ArrayList<JScrollPane>();
+    private ArrayList<JTextArea> WeaponTextList = new ArrayList<JTextArea>();
+    private ArrayList<JLabel> wImageList = new ArrayList<JLabel>();
 
     public ShopView() {
         SFrame = new JFrame();
@@ -48,7 +52,15 @@ public class ShopView {
         STitle.setFont(new Font("Times New Roman", Font.BOLD, 40));
         STitle.setBounds(170, 20, 400, 60);
 
+        ImageIcon img = new ImageIcon(
+                new ImageIcon("Weapons/ShortSword.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+        img.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        JLabel ia = new JLabel();
+        ia.setText("hello");
+        ia.setIcon(img);
+
         SFrame.add(STitle);
+        SFrame.add(ia);
         SFrame.setVisible(true);
 
     }
@@ -210,45 +222,71 @@ public class ShopView {
         SLabellist.get(i).setVisible(b);
     }
 
-    public void setSwordScroll() {
+    public void setScroll() {
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(600, 200));
         scrollPane.setBackground(Color.BLACK);
+        scrollPane.setPreferredSize(new Dimension(600, 200));
 
-        SwordScrollList.add(scrollPane);
+        ScrollList.add(scrollPane);
     }
 
-    public void addScrolltoPanel(int j, int type) {
-        Iterator<JScrollPane> i = SwordScrollList.iterator();
-        switch (type) {
-            case 1:
-                i = SwordScrollList.iterator();
-                break;
-            case 2:
-                // i = KatanaButtonlist.iterator();
-                break;
-            case 3:
-                // i = WhipButtonlist.iterator();
-                break;
-            case 4:
-                // i = GreatSwordButtonlist.iterator();
-                break;
-            case 5:
-                // i = StaffButtonlist.iterator();
-                break;
-            case 6:
-                // i = SealButtonlist.iterator();
-                break;
+    public void addScrolltoPanel(int j, int k) {
+        WPanellist.get(j).add(ScrollList.get(k));
 
-        }
-        while (i.hasNext()) {
-            this.WPanellist.get(j).add(i.next());
-        }
     }
 
-    public void setVisibleSwordScroll(int i, boolean b) {
-        SwordScrollList.get(i).setVisible(b);
+    public void setVisibleScroll(int i, boolean b) {
+        ScrollList.get(i).setVisible(b);
+    }
+
+    public void setWText(String s) {
+        JTextArea WText = new JTextArea();
+
+        WText.setText(s);
+        WText.setBackground(Color.BLACK);
+        WText.setForeground(Color.YELLOW);
+        WText.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        WText.setWrapStyleWord(true);
+        WText.setLineWrap(true);
+
+        WeaponTextList.add(WText);
+        // scrollPane.setViewportView(WText);
+        // WLabellist.add(WText);
+    }
+
+    public void addTexttoScroll(int j, int k) {
+        // Iterator<JTextArea> i = WeaponTextList.iterator();
+
+        // while (i.hasNext()) {
+        this.ScrollList.get(j).setViewportView(WeaponTextList.get(k));
+        // WPanellist.get(j).add(WeaponTextList.get(k));
+        // ScrollList.get(j).setViewportView(WPanellist.get(j));
+        SFrame.revalidate();
+        SFrame.repaint();
+        // }
+    }
+
+    public void setWeaponImage(String s) {
+        ImageIcon wImage = new ImageIcon(s);
+        JLabel wIMG = new JLabel();
+        wIMG.setIcon(wImage);
+        // JLabel wIMG = new JLabel(s);
+        wImageList.add(wIMG);
+    }
+
+    public void addImagetoScroll(int j, int k) {
+        JPanel viewportPanel = new JPanel(new FlowLayout());
+        viewportPanel.add(wImageList.get(k));
+        JScrollPane scrollPane = ScrollList.get(j);
+        scrollPane.setViewportView(viewportPanel);
+
+        SFrame.revalidate();
+        SFrame.repaint();
+    }
+
+    public void addImagetoPanel(int j, int k) {
+        WPanellist.get(j).add(wImageList.get(0));
     }
 }
