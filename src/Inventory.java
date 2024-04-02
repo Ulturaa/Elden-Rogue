@@ -59,6 +59,7 @@ public class Inventory {
     public boolean equip(int i, Character character) {
         if (this.equippedWeapon == null) {
             if (character.getStats(2) >= this.weaponList.get(i).getWeaponStat(2)) {
+                System.out.println(character.getStats(2));
                 this.equippedWeapon = this.weaponList.get(i);
                 System.out.println(this.equippedWeapon.getName());
                 character.setWeapon(this.equippedWeapon);

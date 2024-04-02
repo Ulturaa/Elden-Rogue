@@ -37,9 +37,15 @@ public class ShopController {
                     + "\n" + "FTH: " + sm.getWeaponOption(1, i).getWeaponStat(5) + "\n\n";
 
         }
-        sv.setWeaponImage("F:\\school stuff\\CCPPROG3\\src\\MCO\\Elden-Rogue\\src\\Weapon Images\\Short Sword.png");
-        // sv.addImagetoScroll(0, 0);
+        sv.setWeaponImage("Weapons/ShortSword.png", sm.getWeaponOption(1, 1).getName());
+        sv.setWeaponImage("Weapons/RogerRapier.png", sm.getWeaponOption(1, 2).getName());
+        sv.setWeaponImage("Weapons/CodedSword.png", sm.getWeaponOption(1, 3).getName());
+        sv.setWeaponImage("Weapons/SwordofNightandFlame.png", sm.getWeaponOption(1, 4).getName());
+
         sv.addImagetoPanel(0, 0);
+        sv.addImagetoPanel(0, 1);
+        sv.addImagetoPanel(0, 2);
+        sv.addImagetoPanel(0, 3);
         sv.setWText(swordText);// text 0
         sv.addTexttoScroll(0, 0);
         sv.addScrolltoPanel(0, 0);
@@ -128,6 +134,16 @@ public class ShopController {
                     + "\n" + "FTH: " + sm.getWeaponOption(2, i).getWeaponStat(5) + "\n\n";
 
         }
+
+        sv.setWeaponImage("Weapons/Uchigatana.png", sm.getWeaponOption(2, 1).getName());
+        sv.setWeaponImage("Weapons/Moonveil.png", sm.getWeaponOption(2, 2).getName());
+        sv.setWeaponImage("Weapons/RiversofBlood.png", sm.getWeaponOption(2, 3).getName());
+        sv.setWeaponImage("Weapons/HandofMalenia.png", sm.getWeaponOption(2, 4).getName());
+
+        sv.addImagetoPanel(1, 4);
+        sv.addImagetoPanel(1, 5);
+        sv.addImagetoPanel(1, 6);
+        sv.addImagetoPanel(1, 7);
         sv.setWText(katanaText);// text 1
         sv.addTexttoScroll(1, 1);
         sv.addScrolltoPanel(1, 1);
@@ -216,6 +232,16 @@ public class ShopController {
                     + "\n" + "FTH: " + sm.getWeaponOption(3, i).getWeaponStat(5) + "\n\n";
 
         }
+
+        sv.setWeaponImage("Weapons/Whip.png", sm.getWeaponOption(3, 1).getName());
+        sv.setWeaponImage("Weapons/Urumi.png", sm.getWeaponOption(3, 2).getName());
+        sv.setWeaponImage("Weapons/ThornedWhip.png", sm.getWeaponOption(3, 3).getName());
+        sv.setWeaponImage("Weapons/Hoslow'sPetalWhip.png", sm.getWeaponOption(3, 4).getName());
+
+        sv.addImagetoPanel(2, 8);
+        sv.addImagetoPanel(2, 9);
+        sv.addImagetoPanel(2, 10);
+        sv.addImagetoPanel(2, 11);
         sv.setWText(whipText);// text 2
         sv.addTexttoScroll(2, 2);
         sv.addScrolltoPanel(2, 2);
@@ -303,6 +329,16 @@ public class ShopController {
                     + "\n" + "FTH: " + sm.getWeaponOption(4, i).getWeaponStat(5) + "\n\n";
 
         }
+
+        sv.setWeaponImage("Weapons/Claymore.png", sm.getWeaponOption(4, 1).getName());
+        sv.setWeaponImage("Weapons/StarscourgeGreatsword.png", sm.getWeaponOption(4, 2).getName());
+        sv.setWeaponImage("Weapons/InseperableSword.png", sm.getWeaponOption(4, 3).getName());
+        sv.setWeaponImage("Weapons/MalekithBlackBlade.png", sm.getWeaponOption(4, 4).getName());
+
+        sv.addImagetoPanel(3, 12);
+        sv.addImagetoPanel(3, 13);
+        sv.addImagetoPanel(3, 14);
+        sv.addImagetoPanel(3, 15);
         sv.setWText(greatSwordText);// text 3
         sv.addTexttoScroll(3, 3);
         sv.addScrolltoPanel(3, 3);
@@ -392,6 +428,15 @@ public class ShopController {
                     + "\n" + "FTH: " + sm.getWeaponOption(5, i).getWeaponStat(5) + "\n\n";
 
         }
+        sv.setWeaponImage("Weapons/AstrologerStaff.png", sm.getWeaponOption(5, 1).getName());
+        sv.setWeaponImage("Weapons/AlbinauricStaff.png", sm.getWeaponOption(5, 2).getName());
+        sv.setWeaponImage("Weapons/StaffoftheGuilty.png", sm.getWeaponOption(5, 3).getName());
+        sv.setWeaponImage("Weapons/CarianRegalScepter.png", sm.getWeaponOption(5, 4).getName());
+
+        sv.addImagetoPanel(4, 16);
+        sv.addImagetoPanel(4, 17);
+        sv.addImagetoPanel(4, 18);
+        sv.addImagetoPanel(4, 19);
         sv.setWText(staffText);// text 4
         sv.addTexttoScroll(4, 4);
         sv.addScrolltoPanel(4, 4);
@@ -479,6 +524,16 @@ public class ShopController {
                     + "\n" + "FTH: " + sm.getWeaponOption(6, i).getWeaponStat(5) + "\n\n";
 
         }
+
+        sv.setWeaponImage("Weapons/FingerSeal.png", sm.getWeaponOption(6, 1).getName());
+        sv.setWeaponImage("Weapons/GodSlayerSeal.png", sm.getWeaponOption(6, 2).getName());
+        sv.setWeaponImage("Weapons/GoldenOrderSeal.png", sm.getWeaponOption(6, 3).getName());
+        sv.setWeaponImage("Weapons/DragonCommunionSeal.png", sm.getWeaponOption(6, 4).getName());
+
+        sv.addImagetoPanel(5, 20);
+        sv.addImagetoPanel(5, 21);
+        sv.addImagetoPanel(5, 22);
+        sv.addImagetoPanel(5, 23);
         sv.setWText(sealText);// text 5
         sv.addTexttoScroll(5, 5);
         sv.addScrolltoPanel(5, 5);
