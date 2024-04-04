@@ -14,6 +14,15 @@ public class InventoryController {
     private String selectedWeapon;
     private boolean pressed;
 
+    /**
+     * Constructs an InventoryController with the specified InventoryModel,
+     * InventoryView, and LobbyView.
+     * 
+     * @param im The InventoryModel containing the inventory data.
+     * @param iv The InventoryView for displaying the inventory GUI.
+     * @param lv The LobbyView for displaying the lobby GUI.
+     */
+
     public InventoryController(InventoryModel im, InventoryView iv, LobbyView lv) {
         this.im = im;
         this.iv = iv;
@@ -89,21 +98,12 @@ public class InventoryController {
         iv.composeIButtonlist();
     }
 
-    public void buttonAdder(ArrayList<Weapon> weaponList) {
-
-        Iterator<Weapon> i = weaponList.iterator();
-
-        while (i.hasNext()) {
-            iv.setIButton("weapon", new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("SELECT");
-
-                }
-            });
-        }
-    }
-
+    /**
+     * Sets up buttons for each weapon in the provided weaponList to enable
+     * selection.
+     * 
+     * @param weaponList The list of weapons to set up selection buttons for.
+     */
     public void buttonLoop(ArrayList<Weapon> weaponList) {
         for (int i = 0; i < weaponList.size(); i++) {
             String weaponName = weaponList.get(i).getName();

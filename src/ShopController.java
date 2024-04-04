@@ -11,6 +11,13 @@ public class ShopController {
     private ShopView sv;
     private LobbyView lv;
 
+    /**
+     * Constructs the ShopController class
+     * 
+     * @param sm is the model
+     * @param sv is the view
+     * @param lv is the lobby view
+     */
     public ShopController(ShopModel sm, ShopView sv, LobbyView lv) {
         this.sm = sm;
         this.sv = sv;

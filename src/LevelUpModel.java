@@ -2,37 +2,86 @@ public class LevelUpModel {
     private Character character;
     private int runeCost;
 
+    /**
+     * Constructs a LevelUpModel with the specified character.
+     * 
+     * @param character The character associated with the leveling up process.
+     */
     public LevelUpModel(Character character) {
         this.character = character;
     }
 
+    /**
+     * Retrieves the name of the character.
+     * 
+     * @return The name of the character.
+     */
     public String getName() {
         return character.getName();
     }
 
+    /**
+     * Retrieves the level of the character.
+     * 
+     * @return The level of the character.
+     */
     public String getLevel() {
         return String.valueOf(character.getLevel());
     }
 
+    /**
+     * Retrieves the number of runes owned by the character.
+     * 
+     * @return The number of runes owned by the character.
+     */
     public String getRunes() {
         return String.valueOf(character.getRunes());
     }
 
+    /**
+     * Calculates the rune cost required for upgrading stats based on character
+     * level.
+     * 
+     * @return The rune cost for upgrading stats.
+     */
     public String getRuneCost() {
         return String.valueOf((character.getLevel() * 100) / 2);
     }
 
+    /**
+     * Calculates the rune cost required for upgrading stats based on character
+     * level.
+     * 
+     * @return The rune cost for upgrading stats.
+     */
     public int getruneCost() {
         return (character.getLevel() * 100) / 2;
     }
 
+    /**
+     * Retrieves the statistic of the character
+     * 
+     * @return The rune cost for upgrading stats.
+     */
     public String getStat(int i) {
         return String.valueOf(character.getStats(i));
     }
 
+    /**
+     * Retrieves the job class of the character
+     * 
+     * @return The rune cost for upgrading stats.
+     */
     public String getJob() {
         return character.getJob();
     }
+
+    /**
+     * Attempts to upgrade a selected stat of the character.
+     * 
+     * @param lvlupchoice The choice of the stat to upgrade.
+     * @return True if the stat was successfully upgraded, false otherwise.
+     */
 
     public boolean upgradeStat(int lvlupchoice) {
 
@@ -126,6 +175,11 @@ public class LevelUpModel {
         return false;
     }
 
+    /**
+     * Retrieves the character associated with this LevelUpModel.
+     * 
+     * @return The character associated with this LevelUpModel.
+     */
     public Character getCharacter() {
         return this.character;
     }

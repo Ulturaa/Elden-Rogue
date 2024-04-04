@@ -16,6 +16,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Constructor for CharcreateView
+ * 
+ * Holds main components of the Character creation gui such as the JFrame
+ * 
+ */
 public class CharCreateView {
     private String nameInput;
     private String selectedJob;
@@ -49,6 +55,10 @@ public class CharCreateView {
 
     }
 
+    /**
+     * Creates buttons and adds them to an array list of buttons called CCButtonlist
+     * 
+     */
     public void setCCButton(String btnLabel, ActionListener actionListener) {
         JButton CCButton = new JButton(btnLabel);
 
@@ -59,6 +69,10 @@ public class CharCreateView {
         // CCFrame.add(CCButton);
     }
 
+    /**
+     * Composes the CCButtonlist by adding them to the JFrame
+     * 
+     */
     public void composeCCButtonList() {
         Iterator<JButton> i = CCButtonlist.iterator();
 
@@ -68,6 +82,10 @@ public class CharCreateView {
 
     }
 
+    /**
+     * Creates JLabels and adds them to an arraylist called CCLabellist
+     * 
+     */
     public void setCCLabel(String s) {
         JLabel CCLabel = new JLabel();
 
@@ -77,6 +95,11 @@ public class CharCreateView {
         CCLabellist.add(CCLabel);
     }
 
+    /**
+     * Composes CCLabel list by adding the labels to the JFrame
+     * 
+     * 
+     */
     public void composeCCLabels() {
         Iterator<JLabel> i = CCLabellist.iterator();
 
@@ -86,18 +109,36 @@ public class CharCreateView {
 
     }
 
+    /**
+     * Setter for the nameInput of the GUI
+     * 
+     */
     public void setNameinput(String s) {
         this.nameInput = s;
     }
 
+    /**
+     * This gets the text that was typed into the textfield an sets it into the
+     * attribute
+     */
     public void getTextfrom(JTextField textfield) {
         this.nameInput = textfield.getText();
     }
 
+    /**
+     * Getter for the username input
+     * 
+     * @return nameInput
+     */
     public String getnameInput() {
         return this.nameInput;
     }
 
+    /**
+     * Does the process of inputting the username into the jOptionPane
+     * 
+     * 
+     */
     public void getuserNameInput() {
         String input = JOptionPane.showInputDialog(null, "Enter your name:");
         if (input != null) {
@@ -109,10 +150,20 @@ public class CharCreateView {
         }
     }
 
+    /**
+     * Getter for selected job
+     * 
+     * @return selected job
+     */
     public String getSelectedJob() {
         return this.selectedJob;
     }
 
+    /**
+     * JOptionpane for the jobclass options
+     * Once clicked the jobclass is chosen
+     * 
+     */
     public void showJobchoices() {
         // Create an array of button labels
         String[] jobs = { "Vagabond", "Samurai", "Warrior", "Hero", "Astrologer", "Prophet" };
@@ -129,6 +180,10 @@ public class CharCreateView {
         }
     }
 
+    /**
+     * Updates the JLabels that are already on the Jframe using indexes an the
+     * arraylist
+     */
     public void updateLabel(int index, String newText) {
         if (index >= 0 && index < CCLabellist.size()) {
             JLabel labelToUpdate = CCLabellist.get(index);
@@ -142,6 +197,10 @@ public class CharCreateView {
         }
     }
 
+    /**
+     * Displays the system messages of Characer creation
+     * 
+     */
     public JLabel sysMessage(String s) {
         JLabel sysLabel = new JLabel();
 
@@ -155,12 +214,18 @@ public class CharCreateView {
         return sysLabel;
     }
 
+    /**
+     * Removes the system message
+     */
     public void clearSysMessage(JLabel label) {
         CCFrame.remove(label);
         CCFrame.revalidate();
         CCFrame.repaint();
     }
 
+    /**
+     * Closes the JFrame and disposes it
+     */
     public void closeFrame() {
         CCFrame.dispose();
     }

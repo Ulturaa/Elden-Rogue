@@ -8,6 +8,14 @@ public class CharCreateController {
     private CharCreateModel ccm;
     private CharCreateView ccv;
 
+    /**
+     * This is the constructor of the CharCreateController Class
+     * 
+     * @param ccm is the model
+     * @param ccv is the view
+     * 
+     */
+
     public CharCreateController(CharCreateModel ccm, CharCreateView ccv) {
         this.ccm = ccm;
         this.ccv = ccv;
