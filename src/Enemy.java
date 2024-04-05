@@ -22,8 +22,8 @@ public class Enemy extends Entity {
      * The constructor calls the constructor of the superclass Entity with the
      * provided name and HP
      * 
-     * @param name The name of the enemy.
-     * @param HP   The health of the enemy.
+     * @param eType     Enemy Type
+     * @param aNum      Area num
      */
     public Enemy(int eType, int aNum) {
         super();

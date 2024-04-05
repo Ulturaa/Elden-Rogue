@@ -19,8 +19,8 @@ public class ShopModel {
     /**
      * Retrieves the weapon option based on the specified category and index.
      *
-     * @param category The category of the weapon (e.g., sword, katana, whip)
-     * @param index    The index of the weapon option within the specified category
+     * @param k The category of the weapon (e.g., sword, katana, whip)
+     * @param i    The index of the weapon option within the specified category
      * @return The weapon option corresponding to the specified category and index
      */
     public Weapon getWeaponOption(int k, int i) {
@@ -30,8 +30,8 @@ public class ShopModel {
     /**
      * Attempts to make a purchase from the shop.
      *
-     * @param category The category of the weapon to purchase
-     * @param index    The index of the weapon option within the specified category
+     * @param k The category of the weapon to purchase
+     * @param i    The index of the weapon option within the specified category
      * @return True if the purchase was successful, false otherwise
      */
     public boolean shopIt(int k, int i) {

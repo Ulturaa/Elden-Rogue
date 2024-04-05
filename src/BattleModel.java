@@ -142,9 +142,9 @@ public class BattleModel {
 
     /**
      * Determines wether the player is dead.
-     * If player currHP is <= 0, player is dead.
+     * If player currHP is less than equal to 0, player is dead.
      * 
-     * @return  True if player health <= 0, else false.
+     * @return  True if player health less than equal to 0, else false.
      */
     public boolean hasPlayerDied() {
         if(character.getCurrHP() <= 0)
@@ -155,9 +155,9 @@ public class BattleModel {
 
     /**
      * Determines wether the enemy(Entity) is dead.
-     * If entity hp is <= 0, player is dead.
+     * If entity hp is less than equal to 0, player is dead.
      * 
-     * @return  True if enemy health <= 0, else false.
+     * @return  True if enemy health less than equal to 0, else false.
      */
     public boolean hasEntityDied() {
         if(entity.getHP() <= 0)

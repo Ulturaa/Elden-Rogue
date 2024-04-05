@@ -45,8 +45,6 @@ public class Inventory {
      * @param character is the character object
      * 
      * 
-     * @return true if the weapon is succesfully equipped
-     * @return false if not
      */
     public void equipWeapon(int i, Character character) {
         if (this.equippedWeapon == null) {
