@@ -110,7 +110,14 @@ public class LobbyController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("QUITTING");
-                System.exit(0);
+                lv.Dispose();
+                Game game = new Game();
+                game.cc();
+                Character character = game.getCharacter();
+                CharCreate charCreate = game.getCharCreate();
+                TitleScreenModel tsm = new TitleScreenModel();
+                TitleScreenView tsv = new TitleScreenView();
+                TitleScreenController tsc = new TitleScreenController(tsv, tsm, character, charCreate);
             }
         });
 

@@ -86,4 +86,8 @@ public class LobbyView {
     public void setVisible(boolean b) {
         LFrame.setVisible(b);
     }
+
+    public void Dispose() {
+        LFrame.dispose();
+    }
 }
