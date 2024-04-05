@@ -11,6 +11,11 @@ public class TitleScreenView {
     private JLabel titleLbl;
     private JButton startBtn, exitBtn;
 
+    /**
+     * This is the constructor for the Title screen view. This sets up the Frame, Labels, and Buttons
+     * of the view.
+     * 
+     */
     public TitleScreenView() {
         titleScreenFrame = new JFrame();
         titleScreenFrame.setSize(720, 480);
@@ -70,6 +75,10 @@ public class TitleScreenView {
         this.exitBtn.addActionListener(actionListener);
     }
 
+    /**
+     * Function to close/dispose frame.
+     *
+     */
     public void closeFrame() {
         titleScreenFrame.dispose();
     }

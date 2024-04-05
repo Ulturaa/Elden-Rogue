@@ -17,7 +17,7 @@ public class AreaController {
 
     /**
      * This is the constructor for the class Area. This sets up the MVC for
-     * area.
+     * area. The button listeners are located here.
      * 
      * @param av    The AreaView Class for view.
      * @param am    The AreaModel Class for data.
@@ -167,10 +167,19 @@ public class AreaController {
                         av.updateLabels("The boss has already been slain.");
                     }
                 } else if (am.getCurrTile() instanceof CreditsTile) {
-                    CreditsTile ct = (CreditsTile) am.getCurrTile();
-                    System.out.println("-- Play the credits --");
-                    ct.playCredits();
-                    ToLobby();
+                    
+                    av.setVisible(false);
+                    CreditsModel cm = new CreditsModel();
+                    CreditsView cv = new CreditsView(cm.getDevs());
+                    CreditsController cc = new CreditsController(cm, cv);
+
+                    cv.CreditsFrameWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            ToLobby();
+                        }
+                    });
+
                 } else
                     av.updateLabels("Nothing happened");
                 
