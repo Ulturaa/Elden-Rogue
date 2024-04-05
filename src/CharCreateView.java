@@ -144,7 +144,7 @@ public class CharCreateView {
         if (input != null) {
             System.out.println("Input received: " + input);
             this.nameInput = input;
-        } else {
+        } else{
             // User canceled the input dialog
             System.out.println("Input canceled.");
         }
@@ -173,10 +173,10 @@ public class CharCreateView {
                 JOptionPane.INFORMATION_MESSAGE, null, jobs, jobs[0]);
 
         // Set the selected option based on the user's choice
-        if (choice >= 0 && choice < jobs.length) {
-            selectedJob = jobs[choice];
-        } else {
+        if (choice == -1) {
             selectedJob = null; // No option selected or dialog closed
+        } else {
+            selectedJob = jobs[choice];
         }
     }
 

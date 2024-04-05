@@ -110,6 +110,7 @@ public class LobbyController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("QUITTING");
+                System.exit(0);
             }
         });
 

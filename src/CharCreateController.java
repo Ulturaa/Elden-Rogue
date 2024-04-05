@@ -40,13 +40,15 @@ public class CharCreateController {
                 boolean runit = true;
 
                 ccv.getuserNameInput();
-                System.out.println(ccv.getnameInput());
-                pName = ccv.getnameInput();
-                ccm.setName(pName);
-                ccm.setCharacterName();
-                pName = ccm.getCharacterName();
-                ccv.updateLabel(0, "NAME: " + pName);
-
+                if(ccv.getnameInput() == null || ccv.getnameInput().isEmpty()) {
+                    System.out.println("Name null or empty");
+                } else {
+                    pName = ccv.getnameInput();
+                    ccm.setName(pName);
+                    ccm.setCharacterName();
+                    pName = ccm.getCharacterName();
+                    ccv.updateLabel(0, "NAME: " + pName);
+                }
             }
         });
 
@@ -57,17 +59,19 @@ public class CharCreateController {
                 ccv.showJobchoices();
                 String job = ccv.getSelectedJob();
                 System.out.println(job);
-                ccm.setJobClass(job);
-                ccm.setStats(ccm.getJobClass());
-
-                ccv.updateLabel(1, "JOB CLASS: " + ccm.getJobClass());
-                ccv.updateLabel(2, "LEVEL: " + ccm.getLevel());
-                ccv.updateLabel(3, "HP: " + ccm.getstat(0));
-                ccv.updateLabel(4, "ENDURANCE: " + ccm.getstat(1));
-                ccv.updateLabel(5, "DEXTERITY: " + ccm.getstat(2));
-                ccv.updateLabel(6, "STRENGTH: " + ccm.getstat(3));
-                ccv.updateLabel(7, "INTELLIGENCE: " + ccm.getstat(4));
-                ccv.updateLabel(8, "FAITH: " + ccm.getstat(5));
+                
+                if(job != null) {
+                    ccm.setJobClass(job);
+                    ccm.setStats(ccm.getJobClass());
+                    ccv.updateLabel(1, "JOB CLASS: " + ccm.getJobClass());
+                    ccv.updateLabel(2, "LEVEL: " + ccm.getLevel());
+                    ccv.updateLabel(3, "HP: " + ccm.getstat(0));
+                    ccv.updateLabel(4, "ENDURANCE: " + ccm.getstat(1));
+                    ccv.updateLabel(5, "DEXTERITY: " + ccm.getstat(2));
+                    ccv.updateLabel(6, "STRENGTH: " + ccm.getstat(3));
+                    ccv.updateLabel(7, "INTELLIGENCE: " + ccm.getstat(4));
+                    ccv.updateLabel(8, "FAITH: " + ccm.getstat(5));
+                }
             }
         });
 
@@ -77,15 +81,16 @@ public class CharCreateController {
                 System.out.println("Confirming");
                 JLabel sysMessage = new JLabel();
 
-                if (ccm.getCharacterName() != "" && ccm.getLevel() != "1") {
+                System.out.println(ccm.getCharacterName().isEmpty() + " " + ccm.getLevel());
+                if (ccm.getCharacterName() == "" || ccm.getJobClass() == "Jobless") {
+                    sysMessage = ccv.sysMessage("Please input BOTH NAME AND JOB CLASS");
+                    System.out.println("Please input BOTH NAME AND JOB CLASS");
+                } else {
                     ccv.closeFrame();
                     Character character = ccm.getCharacter();
                     LobbyModel lm = new LobbyModel(character);
                     LobbyView lv = new LobbyView();
                     LobbyController lc = new LobbyController(lm, lv);
-                } else {
-                    sysMessage = ccv.sysMessage("Please input BOTH NAME AND JOB CLASS");
-                    System.out.println("Please input BOTH NAME AND JOB CLASS");
 
                 }
             }
@@ -110,8 +115,4 @@ public class CharCreateController {
         ccv.composeCCButtonList();
 
     }
-
-    // public static void main(String[] args) {
-    // new CharCreateController(new CharCreateModel(), new CharCreateView());
-    // }
 }
