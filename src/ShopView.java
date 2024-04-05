@@ -41,6 +41,9 @@ public class ShopView {
 
     private ArrayList<JLabel> wImageList = new ArrayList<JLabel>();
 
+    /**
+     * Constructs a ShopView and initializes the main frame of the shop UI.
+     */
     public ShopView() {
         SFrame = new JFrame();
         SFrame.setSize(720, 480);
@@ -75,6 +78,12 @@ public class ShopView {
 
     }
 
+    /**
+     * Sets a button for the main shop actions
+     *
+     * @param btnLabel       The label text of the button.
+     * @param actionListener The action listener to be associated with the button.
+     */
     public void setSButton(String btnLabel, ActionListener actionListener) {
         JButton SButton = new JButton(btnLabel);
         SButton.addActionListener(actionListener);
@@ -83,6 +92,9 @@ public class ShopView {
         SButtonlist.add(SButton);
     }
 
+    /**
+     * Composes the list of buttons into the shop UI.
+     */
     public void composeSButtonlist() {
         Iterator<JButton> i = SButtonlist.iterator();
 
@@ -91,6 +103,11 @@ public class ShopView {
         }
     }
 
+    /**
+     * Sets a label with the specified text.
+     *
+     * @param s The text of the label.
+     */
     public void setSLabel(String s) {
         JLabel SLabel = new JLabel();
 
@@ -100,6 +117,9 @@ public class ShopView {
         SLabellist.add(SLabel);
     }
 
+    /**
+     * Composes the list of labels into the shop UI.
+     */
     public void composeSLabels() {
         Iterator<JLabel> i = SLabellist.iterator();
 
@@ -109,6 +129,12 @@ public class ShopView {
 
     }
 
+    /**
+     * Updates the label at the specified index with the new text.
+     *
+     * @param index   The index of the label to be updated.
+     * @param newText The new text for the label.
+     */
     public void updateLabel(int index, String newText) {
         if (index >= 0 && index < SLabellist.size()) {
             JLabel labelToUpdate = SLabellist.get(index);
@@ -122,14 +148,28 @@ public class ShopView {
         }
     }
 
+    /**
+     * Sets the visibility of the shop UI.
+     *
+     * @param b True to set the shop UI visible, false otherwise.
+     */
     public void setVisible(boolean b) {
         SFrame.setVisible(b);
     }
 
+    /**
+     * Sets the visibility of a specific button in the shop UI.
+     *
+     * @param i The index of the button.
+     * @param b True to set the button visible, false otherwise.
+     */
     public void setSButtonvisbility(int i, boolean b) {
         SButtonlist.get(i).setVisible(b);
     }
 
+    /**
+     * Sets a panel for displaying purchasable weapon option buttons.
+     */
     public void setWPanel() {
         JPanel wpanel = new JPanel();
 
@@ -140,6 +180,9 @@ public class ShopView {
         WPanellist.add(wpanel);
     }
 
+    /**
+     * Composes the list of weapon panels into the shop UI.
+     */
     public void composeWPanellist() {
         Iterator<JPanel> i = WPanellist.iterator();
 
@@ -148,6 +191,12 @@ public class ShopView {
         }
     }
 
+    /**
+     * Sets the visibility of a specific panel in the shop UI.
+     *
+     * @param i The index of the panel.
+     * @param b True to set the panel visible, false otherwise.
+     */
     public void setPanelVisible(int i, boolean b) {
         WPanellist.get(i).setVisible(b);
     }
@@ -200,6 +249,12 @@ public class ShopView {
         SealButtonlist.add(WButton);
     }
 
+    /**
+     * Adds buttons corresponding to a specific weapon type to a panel.
+     *
+     * @param j    The index of the panel.
+     * @param type The type of weapon (1 for Sword, 2 for Katana, etc.).
+     */
     public void addtoPanel(int j, int type) {
         Iterator<JButton> i = SwordButtonlist.iterator();
         switch (type) {
@@ -228,10 +283,19 @@ public class ShopView {
         }
     }
 
+    /**
+     * Sets the visibility of a specific label in the shop UI.
+     *
+     * @param i The index of the label.
+     * @param b True to set the label visible, false otherwise.
+     */
     public void setVisibleLabel(int i, boolean b) {
         SLabellist.get(i).setVisible(b);
     }
 
+    /**
+     * Sets up a scroll pane for displaying weapon information.
+     */
     public void setScroll() {
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -242,15 +306,32 @@ public class ShopView {
         ScrollList.add(scrollPane);
     }
 
+    /**
+     * Adds a scroll pane to a specific panel in the shop UI.
+     *
+     * @param j The index of the panel.
+     * @param k The index of the scroll pane.
+     */
     public void addScrolltoPanel(int j, int k) {
         WPanellist.get(j).add(ScrollList.get(k));
 
     }
 
+    /**
+     * Sets the visibility of a specific scroll pane in the shop UI.
+     *
+     * @param i The index of the scroll pane.
+     * @param b True to set the scroll pane visible, false otherwise.
+     */
     public void setVisibleScroll(int i, boolean b) {
         ScrollList.get(i).setVisible(b);
     }
 
+    /**
+     * Sets up a text area for displaying weapon information.
+     *
+     * @param s The text to be displayed.
+     */
     public void setWText(String s) {
         JTextArea WText = new JTextArea();
 
@@ -266,6 +347,12 @@ public class ShopView {
         // WLabellist.add(WText);
     }
 
+    /**
+     * Adds a text area to a specific scroll pane in the shop UI.
+     *
+     * @param j The index of the panel.
+     * @param k The index of the text area.
+     */
     public void addTexttoScroll(int j, int k) {
         // Iterator<JTextArea> i = WeaponTextList.iterator();
 
@@ -278,6 +365,12 @@ public class ShopView {
         // }
     }
 
+    /**
+     * Sets up an image for displaying a weapon with its name.
+     *
+     * @param s The path to the image file.
+     * @param n The name of the weapon.
+     */
     public void setWeaponImage(String s, String n) {
         ImageIcon wImage = new ImageIcon(new ImageIcon(s).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH));
 
@@ -304,6 +397,12 @@ public class ShopView {
         SFrame.repaint();
     }
 
+    /**
+     * Adds an image of a weapon with its name to a specific panel in the shop UI.
+     *
+     * @param j The index of the panel.
+     * @param k The index of the image.
+     */
     public void addImagetoPanel(int j, int k) {
         WPanellist.get(j).add(wImageList.get(k));
     }

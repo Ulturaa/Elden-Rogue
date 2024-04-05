@@ -23,6 +23,9 @@ public class LevelUpView {
     private ArrayList<JButton> LVLButtonlist = new ArrayList<JButton>();
     private ArrayList<JLabel> LVLLabellist = new ArrayList<JLabel>();
 
+    /**
+     * Constructs a LevelUpView and sets up the initial frame.
+     */
     public LevelUpView() {
         LVLFrame = new JFrame();
         LVLFrame.setSize(720, 480);
@@ -42,6 +45,12 @@ public class LevelUpView {
         LVLFrame.setVisible(true);
     }
 
+    /**
+     * Sets up buttons for choosing the stat to level up.
+     * 
+     * @param btnLabel       The label for the button.
+     * @param actionListener The action listener for the button.
+     */
     public void setLVLButton(String btnLabel, ActionListener actionListener) {
         JButton LVLButton = new JButton(btnLabel);
         LVLButton.addActionListener(actionListener);
@@ -50,6 +59,9 @@ public class LevelUpView {
         LVLButtonlist.add(LVLButton);
     }
 
+    /**
+     * Composes the buttons onto the GUI.
+     */
     public void composeLVLButtonlist() {
         Iterator<JButton> i = LVLButtonlist.iterator();
 
@@ -58,6 +70,12 @@ public class LevelUpView {
         }
     }
 
+    /**
+     * Sets up labels for displaying the label of each statistic that can be leveled
+     * up
+     * 
+     * @param s The text to be displayed on the label.
+     */
     public void setLVLLabel(String s) {
         JLabel LVLLabel = new JLabel();
 
@@ -67,6 +85,9 @@ public class LevelUpView {
         LVLLabellist.add(LVLLabel);
     }
 
+    /**
+     * Composes the labels onto the GUI.
+     */
     public void composeLVLLabels() {
         Iterator<JLabel> i = LVLLabellist.iterator();
 
@@ -76,6 +97,12 @@ public class LevelUpView {
 
     }
 
+    /**
+     * Updates a specific label with new text.
+     * 
+     * @param index   The index of the label to be updated.
+     * @param newText The new text to be displayed on the label.
+     */
     public void updateLabel(int index, String newText) {
         if (index >= 0 && index < LVLLabellist.size()) {
             JLabel labelToUpdate = LVLLabellist.get(index);
@@ -98,10 +125,21 @@ public class LevelUpView {
         }
     }
 
+    /**
+     * Sets the visibility of the level up view.
+     * 
+     * @param b True to make the view visible, false otherwise.
+     */
     public void setVisible(boolean b) {
         LVLFrame.setVisible(b);
     }
 
+    /**
+     * Creates a system message label with the specified text.
+     * 
+     * @param s The text for the system message.
+     * @return The system message label.
+     */
     public JLabel sysMessage(String s) {
         JLabel sysLabel = new JLabel();
 
@@ -117,10 +155,19 @@ public class LevelUpView {
 
     }
 
+    /**
+     * Sets the visibility of a system message label.
+     * 
+     * @param l    The system message label.
+     * @param bool True to make the label visible, false otherwise.
+     */
     public void setVisibleMsg(JLabel l, boolean bool) {
         l.setVisible(bool);
     }
 
+    /**
+     * Closes the level up view frame.
+     */
     public void closeFrame() {
         LVLFrame.dispose();
     }

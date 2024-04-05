@@ -8,6 +8,14 @@ public class LevelUpController {
     private LevelUpView luv;
     private LobbyView lv;
 
+    /**
+     * Constructs the main JFrame of the Leveling up feature
+     * 
+     * @param lum ios the model
+     * @param luv is the view
+     * @param lv  is the lobby view
+     */
+
     public LevelUpController(LevelUpModel lum, LevelUpView luv, LobbyView lv) {
         this.lum = lum;
         this.luv = luv;
