@@ -1,7 +1,6 @@
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Dimension;
-import java.awt.Image;
 
 /**
  * This is a Tile class. Tiles are the objects to be used

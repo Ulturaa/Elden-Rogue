@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class InventoryView {
     private ArrayList<JButton> IButtonlist = new ArrayList<JButton>();
     private ArrayList<JButton> ICButtonlist = new ArrayList<JButton>();
     private ArrayList<JLabel> ILabellist = new ArrayList<JLabel>();
-    // private ArrayList<JLabel> WLabellist = new ArrayList<JLabel>();
 
     /**
      * Constructs an InventoryView and sets up the initial frame.
@@ -166,7 +164,6 @@ public class InventoryView {
     public void updateLabel(int index, String newText) {
         if (index >= 0 && index < ILabellist.size()) {
             JLabel labelToUpdate = ILabellist.get(index);
-            /// final String original = labelToUpdate.getText();
             labelToUpdate.setText(newText);
 
             IFrame.revalidate();

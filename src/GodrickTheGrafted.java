@@ -1,3 +1,7 @@
+/** 
+ * This class, GodrickTheGrafted extends Boss. It creates a Boss object
+ * of the name Godrick The Grafted.
+ */
 public class GodrickTheGrafted extends Boss{
     public GodrickTheGrafted() {
         super("Godrick the Grafted");

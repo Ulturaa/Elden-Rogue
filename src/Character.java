@@ -36,8 +36,6 @@ public class Character {
     private int[] stats;
     private int battleCount;
     private int currentHP;
-
-    // NEW ADDITIONS
     private Weapon weapon;
 
     /**
@@ -150,6 +148,11 @@ public class Character {
         return this.level;
     }
 
+    /**
+     * Sets the level of the character.
+     * 
+     * @param level The updated level of character.
+     */
     public void setLevel(int level) {
         this.level = level;
     }
@@ -172,26 +175,56 @@ public class Character {
         return this.areasCleared[aNum - 1];
     }
 
+    /**
+     * Sets/equips the weapon of the character.
+     * 
+     * @param weappon   The weapon object to add to player.
+     */
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
+    /**
+     * Gets the weapon of the character.
+     * 
+     * @return The weapon of the character.
+     */
     public Weapon getWeapon() {
         return this.weapon;
     }
 
+    /**
+     * Sets the battlecount.
+     * 
+     * @param count The battlecount
+     */
     public void setBattleCount(int count) {
         this.battleCount = count;
     }
 
+    /**
+     * Gets the weapon of the character.
+     * 
+     * @return The weapon of the character.
+     */
     public int getBattleCount() {
         return this.battleCount;
     }
 
+    /**
+     * Sets the currHp of the character.
+     * 
+     * @param HP    the updated HP stat.
+     */
     public void setCurrHP(int HP) {
         this.currentHP = HP;
     }
 
+    /**
+     * Gets the current HP of the character.
+     * 
+     * @return The currHP of the character.
+     */
     public int getCurrHP() {
         return this.currentHP;
     }

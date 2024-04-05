@@ -8,6 +8,14 @@ public class TitleScreenController {
     private Character character;
     private CharCreate charCreate;
 
+    /**
+     * This is the constructor for the Titlescreen Conroller. This MVC system for Titlescreen.
+     * 
+     * @param tsv           The Title Screen View for visuals.
+     * @param tsm           The Title Screen Model for data.
+     * @param character     The character object.
+     * 
+     */
     public TitleScreenController(TitleScreenView tsv, TitleScreenModel tsm, Character character,
             CharCreate charCreate) {
         this.tsv = tsv;
@@ -34,9 +42,4 @@ public class TitleScreenController {
             }
         });
     }
-
-    // public static void main(String[] args) {
-    // // new TitleScreenController(new TitleScreenView(), new TitleScreenModel());
-    // }
-
 }

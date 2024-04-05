@@ -14,11 +14,7 @@ public class Enemy extends Entity {
      * name type String. Is the name of the Entity obj.
      * HP type Integer. It is the HP of the Entity.
      */
-    // private String name;
     private int type;
-    // private int HP;
-    // private int ATK;
-    // private double[] stats;
 
     /**
      * Constructs a new Enemy object with the specified name and health.
@@ -78,7 +74,11 @@ public class Enemy extends Entity {
                 this.name = "Missing no."; // In the case of an invalid input
         }
     }
-
+    /**
+     * Returns the type of the enemy.
+     * 
+     * @return the enemy type.
+     */
     public int getType() {
         return this.type;
     }

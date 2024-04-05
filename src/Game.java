@@ -153,10 +153,20 @@ public class Game {
 
     }
 
+    /**
+     * Gets the character object.
+     * 
+     * @return character
+     */
     public Character getCharacter() {
         return character;
     }
 
+    /**
+     * Gets the character create object.
+     * 
+     * @return create
+     */
     public CharCreate getCharCreate() {
         return create;
     }

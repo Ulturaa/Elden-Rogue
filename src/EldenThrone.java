@@ -1,4 +1,16 @@
+/** 
+ * This class, Elden Throne extends area. It creates a class called Elden Throne 
+ * and creates the arraymap based on the level design.
+ */
+
 public class EldenThrone extends Area {
+    /**
+     * This is the constructor of Elden Throne. When a new 
+     * Stormveil Caslte is created it generates the whole map including
+     * the different floors and tiles.
+     * 
+     * @param character     Character passed to be used as a reference for the functions of differnt tiles.
+     */
     public EldenThrone(Character character) {
         super(3, "Elden Throne", character, 3, 1);
 

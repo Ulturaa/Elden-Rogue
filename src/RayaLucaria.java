@@ -1,5 +1,15 @@
+/** 
+ * This class, RayaLucaria extends area. It creates a class called Raya Lucaria
+ * and creates the arraymap based on the level design.
+ */
 public class RayaLucaria extends Area{
-
+    /**
+     * This is the constructor of Raya Lucaria. When a new 
+     * Stormveil Caslte is created it generates the whole map including
+     * the different floors and tiles.
+     * 
+     * @param character     Character passed to be used as a reference for the functions of differnt tiles.
+     */
     public RayaLucaria(Character character) {
         super(2, "Raya Luaria", character, 3, 3);
 

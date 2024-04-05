@@ -1,3 +1,7 @@
+/** 
+ * This class, Rennala Queen of the Full Moon extends Boss. It creates a Boss object
+ * of the name Rennala Queen of the Full Moon.
+ */
 public class RennalaQueenOfTheFullMoon extends Boss{
     public RennalaQueenOfTheFullMoon() {
         super("Rennala, Queen of the full moon");

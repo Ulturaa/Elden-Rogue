@@ -1,3 +1,7 @@
+/** 
+ * This class, TheEldenBeast extends Boss. It creates a Boss object
+ * of the name The Elden Beast.
+ */
 public class TheEldenBeast extends Boss{
     public TheEldenBeast() {
         super("The Elden Beast");
