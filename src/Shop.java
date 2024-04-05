@@ -38,10 +38,26 @@ public class Shop {
     Scanner shc = new Scanner(System.in);
     Scanner wc = new Scanner(System.in);
 
+    /**
+     *
+     * Constructor for the Shop object
+     * 
+     * Creates the weapon objects that are purchaseable and useable by the player
+     * 
+     */
     public Shop() {
         createWeapons();
     }
 
+    /**
+     * 
+     * Shop screen function for the text based output
+     * 
+     * 
+     * @param inventory is the inventory object
+     * @param character is the character object
+     * 
+     */
     public void shopScreen(Inventory inventory, Character character) {
         int opChoice;
         int wChoice;
@@ -394,6 +410,12 @@ public class Shop {
 
     }
 
+    /**
+     * 
+     * Creates the weapon objects that are purchaseable and useable by the player
+     * 
+     * 
+     */
     public void createWeapons() {
 
         // SWORDS
@@ -433,10 +455,30 @@ public class Shop {
         seal4 = new Seal("Dragon Communion Seal", 15000, 25, 60, 18, 0, 75, 80);
     }
 
+    /**
+     * 
+     * Function for purchasing weapons
+     * 
+     * @param inventory is the inventory object
+     * @param weapon    is the weapon object to be purchased
+     */
     public void purchaseWeapon(Inventory inventory, Weapon weapon) {
         inventory.addWeapon(weapon);
     }
 
+    /**
+     * 
+     * Function that applies the logic of the shop to be used in the MVC structure
+     * it is a modified version of the Shop screen function and is going to be
+     * called
+     * in the Shop model
+     * 
+     * @param opChoice  is the weapon category
+     * @param wChoice   is tha actual weapon choice of the playher
+     * @param character is the the character object
+     * @param inventory is the inventory object
+     * 
+     */
     public boolean modifiedShop(int opChoice, int wChoice, Character character, Inventory inventory) {
 
         switch (opChoice) {
@@ -797,6 +839,11 @@ public class Shop {
         return false;
     }
 
+    /**
+     * Display function that shows the weapons for the text based output
+     * 
+     * 
+     */
     public void showWeapon(Weapon weapon, int i) {
         System.out.println("SELECT YOUR WEAPON");
         System.out.println("SWORDS\n");
@@ -812,6 +859,12 @@ public class Shop {
 
     }
 
+    /**
+     * Getter for the weapons to be used in MVC
+     * 
+     * @param k is the weapon type index
+     * @param i is the actual weapon index
+     */
     public Weapon getWeapons(int k, int i) {
         switch (k) {
             case 1:

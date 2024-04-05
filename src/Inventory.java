@@ -12,6 +12,11 @@ public class Inventory {
     private int iChoice;
     private int wChoice;
 
+    /**
+     * Constructor for the inventory
+     * 
+     * initializes the equipped weapon to null
+     */
     public Inventory() {
         this.equippedWeapon = null;
     }
@@ -25,10 +30,24 @@ public class Inventory {
         this.weaponList.add(weapon3);
     }
 
+    /**
+     * Adds the weapon to the inventory by adding it to the arraylist
+     * 
+     */
     public void addWeapon(Weapon weapon) {
         this.weaponList.add(weapon);
     }
 
+    /**
+     * Equips the desired weapon
+     * 
+     * @param i         is the index of the weapon to be equipped
+     * @param character is the character object
+     * 
+     * 
+     * @return true if the weapon is succesfully equipped
+     * @return false if not
+     */
     public void equipWeapon(int i, Character character) {
         if (this.equippedWeapon == null) {
             if (character.getStats(2) >= this.weaponList.get(i).getWeaponStat(2)) {
@@ -56,6 +75,15 @@ public class Inventory {
 
     }
 
+    /**
+     * Equip function to be used in MVC
+     * 
+     * this function is called in the InventoryModel
+     * 
+     * @param i         is the index of the weapon to be equipped
+     * @param character is the character object
+     * 
+     */
     public boolean equip(int i, Character character) {
         if (this.equippedWeapon == null) {
             if (character.getStats(2) >= this.weaponList.get(i).getWeaponStat(2)) {
@@ -93,6 +121,13 @@ public class Inventory {
 
     }
 
+    /**
+     * Getter for the equipped weapon
+     * 
+     * @param i is the index
+     * 
+     * @return the equipped weapon
+     */
     public Weapon getEquippedWeapon(int i) {
         return this.equippedWeapon;
     }
@@ -119,6 +154,11 @@ public class Inventory {
 
     }
 
+    /**
+     * Function for selecting weapon in the text based output
+     * 
+     * @param character is the character object
+     */
     public void selectWeapon(Character character) {
         if (this.equippedWeapon != null) {
             System.out.println("CURRENTLY EQUIPPED WEAPON: " + this.equippedWeapon.getName());
@@ -147,6 +187,11 @@ public class Inventory {
 
     }
 
+    /**
+     * Getter for the weaponList of the player
+     * 
+     * @return the weapon list
+     */
     public ArrayList<Weapon> getWeaponList() {
         return this.weaponList;
     }
