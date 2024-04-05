@@ -113,6 +113,7 @@ public class AreaController {
                                     @Override
                                     public void windowClosed(WindowEvent e) {
                                         if (bm.hasPlayerDied() == true) {
+                                            am.getCharacter().setRunes(0);
                                             ToLobby();
                                         } else {
                                             am.getCharacter().setRunes(am.getCharacter().getRunes() + runeDrop);
@@ -154,6 +155,7 @@ public class AreaController {
                             @Override
                             public void windowClosed(WindowEvent e) {
                                 if (bm.hasPlayerDied() == true) {
+                                    am.getCharacter().setRunes(0);
                                     ToLobby();
                                 } else {
                                     av.updateLabels("Greater enemy has been felled.\n" + bm.getEntity().getName() + " has dropped " + runeDrop + " runes.");

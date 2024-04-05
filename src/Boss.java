@@ -9,6 +9,17 @@ public class Boss extends Entity {
         super(name);
     }
 
+    /**
+     * Set up the base stats for the Boss object from a variety
+     * of parameters.
+     * 
+     * @param hp        base HP
+     * @param atkLb     Attack lowerbound
+     * @param atkUb     Attack Upperbound
+     * @param pD        Physical Defense
+     * @param sD        Sorcery Defense
+     * @param iD        Incantation Defense
+     */
     public void statistics(int hp, int atkLb, int atkUb, double pD, double sD, double iD) {
         setHP(hp);
         setStats(pD, 0);

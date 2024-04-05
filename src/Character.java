@@ -46,13 +46,13 @@ public class Character {
     public Character() {
         this.name = "";
         this.job = "Jobless";
-        this.runes = 1000000;
+        this.runes = 0;
         this.level = 1;
         this.areasCleared = new int[3]; // 3 to represent clear
         this.battleCount = 0;
         this.currentHP = 0;
         for (int i = 0; i < 3; i++)
-            areasCleared[i] = 10;
+            areasCleared[i] = 0;
         this.stats = new int[6];
         for (int i = 0; i < 5; i++)
             stats[i] = 0;

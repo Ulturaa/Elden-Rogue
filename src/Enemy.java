@@ -83,6 +83,12 @@ public class Enemy extends Entity {
         return this.type;
     }
 
+    /**
+     * Set up the base stats for the Enemy class based on their
+     * type.
+     * 
+     * @param type
+     */
     public void statistics(int type) {
         if (this.type == type) {
             Random random = new Random();
